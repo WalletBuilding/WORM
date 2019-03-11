@@ -1,11 +1,11 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The Luxcore developers
+// Copyright (c) 2015-2018 The Wormcore developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef LUX_HDCHAIN_H
-#define LUX_HDCHAIN_H
+#ifndef WORM_HDCHAIN_H
+#define WORM_HDCHAIN_H
 
 #include "key.h"
 #include "sync.h"
@@ -153,4 +153,4 @@ public:
     std::string GetKeyPath() const;
 };
 
-#endif // LUX_HDCHAIN_H
+#endif // WORM_HDCHAIN_H

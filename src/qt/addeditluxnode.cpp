@@ -1,5 +1,5 @@
-#include "addeditluxnode.h"
-#include "ui_addeditluxnode.h"
+#include "addeditwormnode.h"
+#include "ui_addeditwormnode.h"
 
 #include "walletdb.h"
 #include "wallet.h"
@@ -11,21 +11,21 @@
 #include "base58.h"
 #include <QMessageBox>
 
-AddEditLuxNode::AddEditLuxNode(QWidget *parent) :
+AddEditWormNode::AddEditWormNode(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddEditLuxNode)
+    ui(new Ui::AddEditWormNode)
 {
     ui->setupUi(this);
 
 }
 
-AddEditLuxNode::~AddEditLuxNode()
+AddEditWormNode::~AddEditWormNode()
 {
     delete ui;
 }
 
 
-void AddEditLuxNode::on_okButton_clicked()
+void AddEditWormNode::on_okButton_clicked()
 {
     if(ui->aliasLineEdit->text() == "")
     {
@@ -43,7 +43,7 @@ void AddEditLuxNode::on_okButton_clicked()
     }
     else
     {
-	CLuxNodeConfig c;
+	CWormNodeConfig c;
         c.sAlias = ui->aliasLineEdit->text().toStdString();
 	c.sAddress = ui->addressLineEdit->text().toStdString();
         CKey secret;
@@ -87,15 +87,15 @@ void AddEditLuxNode::on_okButton_clicked()
 
         c.sCollateralAddress = EncodeDestination(account.vchPubKey.GetID());
 
-        pwalletMain->mapMyLuxNodes.insert(make_pair(c.sAddress, c));
-	walletdb.WriteLuxNodeConfig(c.sAddress, c);
-        uiInterface.NotifyLuxNodeChanged(c);
+        pwalletMain->mapMyWormNodes.insert(make_pair(c.sAddress, c));
+	walletdb.WriteWormNodeConfig(c.sAddress, c);
+        uiInterface.NotifyWormNodeChanged(c);
 
         accept();
     }
 }
 
-void AddEditLuxNode::on_cancelButton_clicked()
+void AddEditWormNode::on_cancelButton_clicked()
 {
     reject();
 }

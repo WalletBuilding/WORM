@@ -31,8 +31,8 @@ using namespace dev;
 #include "genesis/eip158Test.cpp"
 #include "genesis/metropolisTest.cpp"
 #include "genesis/transitionnetTest.cpp"
-#include "genesis/luxMainNetwork.cpp"
-#include "genesis/luxTestNetwork.cpp"
+#include "genesis/wormMainNetwork.cpp"
+#include "genesis/wormTestNetwork.cpp"
 
 std::string const& dev::eth::genesisInfo(Network _n)
 {
@@ -47,8 +47,8 @@ std::string const& dev::eth::genesisInfo(Network _n)
 	case Network::EIP150Test: return c_genesisInfoEIP150Test;
 	case Network::EIP158Test: return c_genesisInfoEIP158Test;
 	case Network::MetropolisTest: return c_genesisInfoMetropolisTest;
-	case Network::luxMainNetwork: return c_genesisInfoLuxMainNetwork;
-	case Network::luxTestNetwork: return c_genesisInfoLuxTestNetwork;
+	case Network::wormMainNetwork: return c_genesisInfoWormMainNetwork;
+	case Network::wormTestNetwork: return c_genesisInfoWormTestNetwork;
 	default:
 		throw std::invalid_argument("Invalid network value");
 	}
@@ -67,8 +67,8 @@ h256 const& dev::eth::genesisStateRoot(Network _n)
 	case Network::EIP150Test: return c_genesisStateRootEIP150Test;
 	case Network::EIP158Test: return c_genesisStateRootEIP158Test;
 	case Network::MetropolisTest: return c_genesisStateRootMetropolisTest;
-	case Network::luxMainNetwork: return c_genesisStateRootLuxMainNetwork;
-	case Network::luxTestNetwork: return c_genesisStateRootLuxTestNetwork;
+	case Network::wormMainNetwork: return c_genesisStateRootWormMainNetwork;
+	case Network::wormTestNetwork: return c_genesisStateRootWormTestNetwork;
 	default:
 		throw std::invalid_argument("Invalid network value");
 	}

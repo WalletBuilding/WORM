@@ -1,15 +1,15 @@
-![LUX Logo](src/qt/res/images/lux_logo_horizontal.png)
+![WORM Logo](src/qt/res/images/worm_logo_horizontal.png)
 
 "FIRST OF ITS KIND"
 
-Luxcore is GNU AGPLv3 licensed.
+Wormcore is GNU AGPLv3 licensed.
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Flux.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Flux?ref=badge_shield) [![Build Status](https://travis-ci.org/LUX-Core/lux.svg?branch=master)](https://travis-ci.org/LUX-Core/lux) [![GitHub version](https://badge.fury.io/gh/LUX-Core%2Flux.png)](https://badge.fury.io/gh/LUX-Core%2Flux.png) [![HitCount](http://hits.dwyl.io/216k155/lux.svg)](http://hits.dwyl.io/216k155/lux)
-<a href="https://discord.gg/ndUg9va"><img src="https://discordapp.com/api/guilds/364500397999652866/embed.png" alt="Discord server" /></a> <a href="https://twitter.com/intent/follow?screen_name=LUX_COIN"><img src="https://img.shields.io/twitter/follow/LUX_COIN.svg?style=social&logo=twitter" alt="follow on Twitter"></a>
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Fworm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Fworm?ref=badge_shield) [![Build Status](https://travis-ci.org/WORM-Core/worm.svg?branch=master)](https://travis-ci.org/WORM-Core/worm) [![GitHub version](https://badge.fury.io/gh/WORM-Core%2Fworm.png)](https://badge.fury.io/gh/WORM-Core%2Fworm.png) [![HitCount](http://hits.dwyl.io/216k155/worm.svg)](http://hits.dwyl.io/216k155/worm)
+<a href="https://discord.gg/ndUg9va"><img src="https://discordapp.com/api/guilds/364500397999652866/embed.png" alt="Discord server" /></a> <a href="https://twitter.com/intent/follow?screen_name=WORM_COIN"><img src="https://img.shields.io/twitter/follow/WORM_COIN.svg?style=social&logo=twitter" alt="follow on Twitter"></a>
                                                                                                                                                      
-[![Build history](https://buildstats.info/travisci/chart/LUX-Core/lux?branch=master)](https://travis-ci.org/LUX-Core/lux?branch=master)
+[![Build history](https://buildstats.info/travisci/chart/WORM-Core/worm?branch=master)](https://travis-ci.org/WORM-Core/worm?branch=master)
 
-[Website](https://luxcore.io) — [LUXtre + LUXGate](https://github.com/LUX-Core/luxtre) - [PoS Web Wallet](https://lux.poswallet.io) — [Block Explorer](https://explorer.luxcore.io/) — [Blog](https://reddit.com/r/LUXCoin) — [Forum](https://bitcointalk.org/index.php?topic=2254046.0) — [Telegram](https://t.me/LUXcoinOfficialChat) — [Twitter](https://twitter.com/LUX_Coin)
+[Website](https://mealworms.biz) — [WORMtre + WORMGate](https://github.com/WORM-Core/wormtre) - [PoS Web Wallet](https://worm.poswallet.io) — [Block Explorer](https://explorer.mealworms.biz/) — [Blog](https://reddit.com/r/WORMCoin) — [Forum](https://bitcointalk.org/index.php?topic=2254046.0) — [Telegram](https://t.me/WORMcoinOfficialChat) — [Twitter](https://twitter.com/WORM_Coin)
 
 Features
 =============
@@ -20,7 +20,7 @@ Features
 * Segwit
 * Smart contract
 * New PHI2 PoW/PoS hybrid algorithm
-* Luxgate
+* Wormgate
 * Parallel masternode (PMN)
 
   * [Banking layer](#)
@@ -32,13 +32,13 @@ Features
 * ~~PHI1612 PoW/PoS hybrid algorithm~~
 
 
-The Luxcore Project is a decentralized peer-to-peer banking financial platform, created under an open source license, featuring a built-in cryptocurrency, end-to-end encrypted messaging and decentralized marketplace. The decentralized network aims to provide anonymity and privacy for everyone through a simple user-friendly interface by taking care of all the advanced cryptography in the background.
+The Wormcore Project is a decentralized peer-to-peer banking financial platform, created under an open source license, featuring a built-in cryptocurrency, end-to-end encrypted messaging and decentralized marketplace. The decentralized network aims to provide anonymity and privacy for everyone through a simple user-friendly interface by taking care of all the advanced cryptography in the background.
 
-The Luxgate allow for communications among validated blockchain with the ability to perform tasks and advanced functions. Through the use of PMN, Lux is able to interact with many other popular blockchains and create a unifying bond among those ecosystems.
+The Wormgate allow for communications among validated blockchain with the ability to perform tasks and advanced functions. Through the use of PMN, Worm is able to interact with many other popular blockchains and create a unifying bond among those ecosystems.
 
-Lux doesn't provide direct support for dapp database. Instead, a mechanism to interact with another Blockchain via Luxgate function where the other Blockchain can send and receive trigger function notices and international data through the Lux network via PMN and Luxgate. PMN & Luxgate can also be used to interact with the centralized services such as bankers. Those centralism services can connect to the Lux network for specific trigger of the Luxgate via PMN. It will allow for their developed autonomous system to act based on their behalf. The PMN will then be developed by the connecting Blockchain developer. Luxcore will have to supply a deployment guide to assist their development. In order to assist the Centralized services, Lux will need to provide a centralized trustworthy environments. So the user has their trusted oversight to verify that the transactions are legitimate.
+Worm doesn't provide direct support for dapp database. Instead, a mechanism to interact with another Blockchain via Wormgate function where the other Blockchain can send and receive trigger function notices and international data through the Worm network via PMN and Wormgate. PMN & Wormgate can also be used to interact with the centralized services such as bankers. Those centralism services can connect to the Worm network for specific trigger of the Wormgate via PMN. It will allow for their developed autonomous system to act based on their behalf. The PMN will then be developed by the connecting Blockchain developer. Wormcore will have to supply a deployment guide to assist their development. In order to assist the Centralized services, Worm will need to provide a centralized trustworthy environments. So the user has their trusted oversight to verify that the transactions are legitimate.
 
-In addition, without Luxgate and PMN, Bitcoin and Ethereum cannot interact with each other on the same Blockchain because the technology is incompatible. It is almost impossible before our PMN and Luxgate functions are implemented. Therefore, we have to introduce a Smartcontract & Segwit features in the next release to verify that we succeed to combine those different technologies together to create a brand new unique feature of LUX.
+In addition, without Wormgate and PMN, Bitcoin and Ethereum cannot interact with each other on the same Blockchain because the technology is incompatible. It is almost impossible before our PMN and Wormgate functions are implemented. Therefore, we have to introduce a Smartcontract & Segwit features in the next release to verify that we succeed to combine those different technologies together to create a brand new unique feature of WORM.
 
 ## Coin Specifications
 
@@ -48,15 +48,15 @@ In addition, without Luxgate and PMN, Bitcoin and Ethereum cannot interact with 
 | Block Size | `4MB` |
 | Block Time | `60s` |
 | PoW Block Time | `120s`   |
-| PoW Reward | `10 LUX` |
-| PoS Reward | `1 LUX` |
+| PoW Reward | `10 WORM` |
+| PoS Reward | `1 WORM` |
 | Stake Time | `36 hours` | 
-| Masternode Requirement | `16,120 LUX` |
+| Masternode Requirement | `16,120 WORM` |
 | Masternode Reward | `20% PoW/PoS` |
 | Port | `26969` |
 | RPC Port | `9888` |
 | Masternode Port | `26969` |
-| Lux legacy address start with | `L` |
+| Worm legacy address start with | `L` |
 | p2sh-segwit address start with | `S` |
 | Bech32 address start with | `bc` |
 
@@ -64,7 +64,7 @@ In addition, without Luxgate and PMN, Bitcoin and Ethereum cannot interact with 
 
 Instructions
 -----------
-* [Lux-qt](doc/LUX_QT_v5_Win_Mac_User_Guide.pdf)
+* [Worm-qt](doc/WORM_QT_v5_Win_Mac_User_Guide.pdf)
 
 * [Smart contract](doc/smartcontract.md)
 
@@ -72,7 +72,7 @@ Instructions
 
 * [DFS Testnet](doc/dfs-testnet.md)
 
-Build Lux wallet
+Build Worm wallet
 ----------
 
 ### Building for 32-bit Windows
@@ -81,9 +81,9 @@ The next three steps are an example of how to acquire the source and build in an
         
 Acquire the source and install dependencies.
 
-    git clone https://github.com/LUX-Core/lux
-    sudo chmod -R a+rw lux
-    cd lux/depends
+    git clone https://github.com/WORM-Core/worm
+    sudo chmod -R a+rw worm
+    cd worm/depends
     ./install-dependencies.sh
     
 Set the default mingw-w32 g++ compiler option to auto (option 0) by default.
@@ -100,9 +100,9 @@ The next three steps are an example of how to acquire the source and build in an
         
 Acquire the source and install dependencies.
 
-    git clone https://github.com/LUX-Core/lux
-    sudo chmod -R a+rw lux
-    cd lux/depends
+    git clone https://github.com/WORM-Core/worm
+    sudo chmod -R a+rw worm
+    cd worm/depends
     ./install-dependencies.sh
     
 Set the default mingw-w64 g++ compiler option to posix (option 1).
@@ -117,20 +117,20 @@ Build in the usual way.
 
 Use
 
-    sudo add-apt-repository ppa:bitcoin/bitcoin; git clone https://github.com/LUX-Core/lux; cd lux; depends/install-dependencies.sh; ./autogen.sh; ./configure --disable-tests --with-boost-libdir=/usr/local/lib; make clean; make -j$(nproc)
+    sudo add-apt-repository ppa:bitcoin/bitcoin; git clone https://github.com/WORM-Core/worm; cd worm; depends/install-dependencies.sh; ./autogen.sh; ./configure --disable-tests --with-boost-libdir=/usr/local/lib; make clean; make -j$(nproc)
 
 
 Add bitcoin repository for Berkeley DB 4.8
 
     sudo add-apt-repository ppa:bitcoin/bitcoin
 
-Clone lux repository
+Clone worm repository
 
-    git clone https://github.com/LUX-Core/lux
+    git clone https://github.com/WORM-Core/worm
 
-Build lux 
+Build worm 
 
-    cd lux
+    cd worm
     ./depends/install-dependencies.sh
     ./autogen.sh
     ./configure --disable-tests
@@ -165,12 +165,12 @@ Link boost 1.64
 
     brew link boost@1.64 --force
 
-#### Build Luxcore
+#### Build Wormcore
 
-Clone the Lux source code and cd into lux
+Clone the Worm source code and cd into worm
 
-        git clone https://github.com/LUX-Core/lux
-        cd lux
+        git clone https://github.com/WORM-Core/worm
+        cd worm
         ./building/mac/requirements.sh
         ./building/mac/build.sh
 
@@ -179,8 +179,8 @@ Setup and Build: Arch Linux
 This example lists the steps necessary to setup and build a command line only, non-wallet distribution of the latest changes on Arch Linux:
 
     pacman -S git base-devel boost libevent python
-    git clone https://github.com/LUX-Core/lux
-    cd lux/
+    git clone https://github.com/WORM-Core/worm
+    cd worm/
     ./autogen.sh
     ./configure --without-miniupnpc --disable-tests
     make -j$(nproc)
@@ -242,8 +242,8 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/LUX-Core/lux/tags) are created
-regularly to indicate new official, stable release versions of Lux.
+completely stable. [Tags](https://github.com/WORM-Core/worm/tags) are created
+regularly to indicate new official, stable release versions of Worm.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -283,4 +283,4 @@ not straightforward.
  [ISSUE_TEMPLATE](doc/template/ISSUE_TEMPLATE_example.md)
 
 ## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Flux.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Flux?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Fworm.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Fworm?ref=badge_large)

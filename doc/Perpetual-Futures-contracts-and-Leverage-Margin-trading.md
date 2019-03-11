@@ -1,17 +1,17 @@
-![LUX Logo](../src/qt/res/images/lux_logo_horizontal.png)
+![WORM Logo](../src/qt/res/images/worm_logo_horizontal.png)
 
 "FIRST OF ITS KIND"
 
-Luxcore is GNU AGPLv3 licensed.
+Wormcore is GNU AGPLv3 licensed.
 
-LUXGATE Perpetual & Futures contracts - Leverage & Margin trading.
+WORMGATE Perpetual & Futures contracts - Leverage & Margin trading.
 ==================================================================
 
-Luxgate is a decentralized exchange, so all orders will be listed on LUX explorer and all transactions are stored in the LUX blockchain. 
+Wormgate is a decentralized exchange, so all orders will be listed on WORM explorer and all transactions are stored in the WORM blockchain. 
 
 ## Perpetual & Futures contracts.
 
-Futures are a derivative tool or agreement to buy or sell a primary asset at a predetermined price at a specified time in the future. With Luxgate you can trade using the futures contracts that cannot be delivered, which means that the difference between the perpetual contracts price and the spot price will be automatically calculated at the time specified in the contract.
+Futures are a derivative tool or agreement to buy or sell a primary asset at a predetermined price at a specified time in the future. With Wormgate you can trade using the futures contracts that cannot be delivered, which means that the difference between the perpetual contracts price and the spot price will be automatically calculated at the time specified in the contract.
 
 ## Leverage & Margin trading.
 
@@ -25,19 +25,19 @@ Financial leverage is both a tool to promote after-tax profits on an owner's equ
 * Below is a basic example of using leverage, also known as simple leverage.
 
 
-        A and B are currently trading LUX/USD in their locality.
+        A and B are currently trading WORM/USD in their locality.
         
-        A used the amount of USD 100,000,000 to buy 10 LUX for USD 10,000,000 / LUX. The total amount A currently uses is 100,000,000 USD. He only uses his existing capital to do business without using financial leverage, not borrowing more.
+        A used the amount of USD 100,000,000 to buy 10 WORM for USD 10,000,000 / WORM. The total amount A currently uses is 100,000,000 USD. He only uses his existing capital to do business without using financial leverage, not borrowing more.
         
-        B also used the capital of USD 100,000,000 and borrowed more than USD 50,000,000 to buy 15 LUX for USD 10,000,000 / LUX. The total amount B currently uses is 150,000,000 USD. Currently, B borrowed more money from his friends, which is B's use of financial leverage. B is controlling 15 LUX with only USD 100,000,000.
+        B also used the capital of USD 100,000,000 and borrowed more than USD 50,000,000 to buy 15 WORM for USD 10,000,000 / WORM. The total amount B currently uses is 150,000,000 USD. Currently, B borrowed more money from his friends, which is B's use of financial leverage. B is controlling 15 WORM with only USD 100,000,000.
         
-        If LUX is favorable, the total ROE value of B and A increases by 25%, they sell then:
+        If WORM is favorable, the total ROE value of B and A increases by 25%, they sell then:
         
         * A profit USD 100,000,000 x 0.25 = USD 25,000,000, from the initial capital of USD 100,000,000. 25% profit
         
         * B earns USD 150,000,000 x 0.25 = USD 37,500,000, from it initial capital of USD 100,000,000. Profit of 37.5%.
         
-        If LUX is unstable, the total ROE value of B and A decreases by 10%, they sell then:
+        If WORM is unstable, the total ROE value of B and A decreases by 10%, they sell then:
         
         * A lost USD 100,000,000 x 10% = USD 10,000,000. Damage 10% of it capital.
         
@@ -54,11 +54,11 @@ Financial leverage is both a tool to promote after-tax profits on an owner's equ
 
 * Leverage
         
-Luxgate offers leverage on operations with derivatives with the maximum of `x100 leverage`. `Note: high leverage increases trading risks`.
+Wormgate offers leverage on operations with derivatives with the maximum of `x100 leverage`. `Note: high leverage increases trading risks`.
 
 * Masternode Collateral System & Open Position
 
-To open a position, you need to have a sufficient initial margin level which is holding by our `masternode collateral` function. It is a 100% `decentralised collateral system` that Luxcore specially implemented to serves as collateral for your order. It is calculated in proportion to the leverage you choose. 
+To open a position, you need to have a sufficient initial margin level which is holding by our `masternode collateral` function. It is a 100% `decentralised collateral system` that Wormcore specially implemented to serves as collateral for your order. It is calculated in proportion to the leverage you choose. 
 
 Example:
 
@@ -76,7 +76,7 @@ You need to have a sufficient level of maintenance margin balance for your curre
     
 * Cross Margin
  
-Luxgate also has cross margin method. This means that the maintenance margin of your Margin Balance will be shared among all your open positions. Therefore, when a trader has several open positions, the maintenance margin also includes:
+Wormgate also has cross margin method. This means that the maintenance margin of your Margin Balance will be shared among all your open positions. Therefore, when a trader has several open positions, the maintenance margin also includes:
 
     Unrealized positive PNL on all open positions
 
@@ -94,13 +94,13 @@ If your total balance is not enough to maintain your position, they can be liqui
 
 ### Fees
 
-To record information about opening an order and add information about a completed transaction to the LUX blockchain, you need to spend a particular amount of TX fee.
+To record information about opening an order and add information about a completed transaction to the WORM blockchain, you need to spend a particular amount of TX fee.
 
 
-* Luxgate fees, Makers and Takers fees.
+* Wormgate fees, Makers and Takers fees.
 
         Fee for makers is 0% + blockchain fee (TX fee) for placing an order.
 
         Fee for takers is 0,1% + blockchain fee (TX fee) for placing an order. 
         
-        TX fee is used for all the transaction within the LUX blockchain system.
+        TX fee is used for all the transaction within the WORM blockchain system.

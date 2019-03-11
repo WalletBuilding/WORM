@@ -1,9 +1,9 @@
 
-cp src/luxd .
-cp src/qt/lux-qt .
-strip luxd
-strip lux-qt
-zip release_${LUX_PLATFORM}.zip luxd lux-qt
+cp src/wormd .
+cp src/qt/worm-qt .
+strip wormd
+strip worm-qt
+zip release_${WORM_PLATFORM}.zip wormd worm-qt
 
 sudo easy_install appscript
 

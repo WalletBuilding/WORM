@@ -1,4 +1,4 @@
-Quick Docker image for luxd
+Quick Docker image for wormd
 ---------------------------
 
 Build docker image:
@@ -9,41 +9,41 @@ Push docker image:
 
     docker/push.sh
 
-Pull luxcore/lux:latest from docker hub  at [lux-dockerhub](https://hub.docker.com/r/luxcore/lux/)
+Pull wormcore/worm:latest from docker hub  at [worm-dockerhub](https://hub.docker.com/r/wormcore/worm/)
 
-    sudo docker pull luxcore/lux
+    sudo docker pull wormcore/worm
     
 Run docker image
 
-    sudo docker run luxcore/lux
+    sudo docker run wormcore/worm
 
-Build docker for luxd
+Build docker for wormd
 ----------
-A Docker configuration with luxd node by default.
+A Docker configuration with wormd node by default.
 
     sudo apt install apt-transport-https ca-certificates curl software-properties-common; curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -; sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"; sudo apt-get update; sudo apt install docker-ce   
 ---------------------------------------------------        
     
-    mkdir lux-mounted-data
-    docker run --name lux -d \
-     --env 'LUX_RPCUSER=rpciser' \
-     --env 'LUX_RPCPASSWORD=rpcpassword' \
-     --env 'LUX_TXINDEX=1' \
-     --volume ~/lux-mounted-data:~/.lux \
+    mkdir worm-mounted-data
+    docker run --name worm -d \
+     --env 'WORM_RPCUSER=rpciser' \
+     --env 'WORM_RPCPASSWORD=rpcpassword' \
+     --env 'WORM_TXINDEX=1' \
+     --volume ~/worm-mounted-data:~/.worm \
      -p 9888:9888 \
      --publish 9888:9888 \
-     luxcore/lux
+     wormcore/worm
 ----------------------------------------------------
 Logs
 
-    docker logs -f lux
+    docker logs -f worm
 
 ----------------------------------------------------
 
 ## Configuration
 
-Set your `lux.conf` file can be placed in the `lux-mounted data` dir.
-Otherwise, a default `lux.conf` file will be automatically generated based
+Set your `worm.conf` file can be placed in the `worm-mounted data` dir.
+Otherwise, a default `worm.conf` file will be automatically generated based
 on environment variables passed to the container:
 
 | name | default |
@@ -70,23 +70,23 @@ If you're daemonizing is to use Docker's
 but if you're insistent on using systemd, you could do something like
 
 ```
-$ cat /etc/systemd/system/luxd.service
+$ cat /etc/systemd/system/wormd.service
 
-# luxd.service #######################################################################
+# wormd.service #######################################################################
 [Unit]
-Description=Lux
+Description=Worm
 After=docker.service
 Requires=docker.service
 
 [Service]
-ExecStartPre=-/usr/bin/docker kill lux
-ExecStartPre=-/usr/bin/docker rm lux
-ExecStartPre=/usr/bin/docker pull luxcore/lux
+ExecStartPre=-/usr/bin/docker kill worm
+ExecStartPre=-/usr/bin/docker rm worm
+ExecStartPre=/usr/bin/docker pull wormcore/worm
 ExecStart=/usr/bin/docker run \
-    --name lux \
+    --name worm \
     -p 9888:9888 \
     -p 9888:9888 \
-    -v /data/luxd:/root/.lux \
-    luxcore/lux
-ExecStop=/usr/bin/docker stop lux
+    -v /data/wormd:/root/.worm \
+    wormcore/worm
+ExecStop=/usr/bin/docker stop worm
 ```

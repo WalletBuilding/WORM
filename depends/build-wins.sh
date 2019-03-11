@@ -1,6 +1,6 @@
 #!/bin/sh
 #-###############################################-#
-# C++ Cross-Compiler - The Luxcore Developer-2018 #
+# C++ Cross-Compiler - The Wormcore Developer-2018 #
 #-###############################################-#
 
 # Set platform variables
@@ -80,9 +80,9 @@ RELEASE="$OLD_PATH/Release"
 mkdir -p "$RELEASE"
 
 # Remove the symbols for release
-[ -f "./src/qt/lux-qt.exe" ] && cp "./src/qt/lux-qt.exe" "$RELEASE"
-[ -f "./src/luxd.exe" ] && cp "./src/luxd.exe" "$RELEASE"
-[ -f "./src/lux-cli.exe" ] && cp "./src/lux-cli.exe" "$RELEASE"
+[ -f "./src/qt/worm-qt.exe" ] && cp "./src/qt/worm-qt.exe" "$RELEASE"
+[ -f "./src/wormd.exe" ] && cp "./src/wormd.exe" "$RELEASE"
+[ -f "./src/worm-cli.exe" ] && cp "./src/worm-cli.exe" "$RELEASE"
 
 
 cd "$RELEASE"

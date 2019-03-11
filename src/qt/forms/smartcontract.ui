@@ -39,7 +39,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../lux.qrc"/>
+  <include location="../worm.qrc"/>
  </resources>
  <connections/>
 </ui>

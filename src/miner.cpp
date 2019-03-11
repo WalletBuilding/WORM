@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The Luxcore developers
+// Copyright (c) 2015-2018 The Wormcore developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -365,18 +365,18 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     if (fProofOfStake)
         originalRewardTx = CMutableTransaction(pblock->vtx[1]);
 
-    //////////////////////////////////////////////////////// lux
-    LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-    globalSealEngine->setLuxSchedule(luxDGP.getGasSchedule(nHeight));
-    uint32_t blockSizeDGP = luxDGP.getBlockSize(nHeight);
-    minGasPrice = luxDGP.getMinGasPrice(nHeight);
+    //////////////////////////////////////////////////////// worm
+    WormDGP wormDGP(globalState.get(), fGettingValuesDGP);
+    globalSealEngine->setWormSchedule(wormDGP.getGasSchedule(nHeight));
+    uint32_t blockSizeDGP = wormDGP.getBlockSize(nHeight);
+    minGasPrice = wormDGP.getMinGasPrice(nHeight);
     if(IsArgSet("-staker-min-tx-gas-price")) {
         CAmount stakerMinGasPrice;
         if(ParseMoney(GetArg("-staker-min-tx-gas-price", ""), stakerMinGasPrice)) {
             minGasPrice = std::max(minGasPrice, (uint64_t)stakerMinGasPrice);
         }
     }
-    hardBlockGasLimit = luxDGP.getBlockGasLimit(nHeight);
+    hardBlockGasLimit = wormDGP.getBlockGasLimit(nHeight);
     softBlockGasLimit = GetArg("-staker-soft-block-gas-limit", hardBlockGasLimit);
     softBlockGasLimit = std::min(softBlockGasLimit, hardBlockGasLimit);
     txGasLimit = GetArg("-staker-max-tx-gas-limit", softBlockGasLimit);
@@ -574,34 +574,34 @@ bool BlockAssembler::AttemptToAddContractToBlock(CTxMemPool::txiter iter, uint64
     uint64_t nBlockSize = this->nBlockSize;
     uint64_t nBlockSigOpsCost = this->nBlockSigOpsCost;
 
-    LuxTxConverter convert(iter->GetTx(), NULL, &pblock->vtx);
+    WormTxConverter convert(iter->GetTx(), NULL, &pblock->vtx);
 
-    ExtractLuxTX resultConverter;
-    if(!convert.extractionLuxTransactions(resultConverter)){
+    ExtractWormTX resultConverter;
+    if(!convert.extractionWormTransactions(resultConverter)){
         //this check already happens when accepting txs into mempool
         //therefore, this can only be triggered by using raw transactions on the staker itself
         return false;
     }
-    std::vector<LuxTransaction> luxTransactions = resultConverter.first;
+    std::vector<WormTransaction> wormTransactions = resultConverter.first;
     dev::u256 txGas = 0;
-    for(LuxTransaction luxTransaction : luxTransactions){
-        txGas += luxTransaction.gas();
+    for(WormTransaction wormTransaction : wormTransactions){
+        txGas += wormTransaction.gas();
         if(txGas > txGasLimit) {
             // Limit the tx gas limit by the soft limit if such a limit has been specified.
             return false;
         }
 
-        if(bceResult.usedGas + luxTransaction.gas() > softBlockGasLimit){
+        if(bceResult.usedGas + wormTransaction.gas() > softBlockGasLimit){
             //if this transaction's gasLimit could cause block gas limit to be exceeded, then don't add it
             return false;
         }
-        if(luxTransaction.gasPrice() < minGasPrice){
+        if(wormTransaction.gasPrice() < minGasPrice){
             //if this transaction's gasPrice is less than the current DGP minGasPrice don't add it
             return false;
         }
     }
     // We need to pass the DGP's block gas limit (not the soft limit) since it is consensus critical.
-    ByteCodeExec exec(*pblock, luxTransactions, hardBlockGasLimit);
+    ByteCodeExec exec(*pblock, wormTransactions, hardBlockGasLimit);
     if(!exec.performByteCode()){
         //error, don't add contract
         setGlobalStateRoot(oldHashStateRoot);
@@ -1079,11 +1079,11 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet)
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-            return error("LUXMiner : generated block is stale");
+            return error("WORMMiner : generated block is stale");
 
         for(const CTxIn& vin : pblock->vtx[1].vin) {
             if (wallet.IsSpent(vin.prevout.hash, vin.prevout.n)) {
-                return error("LUXMiner : Gen block stake is invalid - UTXO spent");
+                return error("WORMMiner : Gen block stake is invalid - UTXO spent");
             }
         }
     }
@@ -1096,7 +1096,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet)
     const CChainParams& chainparams = Params();
     CValidationState state;
     if (!ProcessNewBlock(state, chainparams, NULL, pblock)) {
-        return error("LUXMiner : ProcessNewBlock, block not accepted");
+        return error("WORMMiner : ProcessNewBlock, block not accepted");
     }
 
     {

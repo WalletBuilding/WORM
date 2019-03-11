@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Worm
+Comment=Worm P2P Cryptocurrency
+Exec=worm-qt %u
+Terminal=false
+Type=Application
+Icon=worm128
+MimeType=x-scheme-handler/worm;
+Categories=Office;Finance;
+Name[en_AU]=Worm

@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The Luxcore developers
+// Copyright (c) 2015-2018 The Wormcore developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -188,8 +188,8 @@ public:
     unsigned int nTime;
     unsigned int nBits;
     unsigned int nNonce;
-    uint256 hashStateRoot; // lux
-    uint256 hashUTXORoot; // lux
+    uint256 hashStateRoot; // worm
+    uint256 hashUTXORoot; // worm
 
     //! (memory only) Sequential id assigned to distinguish order in which blocks are received.
     uint32_t nSequenceId;
@@ -227,8 +227,8 @@ public:
         nTime = 0;
         nBits = 0;
         nNonce = 0;
-        hashStateRoot  = uint256(); // lux
-        hashUTXORoot   = uint256(); // lux
+        hashStateRoot  = uint256(); // worm
+        hashUTXORoot   = uint256(); // worm
     }
 
     CBlockIndex()
@@ -245,8 +245,8 @@ public:
         nTime = block.nTime;
         nBits = block.nBits;
         nNonce = block.nNonce;
-        hashStateRoot  = block.hashStateRoot; // lux
-        hashUTXORoot   = block.hashUTXORoot; // lux
+        hashStateRoot  = block.hashStateRoot; // worm
+        hashUTXORoot   = block.hashUTXORoot; // worm
 
         //Proof of Stake
         bnChainTrust = 0;
@@ -297,8 +297,8 @@ public:
         block.nTime = nTime;
         block.nBits = nBits;
         block.nNonce = nNonce;
-        block.hashStateRoot  = hashStateRoot; // lux
-        block.hashUTXORoot   = hashUTXORoot; // lux
+        block.hashStateRoot  = hashStateRoot; // worm
+        block.hashUTXORoot   = hashUTXORoot; // worm
         return block;
     }
 
@@ -484,8 +484,8 @@ public:
         //When it is fixed, this check should look like this
         //if(this->nVersion & VersionBitsMask(Params().GetConsensus(), Consensus::SMART_CONTRACTS_HARDFORK))
         if ((this->nVersion & (1 << 30)) != 0) {
-            READWRITE(hashStateRoot);       // lux
-            READWRITE(hashUTXORoot);        // lux
+            READWRITE(hashStateRoot);       // worm
+            READWRITE(hashUTXORoot);        // worm
         }
     }
 
@@ -498,8 +498,8 @@ public:
         block.nTime = nTime;
         block.nBits = nBits;
         block.nNonce = nNonce;
-        block.hashStateRoot   = hashStateRoot; // lux
-        block.hashUTXORoot    = hashUTXORoot; // lux
+        block.hashStateRoot   = hashStateRoot; // worm
+        block.hashUTXORoot    = hashUTXORoot; // worm
         return block.GetHash(nHeight >= Params().SwitchPhi2Block());
     }
 

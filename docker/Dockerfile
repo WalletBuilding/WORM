@@ -1,20 +1,20 @@
 #FROM debian:stretch
 FROM ubuntu:18.04
-LABEL maintainer="The Luxcore Developers <216k155@luxcore.io>"
-LABEL description="Dockerised Luxcore, built from Travis"
+LABEL maintainer="The Wormcore Developers <sales@mealworms.biz>"
+LABEL description="Dockerised Wormcore, built from Travis"
 
 RUN apt-get update && apt-get install -y software-properties-common unzip
 RUN apt-get install -y wget
 
-RUN wget https://github.com/LUX-Core/lux/releases/download/v5.2.3/lux-qt-linux-18.zip
-RUN unzip lux-qt-linux-18.zip
-RUN cp luxd /usr/local/bin
+RUN wget https://github.com/WORM-Core/worm/releases/download/v5.2.3/worm-qt-linux-18.zip
+RUN unzip worm-qt-linux-18.zip
+RUN cp wormd /usr/local/bin
 
-VOLUME ["/opt/lux"]
+VOLUME ["/opt/worm"]
 
 EXPOSE 9888
 EXPOSE 9888
 EXPOSE 9777
 EXPOSE 9777
 
-CMD ["luxd", "--conf=/opt/lux/lux.conf", "--printtoconsole"]
+CMD ["wormd", "--conf=/opt/worm/worm.conf", "--printtoconsole"]

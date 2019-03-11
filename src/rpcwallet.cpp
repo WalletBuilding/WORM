@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The LUX developers
+// Copyright (c) 2015-2017 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -105,7 +105,7 @@ string AccountFromValue(const UniValue& value)
     return strAccount;
 }
 
-//////////////////////////////////////////////////////////////////////////// // lux
+//////////////////////////////////////////////////////////////////////////// // worm
 UniValue executionResultToJSON(const dev::eth::ExecutionResult& exRes)
 {
     UniValue result(UniValue::VOBJ);
@@ -314,14 +314,14 @@ UniValue getnewaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 2)
         throw runtime_error(
             "getnewaddress ( \"account\" )\n"
-            "\nReturns a new LUX address for receiving payments.\n"
+            "\nReturns a new WORM address for receiving payments.\n"
             "If 'account' is specified (recommended), it is added to the address book \n"
             "so payments received with the address will be credited to 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"        (string, optional) The account name for the address to be linked to. If not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
             "2. \"address_type\"   (string, optional) The address type to use. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -addresstype.\n"
             "\nResult:\n"
-            "\"luxaddress\"    (string) The new lux address\n"
+            "\"wormaddress\"    (string) The new worm address\n"
             "\nExamples:\n" +
             HelpExampleCli("getnewaddress", "") + HelpExampleCli("getnewaddress", "\"\"") + HelpExampleCli("getnewaddress", "\"myaccount\"") + HelpExampleRpc("getnewaddress", "\"myaccount\""));
 
@@ -375,11 +375,11 @@ UniValue getaccountaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 1)
         throw runtime_error(
             "getaccountaddress \"account\"\n"
-            "\nReturns the current LUX address for receiving payments to this account.\n"
+            "\nReturns the current WORM address for receiving payments to this account.\n"
             "\nArguments:\n"
             "1. \"account\"       (string, required) The account name for the address. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created and a new address created  if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"luxaddress\"   (string) The account lux address\n"
+            "\"wormaddress\"   (string) The account worm address\n"
             "\nExamples:\n" +
             HelpExampleCli("getaccountaddress", "") + HelpExampleCli("getaccountaddress", "\"\"") + HelpExampleCli("getaccountaddress", "\"myaccount\"") + HelpExampleRpc("getaccountaddress", "\"myaccount\""));
 
@@ -401,7 +401,7 @@ UniValue getrawchangeaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "getrawchangeaddress ( \"address_type\" )\n"
-            "\nReturns a new LUX address, for receiving change.\n"
+            "\nReturns a new WORM address, for receiving change.\n"
             "This is for use with raw transactions, NOT normal use.\n"
             "\nArguments:\n"
             "1. \"address_type\"           (string, optional) The address type to use. Options are \"legacy\" and \"p2sh-segwit\". Default is set by -changetype.\n"
@@ -441,10 +441,10 @@ UniValue setaccount(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "setaccount \"luxaddress\" \"account\"\n"
+            "setaccount \"wormaddress\" \"account\"\n"
             "\nSets the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"luxaddress\"  (string, required) The lux address to be associated with an account.\n"
+            "1. \"wormaddress\"  (string, required) The worm address to be associated with an account.\n"
             "2. \"account\"         (string, required) The account to assign the address to.\n"
             "\nExamples:\n" +
             HelpExampleCli("setaccount", "\"LgAskSorXfCYUweZcCTpGNtpcFotS2rqDF\" \"tabby\"") + HelpExampleRpc("setaccount", "\"LgAskSorXfCYUweZcCTpGNtpcFotS2rqDF\", \"tabby\""));
@@ -453,7 +453,7 @@ UniValue setaccount(const UniValue& params, bool fHelp)
 
     CTxDestination dest = DecodeDestination(params[0].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid LUX address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid WORM address");
 
 
     string strAccount;
@@ -480,10 +480,10 @@ UniValue getaccount(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getaccount \"luxaddress\"\n"
+            "getaccount \"wormaddress\"\n"
             "\nReturns the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"luxaddress\"  (string, required) The lux address for account lookup.\n"
+            "1. \"wormaddress\"  (string, required) The worm address for account lookup.\n"
             "\nResult:\n"
             "\"accountname\"        (string) the account address\n"
             "\nExamples:\n" +
@@ -493,7 +493,7 @@ UniValue getaccount(const UniValue& params, bool fHelp)
 
     CTxDestination dest = DecodeDestination(params[0].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid LUX address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid WORM address");
 
     string strAccount;
     map<CTxDestination, CAddressBookData>::iterator mi = pwalletMain->mapAddressBook.find(dest);
@@ -513,7 +513,7 @@ UniValue getaddressesbyaccount(const UniValue& params, bool fHelp)
             "1. \"account\"  (string, required) The account name.\n"
             "\nResult:\n"
             "[                     (json array of string)\n"
-            "  \"luxaddress\"  (string) a lux address associated with the given account\n"
+            "  \"wormaddress\"  (string) a worm address associated with the given account\n"
             "  ,...\n"
             "]\n"
             "\nExamples:\n" +
@@ -555,7 +555,7 @@ void SendMoney(const CTxDestination& address, CAmount nValue, CWalletTx& wtxNew,
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
     }
 
-    // Parse LUX address
+    // Parse WORM address
     CScript scriptPubKey = GetScriptForDestination(address);
 
     // Create and send the transaction
@@ -579,11 +579,11 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 5)
         throw runtime_error(
-            "sendtoaddress \"luxaddress\" amount ( \"comment\" \"comment-to\" subtractfee )\n"
+            "sendtoaddress \"wormaddress\" amount ( \"comment\" \"comment-to\" subtractfee )\n"
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"luxaddress\"  (string, required) The lux address to send to.\n"
+            "1. \"wormaddress\"  (string, required) The worm address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in btc to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -601,7 +601,7 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
 
     CTxDestination dest = DecodeDestination(params[0].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid LUX address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid WORM address");
 
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
@@ -628,11 +628,11 @@ UniValue sendtoaddressix(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 4)
         throw runtime_error(
-            "sendtoaddressix \"luxaddress\" amount ( \"comment\" \"comment-to\" )\n"
+            "sendtoaddressix \"wormaddress\" amount ( \"comment\" \"comment-to\" )\n"
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"luxaddress\"  (string, required) The lux address to send to.\n"
+            "1. \"wormaddress\"  (string, required) The worm address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in btc to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -646,7 +646,7 @@ UniValue sendtoaddressix(const UniValue& params, bool fHelp)
 
     CTxDestination dest = DecodeDestination(params[0].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid LUX address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid WORM address");
 
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
@@ -677,7 +677,7 @@ UniValue listaddressgroupings(const UniValue& params, bool fHelp)
             "[\n"
             "  [\n"
             "    [\n"
-            "      \"luxaddress\",     (string) The lux address\n"
+            "      \"wormaddress\",     (string) The worm address\n"
             "      amount,                 (numeric) The amount in btc\n"
             "      \"account\"             (string, optional) The account\n"
             "    ]\n"
@@ -723,7 +723,7 @@ UniValue listaddressbalances(const UniValue& params, bool fHelp)
             "1. minamount  (numeric, optional, default=0) Minimum balance in " + CURRENCY_UNIT + " an address should have to be shown in the list\n"
             "\nResult:\n"
             "{\n"
-            "  \"address\": amount, (string) Lux address and the amount in " + CURRENCY_UNIT + "\n"
+            "  \"address\": amount, (string) Worm address and the amount in " + CURRENCY_UNIT + "\n"
             "  ,...\n"
             "}\n"
             "\nExamples:\n"
@@ -752,11 +752,11 @@ UniValue signmessage(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "signmessage \"luxaddress\" \"message\"\n"
+            "signmessage \"wormaddress\" \"message\"\n"
             "\nSign a message with the private key of an address" +
             HelpRequiringPassphrase() + "\n"
             "\nArguments:\n"
-            "1. \"luxaddress\"  (string, required) The lux address to use for the private key.\n"
+            "1. \"wormaddress\"  (string, required) The worm address to use for the private key.\n"
             "2. \"message\"         (string, required) The message to create a signature of.\n"
             "\nResult:\n"
             "\"signature\"          (string) The signature of the message encoded in base 64\n"
@@ -801,10 +801,10 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "getreceivedbyaddress \"luxaddress\" ( minconf )\n"
-            "\nReturns the total amount received by the given luxaddress in transactions with at least minconf confirmations.\n"
+            "getreceivedbyaddress \"wormaddress\" ( minconf )\n"
+            "\nReturns the total amount received by the given wormaddress in transactions with at least minconf confirmations.\n"
             "\nArguments:\n"
-            "1. \"luxaddress\"  (string, required) The lux address for transactions.\n"
+            "1. \"wormaddress\"  (string, required) The worm address for transactions.\n"
             "2. minconf             (numeric, optional, default=1) Only include transactions confirmed at least this many times.\n"
             "\nResult:\n"
             "amount   (numeric) The total amount in btc received at this address.\n"
@@ -817,10 +817,10 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    // lux address
+    // worm address
     CTxDestination dest = DecodeDestination(params[0].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid LUX address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid WORM address");
     CScript scriptPubKey = GetScriptForDestination(dest);
     if (!IsMine(*pwalletMain, scriptPubKey))
         return ValueFromAmount(0);
@@ -1077,13 +1077,13 @@ UniValue sendfrom(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 3 || params.size() > 6)
         throw runtime_error(
-            "sendfrom \"fromaccount\" \"toluxaddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
-            "\nSent an amount from an account to a lux address.\n"
+            "sendfrom \"fromaccount\" \"towormaddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
+            "\nSent an amount from an account to a worm address.\n"
             "The amount is a real and is rounded to the nearest 0.00000001." +
             HelpRequiringPassphrase() + "\n"
             "\nArguments:\n"
             "1. \"fromaccount\"       (string, required) The name of the account to send funds from. May be the default account using \"\".\n"
-            "2. \"toluxaddress\"  (string, required) The lux address to send funds to.\n"
+            "2. \"towormaddress\"  (string, required) The worm address to send funds to.\n"
             "3. amount                (numeric, required) The amount in btc. (transaction fee is added on top).\n"
             "4. minconf               (numeric, optional, default=1) Only use funds with at least this many confirmations.\n"
             "5. \"comment\"           (string, optional) A comment used to store what the transaction is for. \n"
@@ -1104,7 +1104,7 @@ UniValue sendfrom(const UniValue& params, bool fHelp)
     string strAccount = AccountFromValue(params[0]);
     CTxDestination dest = DecodeDestination(params[1].get_str());
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid LUX address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid WORM address");
     CAmount nAmount = AmountFromValue(params[2]);
     if (nAmount <= 0)
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid amount");
@@ -1143,7 +1143,7 @@ UniValue sendmany(const UniValue& params, bool fHelp)
             "1. \"fromaccount\"         (string, required) The account to send the funds from, can be \"\" for the default account\n"
             "2. \"amounts\"             (string, required) A json object with addresses and amounts\n"
             "    {\n"
-            "      \"address\":amount   (numeric) The lux address is the key, the numeric amount in lux is the value\n"
+            "      \"address\":amount   (numeric) The worm address is the key, the numeric amount in worm is the value\n"
             "      ,...\n"
             "    }\n"
             "3. minconf                 (numeric, optional, default=1) Only use the balance confirmed at least this many times.\n"
@@ -1189,7 +1189,7 @@ UniValue sendmany(const UniValue& params, bool fHelp)
     for (const string& name_ : keys) {
         CTxDestination dest = DecodeDestination(name_);
         if (!IsValidDestination(dest))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid LUX address: ")+name_);
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid WORM address: ")+name_);
 
         if (destinations.count(dest))
             throw JSONRPCError(RPC_INVALID_PARAMETER, string("Invalid parameter, duplicated address: ")+name_);
@@ -1242,14 +1242,14 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 2 || params.size() > 3) {
         string msg = "addmultisigaddress nrequired [\"key\",...] ( \"account\" )\n"
             "\nAdd a nrequired-to-sign multisignature address to the wallet.\n"
-            "Each key is a LUX address or hex-encoded public key.\n"
+            "Each key is a WORM address or hex-encoded public key.\n"
             "If 'account' is specified, assign address to that account.\n"
 
             "\nArguments:\n"
             "1. nrequired        (numeric, required) The number of required signatures out of the n keys or addresses.\n"
-            "2. \"keysobject\"   (string, required) A json array of lux addresses or hex-encoded public keys\n"
+            "2. \"keysobject\"   (string, required) A json array of worm addresses or hex-encoded public keys\n"
             "     [\n"
-            "       \"address\"  (string) lux address or hex-encoded public key\n"
+            "       \"address\"  (string) worm address or hex-encoded public key\n"
             "       ...,\n"
             "     ]\n"
             "3. \"account\"      (string, optional) An account to assign the addresses to.\n"
@@ -1616,7 +1616,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"account\":\"accountname\",       (string) The account name associated with the transaction. \n"
             "                                                It will be \"\" for the default account.\n"
-            "    \"address\":\"luxaddress\",    (string) The lux address of the transaction. Not present for \n"
+            "    \"address\":\"wormaddress\",    (string) The worm address of the transaction. Not present for \n"
             "                                                move transactions (category = move).\n"
             "    \"category\":\"send|receive|move\", (string) The transaction category. 'move' is a local (off blockchain)\n"
             "                                                transaction between accounts, and not associated with an address,\n"
@@ -1813,7 +1813,7 @@ UniValue listsinceblock(const UniValue& params, bool fHelp)
             "{\n"
             "  \"transactions\": [\n"
             "    \"account\":\"accountname\",       (string) The account name associated with the transaction. Will be \"\" for the default account.\n"
-            "    \"address\":\"luxaddress\",    (string) The lux address of the transaction. Not present for move transactions (category = move).\n"
+            "    \"address\":\"wormaddress\",    (string) The worm address of the transaction. Not present for move transactions (category = move).\n"
             "    \"category\":\"send|receive\",     (string) The transaction category. 'send' has negative amounts, 'receive' has positive amounts.\n"
             "    \"amount\": x.xxx,          (numeric) The amount in btc. This is negative for the 'send' category, and for the 'move' category for moves \n"
             "                                          outbound. It is positive for the 'receive' category, and for the 'move' category for inbound funds.\n"
@@ -1907,7 +1907,7 @@ UniValue gettransaction(const UniValue& params, bool fHelp)
             "  \"details\" : [\n"
             "    {\n"
             "      \"account\" : \"accountname\",  (string) The account name involved in the transaction, can be \"\" for the default account.\n"
-            "      \"address\" : \"luxaddress\",   (string) The lux address involved in the transaction\n"
+            "      \"address\" : \"wormaddress\",   (string) The worm address involved in the transaction\n"
             "      \"category\" : \"send|receive\",    (string) The category, either 'send' or 'receive'\n"
             "      \"amount\" : x.xxx                  (numeric) The amount in btc\n"
             "      \"label\" : \"label\",              (string) A comment for the address/transaction, if any\n"
@@ -2094,7 +2094,7 @@ UniValue walletpassphrase(const UniValue& params, bool fHelp)
         throw runtime_error(
             "walletpassphrase \"passphrase\" timeout ( stakingOnly )\n"
             "\nStores the wallet decryption key in memory for 'timeout' seconds.\n"
-            "This is needed prior to performing transactions related to private keys such as sending LUXs\n"
+            "This is needed prior to performing transactions related to private keys such as sending WORMs\n"
             "\nArguments:\n"
             "1. \"passphrase\"     (string, required) The wallet passphrase\n"
             "2. timeout            (numeric, required) The time to keep the decryption key in seconds.\n"
@@ -2236,8 +2236,8 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
             "\nExamples:\n"
             "\nEncrypt you wallet\n" +
             HelpExampleCli("encryptwallet", "\"my pass phrase\"") +
-            "\nNow set the passphrase to use the wallet, such as for signing or sending LUXs\n" + HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
-            "\nNow we can so something like sign\n" + HelpExampleCli("signmessage", "\"luxaddress\" \"test message\"") +
+            "\nNow set the passphrase to use the wallet, such as for signing or sending WORMs\n" + HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
+            "\nNow we can so something like sign\n" + HelpExampleCli("signmessage", "\"wormaddress\" \"test message\"") +
             "\nNow lock the wallet again by removing the passphrase\n" + HelpExampleCli("walletlock", "") +
             "\nAs a json rpc call\n" + HelpExampleRpc("encryptwallet", "\"my pass phrase\""));
 
@@ -2266,7 +2266,7 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
     // slack space in .dat files; that is bad if the old data is
     // unencrypted private keys. So:
     StartShutdown();
-    return "wallet encrypted; lux server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.";
+    return "wallet encrypted; worm server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.";
 }
 
 UniValue lockunspent(const UniValue& params, bool fHelp)
@@ -2276,7 +2276,7 @@ UniValue lockunspent(const UniValue& params, bool fHelp)
             "lockunspent unlock [{\"txid\":\"txid\",\"vout\":n},...]\n"
             "\nUpdates list of temporarily unspendable outputs.\n"
             "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.\n"
-            "A locked transaction output will not be chosen by automatic coin selection, when spending LUXs.\n"
+            "A locked transaction output will not be chosen by automatic coin selection, when spending WORMs.\n"
             "Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list\n"
             "is always cleared (by virtue of process exit) when a node stops or fails.\n"
             "Also see the listunspent call\n"
@@ -2392,7 +2392,7 @@ UniValue settxfee(const UniValue& params, bool fHelp)
             "settxfee amount\n"
             "\nSet the transaction fee per kB.\n"
             "\nArguments:\n"
-            "1. amount         (numeric, required) The transaction fee in LUX/kB rounded to the nearest 0.00000001\n"
+            "1. amount         (numeric, required) The transaction fee in WORM/kB rounded to the nearest 0.00000001\n"
             "\nResult\n"
             "true|false        (boolean) Returns true if successful\n"
             "\nExamples:\n" +
@@ -2567,7 +2567,7 @@ UniValue autocombinerewards(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1)
         throw runtime_error(
             "autocombinerewards <true/false> threshold\n"
-            "Wallet will automatically monitor for any coins with value below the threshold amount, and combine them if they reside with the same LUX address\n"
+            "Wallet will automatically monitor for any coins with value below the threshold amount, and combine them if they reside with the same WORM address\n"
             "When autocombinerewards runs it will create a transaction, and therefore will be subject to transaction fees.\n");
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
@@ -2776,7 +2776,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
             "The MultiSend transaction is sent when the staked coins mature (100 confirmations)\n"
             "****************************************************************\n"
             "TO CREATE OR ADD TO THE MULTISEND VECTOR:\n"
-            "multisend <LUX Address> <percent>\n"
+            "multisend <WORM Address> <percent>\n"
             "This will add a new address to the MultiSend vector\n"
             "Percent is a whole number 1 to 100.\n"
             "****************************************************************\n"
@@ -2795,7 +2795,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
     string strAddress = params[0].get_str();
     CTxDestination dest = DecodeDestination(strAddress);
     if (!IsValidDestination(dest))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid LUX address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid WORM address");
     if (boost::lexical_cast<int>(params[1].get_str()) < 0)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid parameter, expected valid percentage");
     if (pwalletMain->IsLocked())
@@ -2834,7 +2834,7 @@ UniValue multisend(const UniValue& params, bool fHelp)
     return printMultiSend();
 }
 
-////////////////////////////////////////////////////////////////////// // lux
+////////////////////////////////////////////////////////////////////// // worm
 UniValue callcontract(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 2)
@@ -2868,9 +2868,9 @@ UniValue callcontract(const UniValue& params, bool fHelp)
 
     dev::Address senderAddress;
     if(params.size() == 3){
-        CTxDestination luxSenderAddress = DecodeDestination(params[2].get_str());
-        if(IsValidDestination(luxSenderAddress)) {
-            CKeyID *keyid = boost::get<CKeyID>(&luxSenderAddress);
+        CTxDestination wormSenderAddress = DecodeDestination(params[2].get_str());
+        if(IsValidDestination(wormSenderAddress)) {
+            CKeyID *keyid = boost::get<CKeyID>(&wormSenderAddress);
 
             senderAddress = dev::Address(HexStr(valtype(keyid->begin(),keyid->end())));
         }else{
@@ -2904,9 +2904,9 @@ UniValue createcontract(const UniValue& params, bool fHelp){
         return NullUniValue;
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
-    LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-    uint64_t blockGasLimit = luxDGP.getBlockGasLimit(chainActive.Height());
-    uint64_t minGasPrice = CAmount(luxDGP.getMinGasPrice(chainActive.Height()));
+    WormDGP wormDGP(globalState.get(), fGettingValuesDGP);
+    uint64_t blockGasLimit = wormDGP.getBlockGasLimit(chainActive.Height());
+    uint64_t minGasPrice = CAmount(wormDGP.getMinGasPrice(chainActive.Height()));
     CAmount nGasPrice = (minGasPrice>DEFAULT_GAS_PRICE)?minGasPrice:DEFAULT_GAS_PRICE;
 
     if (fHelp || params.size() < 1 || params.size() > 6)
@@ -2917,7 +2917,7 @@ UniValue createcontract(const UniValue& params, bool fHelp){
                 "\nArguments:\n"
                 "1. \"bytecode\"  (string, required) contract bytcode.\n"
                 "2. gasLimit  (numeric or string, optional) gasLimit, default: "+i64tostr(DEFAULT_GAS_LIMIT_OP_CREATE)+", max: "+i64tostr(blockGasLimit)+"\n"
-                "3. gasPrice  (numeric or string, optional) gasPrice LUX price per gas unit, default: "+FormatMoney(nGasPrice)+", min:"+FormatMoney(minGasPrice)+"\n"
+                "3. gasPrice  (numeric or string, optional) gasPrice WORM price per gas unit, default: "+FormatMoney(nGasPrice)+", min:"+FormatMoney(minGasPrice)+"\n"
                 "4. \"senderaddress\" (string, optional) The quantum address that will be used to create the contract.\n"
                 "5. \"broadcast\" (bool, optional, default=true) Whether to broadcast the transaction or not.\n"
                 "6. \"changeToSender\" (bool, optional, default=true) Return the change to the sender.\n"
@@ -2976,7 +2976,7 @@ UniValue createcontract(const UniValue& params, bool fHelp){
     if (params.size() > 3){
         senderAddress = DecodeDestination(params[3].get_str());
         if (!IsValidDestination(senderAddress))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Lux address to send from");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Worm address to send from");
         else
             fHasSender=true;
     }
@@ -3112,9 +3112,9 @@ UniValue sendtocontract(const UniValue& params, bool fHelp){
         return NullUniValue;
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
-    LuxDGP luxDGP(globalState.get(), fGettingValuesDGP);
-    uint64_t blockGasLimit = luxDGP.getBlockGasLimit(chainActive.Height());
-    uint64_t minGasPrice = CAmount(luxDGP.getMinGasPrice(chainActive.Height()));
+    WormDGP wormDGP(globalState.get(), fGettingValuesDGP);
+    uint64_t blockGasLimit = wormDGP.getBlockGasLimit(chainActive.Height());
+    uint64_t minGasPrice = CAmount(wormDGP.getMinGasPrice(chainActive.Height()));
     CAmount nGasPrice = (minGasPrice>DEFAULT_GAS_PRICE)?minGasPrice:DEFAULT_GAS_PRICE;
 
     if (fHelp || params.size() < 2 || params.size() > 8)
@@ -3127,7 +3127,7 @@ UniValue sendtocontract(const UniValue& params, bool fHelp){
                 "2. \"datahex\"  (string, required) data to send.\n"
                 "3. \"amount\"      (numeric or string, optional) The amount in " + CURRENCY_UNIT + " to send. eg 0.1, default: 0\n"
                 "4. gasLimit  (numeric or string, optional) gasLimit, default: "+i64tostr(DEFAULT_GAS_LIMIT_OP_SEND)+", max: "+i64tostr(blockGasLimit)+"\n"
-                "5. gasPrice  (numeric or string, optional) gasPrice Lux price per gas unit, default: "+FormatMoney(nGasPrice)+", min:"+FormatMoney(minGasPrice)+"\n"
+                "5. gasPrice  (numeric or string, optional) gasPrice Worm price per gas unit, default: "+FormatMoney(nGasPrice)+", min:"+FormatMoney(minGasPrice)+"\n"
                 "6. \"senderaddress\" (string, optional) The quantum address that will be used as sender.\n"
                 "7. \"broadcast\" (bool, optional, default=true) Whether to broadcast the transaction or not.\n"
                 "8. \"changeToSender\" (bool, optional, default=true) Return the change to the sender.\n"
@@ -3199,7 +3199,7 @@ UniValue sendtocontract(const UniValue& params, bool fHelp){
     if (params.size() > 5){
         senderAddress = DecodeDestination(params[5].get_str());
         if (!IsValidDestination(senderAddress))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Lux address to send from");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Worm address to send from");
         else
             fHasSender=true;
     }

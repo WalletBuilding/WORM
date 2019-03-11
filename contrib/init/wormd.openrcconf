@@ -1,0 +1,26 @@
+# /etc/conf.d/wormd: config file for /etc/init.d/wormd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/worm/worm.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/wormd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/wormd.pid"
+
+# Where to write wormd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/wormd"
+
+# User and group to own wormd process
+#BITCOIND_USER="worm"
+#BITCOIND_GROUP="worm"
+
+# Path to wormd executable
+#BITCOIND_BIN="/usr/bin/wormd"
+
+# Nice value to run wormd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

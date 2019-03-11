@@ -1,0 +1,26 @@
+[Unit]
+Description=WORM's distributed currency daemon
+After=network.target
+
+[Service]
+User=worm
+Group=worm
+
+Type=forking
+PIDFile=/var/lib/wormd/wormd.pid
+
+ExecStart=/usr/bin/wormd -daemon -pid=/var/lib/wormd/wormd.pid \
+          -conf=/etc/worm/worm.conf -datadir=/var/lib/wormd
+
+ExecStop=-/usr/bin/worm-cli -conf=/etc/worm/worm.conf \
+         -datadir=/var/lib/wormd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

@@ -7,12 +7,12 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/lux
-src/luxd
-src/lux-cli
-src/lux-tx
-src/test/test_lux
-src/qt/test/test_lux-qt
+src/worm
+src/wormd
+src/worm-cli
+src/worm-tx
+src/test/test_worm
+src/qt/test/test_worm-qt
 
 # autoreconf
 Makefile.in
@@ -35,8 +35,8 @@ config.log
 config.status
 configure
 libtool
-src/config/lux-config.h
-src/config/lux-config.h.in
+src/config/worm-config.h
+src/config/worm-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -45,7 +45,7 @@ src/univalue/gen
 
 src/qt/*.moc
 src/qt/forms/ui_*.h
-src/lux-installer/src/forms/ui_*.h
+src/worm-installer/src/forms/ui_*.h
 moc_*.cpp
 
 .deps
@@ -59,7 +59,7 @@ moc_*.cpp
 *.pyc
 *.o
 *.o-*
-.lux
+.worm
 *.a
 *.pb.cc
 *.pb.h
@@ -78,12 +78,12 @@ moc_*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-lux-qt
-LUX-Qt.app
+worm-qt
+WORM-Qt.app
 
 # Unit-tests
 Makefile.test
-lux-qt_test
+worm-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -99,7 +99,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_lux.coverage/
+test_worm.coverage/
 total.coverage/
 coverage_percent.txt
 

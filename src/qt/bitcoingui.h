@@ -6,7 +6,7 @@
 #define BITCOIN_QT_BITCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/lux-config.h"
+#include "config/worm-config.h"
 #endif
 
 #include "amount.h"
@@ -20,7 +20,7 @@
 #include <QSystemTrayIcon>
 
 #ifdef ENABLE_UPDATER
-#include "lux-installer/src/updatecontroller.h"
+#include "worm-installer/src/updatecontroller.h"
 #endif
 
 class ClientModel;
@@ -96,7 +96,7 @@ private:
     WalletFrame* walletFrame;
 
 #ifdef ENABLE_UPDATER
-    QtLuxUpdater::UpdateController *controller;
+    QtWormUpdater::UpdateController *controller;
 #endif
 
     UnitDisplayStatusBarControl* unitDisplayControl;

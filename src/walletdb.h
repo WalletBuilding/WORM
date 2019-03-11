@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The Luxcore developers
+// Copyright (c) 2015-2018 The Wormcore developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -89,7 +89,7 @@ public:
     }
 };
 
-class CLuxNodeConfig
+class CWormNodeConfig
 {
 public:
     int nVersion;
@@ -98,7 +98,7 @@ public:
     std::string sCollateralAddress;
     std::string sMasternodePrivKey;
 
-    CLuxNodeConfig()
+    CWormNodeConfig()
     {
 	nVersion = 0;
     }
@@ -140,9 +140,9 @@ public:
     bool WriteTokenTx(const CTokenTx& wTokenTx);
     bool EraseTokenTx(uint256 hash);
 
-    bool WriteLuxNodeConfig(std::string sAlias, const CLuxNodeConfig& nodeConfig);
-    bool ReadLuxNodeConfig(std::string sAlias, CLuxNodeConfig& nodeConfig);
-    bool EraseLuxNodeConfig(std::string sAlias);
+    bool WriteWormNodeConfig(std::string sAlias, const CWormNodeConfig& nodeConfig);
+    bool ReadWormNodeConfig(std::string sAlias, CWormNodeConfig& nodeConfig);
+    bool EraseWormNodeConfig(std::string sAlias);
 
     bool WriteKey(const CPubKey& vchPubKey, const CPrivKey& vchPrivKey, const CKeyMetadata& keyMeta);
     bool WriteCryptedKey(const CPubKey& vchPubKey, const std::vector<unsigned char>& vchCryptedSecret, const CKeyMetadata& keyMeta);

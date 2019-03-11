@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The Luxcore developers
+// Copyright (c) 2015-2018 The Wormcore developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 #include <boost/signals2/last_value.hpp>
 #include <boost/signals2/signal.hpp>
 
-class CLuxNodeConfig;
+class CWormNodeConfig;
 class CBasicKeyStore;
 class CWallet;
 class uint256;
@@ -102,7 +102,7 @@ public:
      */
     boost::signals2::signal<void(const uint256& hash, ChangeType status)> NotifyAlertChanged;
 
-    boost::signals2::signal<void (const CLuxNodeConfig &nodeConfig)> NotifyLuxNodeChanged;
+    boost::signals2::signal<void (const CWormNodeConfig &nodeConfig)> NotifyWormNodeChanged;
 
     /** A wallet has been loaded. */
     boost::signals2::signal<void(CWallet* wallet)> LoadWallet;

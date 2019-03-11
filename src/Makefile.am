@@ -1,7 +1,7 @@
 DIST_SUBDIRS = secp256k1
 AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS)
 AM_CXXFLAGS = $(HARDENED_CXXFLAGS) $(ERROR_CXXFLAGS) -DETH_FATDB=1
-AM_CPPFLAGS = $(HARDENED_CPPFLAGS) -DLUX_BUILD
+AM_CPPFLAGS = $(HARDENED_CPPFLAGS) -DWORM_BUILD
 EXTRA_LIBRARIES =
 
 if !TARGET_WINDOWS
@@ -60,15 +60,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += luxd
+  bin_PROGRAMS += wormd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += lux-cli lux-tx
+  bin_PROGRAMS += worm-cli worm-tx
 endif
 
 .PHONY: FORCE
-# Luxcore #
+# Wormcore #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -139,7 +139,7 @@ BITCOIN_CORE_H = \
   rpcprotocol.h \
   httprpc.h \
   httpserver.h \
-  luxcontrol.h \
+  wormcontrol.h \
   rpcserver.h \
   rpcutil.h \
   scheduler.h \
@@ -180,10 +180,10 @@ BITCOIN_CORE_H = \
   zmq/zmqconfig.h \
   zmq/zmqnotificationinterface.h \
   zmq/zmqpublishnotifier.h \
-  lux/luxstate.h \
-  lux/luxtransaction.h \
-  lux/luxDGP.h \
-  lux/storageresults.h
+  worm/wormstate.h \
+  worm/wormtransaction.h \
+  worm/wormDGP.h \
+  worm/storageresults.h
 
 obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
@@ -191,7 +191,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between luxd and lux-qt
+# server: shared between wormd and worm-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -220,7 +220,7 @@ libbitcoin_server_a_SOURCES = \
   rpcrawtransaction.cpp \
   httprpc.cpp \
   httpserver.cpp \
-  luxcontrol.cpp \
+  wormcontrol.cpp \
   rpcserver.cpp \
   script/sigcache.cpp \
   timedata.cpp \
@@ -228,9 +228,9 @@ libbitcoin_server_a_SOURCES = \
   txmempool.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  lux/luxstate.cpp \
-  lux/luxDGP.cpp \
-  lux/storageresults.cpp \
+  worm/wormstate.cpp \
+  worm/wormDGP.cpp \
+  worm/storageresults.cpp \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
@@ -242,7 +242,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between luxd and lux-qt, but only linked
+# wallet: shared between wormd and worm-qt, but only linked
 # when wallet enabled
 
 libbitcoin_wallet_a_CFLAGS = $(PIE_FLAGS)
@@ -270,7 +270,7 @@ libbitcoin_wallet_a_SOURCES = \
 
 # crypto primitives library
 crypto_libbitcoin_crypto_a_CFLAGS = $(PIE_FLAGS)
-crypto_libbitcoin_crypto_a_CPPFLAGS = $(BITCOIN_CONFIG_INCLUDES) $(BITCOIN_INCLUDES) -DLUX_BUILD
+crypto_libbitcoin_crypto_a_CPPFLAGS = $(BITCOIN_CONFIG_INCLUDES) $(BITCOIN_INCLUDES) -DWORM_BUILD
 crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sha1.cpp \
   crypto/sha256.cpp \
@@ -387,8 +387,8 @@ libbitcoin_consensus_a_SOURCES = \
   utiltime.cpp \
   version.h
 
-# common: shared between luxd, and lux-qt and non-server tools
-libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -DLUX_BUILD
+# common: shared between wormd, and worm-qt and non-server tools
+libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -DWORM_BUILD
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_CFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -std=c99
 libbitcoin_common_a_SOURCES = \
@@ -565,8 +565,8 @@ libbitcoin_common_a_SOURCES = \
   cpp-ethereum/libethashseal/genesis/homesteadTest.cpp \
   cpp-ethereum/libethashseal/genesis/mainNetworkTest.cpp \
   cpp-ethereum/libethashseal/genesis/metropolisTest.cpp \
-  cpp-ethereum/libethashseal/genesis/luxMainNetwork.cpp \
-  cpp-ethereum/libethashseal/genesis/luxTestNetwork.cpp \
+  cpp-ethereum/libethashseal/genesis/wormMainNetwork.cpp \
+  cpp-ethereum/libethashseal/genesis/wormTestNetwork.cpp \
   cpp-ethereum/libethashseal/genesis/ropsten.cpp \
   cpp-ethereum/libethashseal/genesis/transitionnetTest.cpp \
   cpp-ethereum/libethash/ethash.h \
@@ -627,7 +627,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between lux-cli and lux-qt
+# cli: shared between worm-cli and worm-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -637,15 +637,15 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-luxd_SOURCES = luxd.cpp
-luxd_CPPFLAGS = $(BITCOIN_INCLUDES)
-luxd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+wormd_SOURCES = wormd.cpp
+wormd_CPPFLAGS = $(BITCOIN_INCLUDES)
+wormd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-luxd_SOURCES += luxd-res.rc config/lux-config.h
+wormd_SOURCES += wormd-res.rc config/worm-config.h
 endif
 
-luxd_LDADD = \
+wormd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -659,36 +659,36 @@ luxd_LDADD = \
   $(LIBCRYPTOPP) \
   $(LIBSECP256K1)
 
-luxd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(ZMQ_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+wormd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(ZMQ_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 
 
-# lux-cli binary #
-lux_cli_SOURCES = lux-cli.cpp
-lux_cli_CPPFLAGS = $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+# worm-cli binary #
+worm_cli_SOURCES = worm-cli.cpp
+worm_cli_CPPFLAGS = $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
 
 if TARGET_WINDOWS
-lux_cli_SOURCES += lux-cli-res.rc config/lux-config.h
+worm_cli_SOURCES += worm-cli-res.rc config/worm-config.h
 endif
 
-lux_cli_LDADD = \
+worm_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-lux_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+worm_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# lux-tx binary #
-lux_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
-lux_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-lux_tx_SOURCES =  \
-  lux-tx.cpp \
+# worm-tx binary #
+worm_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+worm_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+worm_tx_SOURCES =  \
+  worm-tx.cpp \
   $(libbitcoin_common_a_SOURCES) \
   $(libbitcoin_server_a_SOURCES)
 
-lux_tx_LDADD = \
+worm_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_SERVER) \
@@ -702,7 +702,7 @@ lux_tx_LDADD = \
   $(LIBSECP256K1) \
   $(LIBCRYPTOPP)
 
-lux_tx_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(MINIUPNPC_LIBS) $(ZMQ_LIBS)
+worm_tx_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(MINIUPNPC_LIBS) $(ZMQ_LIBS)
 #
 
 # bitcoinconsensus library #

@@ -7,12 +7,12 @@ software written by Eric Young (eay@cryptsoft.com) and UPnP software written by
 Thomas Bernard.
 
 
-Mac OS X luxd build instructions
+Mac OS X wormd build instructions
 Laszlo Hanyecz <solar@heliacal.net>
 Douglas Huff <dhuff@jrbobdobbs.org>
 
 
-See readme-qt.rst for instructions on building Lux QT, the
+See readme-qt.rst for instructions on building Worm QT, the
 graphical user interface.
 
 Tested on 10.5 and 10.6 intel.  PPC is not supported because it's big-endian.
@@ -27,7 +27,7 @@ but you can get the current version from http://developer.apple.com
 
 1.  Clone the github tree to get the source code:
 
-git clone git@github.com:rat4/lux.git lux
+git clone git@github.com:rat4/worm.git worm
 
 2.  Download and install MacPorts from http://www.macports.org/
 
@@ -41,14 +41,14 @@ sudo port install boost db48 openssl miniupnpc
 Optionally install qrencode (and set USE_QRCODE=1):
 sudo port install qrencode
 
-4.  Now you should be able to build luxd:
+4.  Now you should be able to build wormd:
 
-cd lux/src
+cd worm/src
 make -f makefile.osx
 
 Run:
-  ./luxd --help  # for a list of command-line options.
+  ./wormd --help  # for a list of command-line options.
 Run
-  ./luxd -daemon # to start the lux daemon.
+  ./wormd -daemon # to start the worm daemon.
 Run
-  ./luxd help # When the daemon is running, to get a list of RPC commands
+  ./wormd help # When the daemon is running, to get a list of RPC commands
