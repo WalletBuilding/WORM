@@ -1,6 +1,6 @@
 ![WORM Logo](src/qt/res/images/worm_logo_horizontal.png)
 
-"FIRST OF ITS KIND"
+"FIRST OF ITS KIND!"
 
 Wormcore is GNU AGPLv3 licensed.
 
