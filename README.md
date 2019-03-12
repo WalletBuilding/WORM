@@ -4,7 +4,7 @@
 
 Wormcore is GNU AGPLv3 licensed.
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Fworm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Fworm?ref=badge_shield) [![Build Status](https://travis-ci.org/WORM-Core/worm.svg?branch=master)](https://travis-ci.org/WORM-Core/worm) [![GitHub version](https://badge.fury.io/gh/WORM-Core%2Fworm.png)](https://badge.fury.io/gh/WORM-Core%2Fworm.png) [![HitCount](http://hits.dwyl.io/216k155/worm.svg)](http://hits.dwyl.io/216k155/worm)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F216k155%2Fworm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F216k155%2Fworm?ref=badge_shield) [![Build Status](https://travis-ci.org/WalletBuilding/WORM.svg?branch=master)](https://travis-ci.org/WalletBuilding/WORM) [![GitHub version](https://badge.fury.io/gh/WORM-Core%2Fworm.png)](https://badge.fury.io/gh/WORM-Core%2Fworm.png) [![HitCount](http://hits.dwyl.io/216k155/worm.svg)](http://hits.dwyl.io/216k155/worm)
 <a href="https://discord.gg/ndUg9va"><img src="https://discordapp.com/api/guilds/364500397999652866/embed.png" alt="Discord server" /></a> <a href="https://twitter.com/intent/follow?screen_name=WORM_COIN"><img src="https://img.shields.io/twitter/follow/WORM_COIN.svg?style=social&logo=twitter" alt="follow on Twitter"></a>
                                                                                                                                                      
 [![Build history](https://buildstats.info/travisci/chart/WORM-Core/worm?branch=master)](https://travis-ci.org/WORM-Core/worm?branch=master)
