@@ -1,21 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @WalletBuilding Sign out
-0
-0 0 WalletBuilding/WORM
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-WORM/.travis.yml
-@WalletBuilding WalletBuilding Update .travis.yml
-b2441d5  22 minutes ago
-@WalletBuilding @MealwormsBiz @216k155 @tpruvot @rej156 @nguyenhoangtran11
-Executable File  90 lines (83 sloc)  5.08 KB
-    
 sudo: required
 dist: trusty
 
