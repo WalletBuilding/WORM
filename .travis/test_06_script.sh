@@ -23,21 +23,22 @@ else
 fi
 END_FOLD
 
-mkdir build
-cd build || (echo "could not enter build directory"; exit 1)
+#mkdir build
+#cd build || (echo "could not enter build directory"; exit 1)
 
 BEGIN_FOLD configure
-DOCKER_EXEC ../configure --cache-file=config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && false)
+DOCKER_EXEC ./configure CFLAGS="-std=c99" --cache-file=config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && false)
+
 END_FOLD
 
 BEGIN_FOLD distdir
-DOCKER_EXEC make distdir VERSION=$HOST
+DOCKER_EXEC make distdir PACKAGE=worm VERSION=$HOST
 END_FOLD
 
 cd "worm-$HOST" || (echo "could not enter distdir worm-$HOST"; exit 1)
 
 BEGIN_FOLD configure
-DOCKER_EXEC ./configure --cache-file=../config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && false)
+DOCKER_EXEC ./configure CFLAGS="-std=c99" --cache-file=../config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && false)
 END_FOLD
 
 BEGIN_FOLD build
