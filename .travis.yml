@@ -89,7 +89,7 @@ jobs:
         DEP_OPTS="NO_QT=1"
         PACKAGES="python3 nsis g++-mingw-w64-i686 wine-binfmt wine32"
         GOAL="install"
-        BITCOIN_CONFIG="--enable-reduce-exports"
+        BITCOIN_CONFIG="--enable-reduce-exports --without-miniupnpc"
 # Win64
     - stage: test
       env: >-
@@ -98,7 +98,7 @@ jobs:
         DEP_OPTS=""
         PACKAGES="python3 nsis g++-mingw-w64-x86-64 wine-binfmt wine64"
         GOAL="install"
-        BITCOIN_CONFIG="--enable-reduce-exports"
+        BITCOIN_CONFIG="--enable-reduce-exports --without-miniupnpc"
 # 32-bit + dash
     - stage: test
       env: >-
