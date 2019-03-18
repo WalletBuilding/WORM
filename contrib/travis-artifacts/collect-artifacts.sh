@@ -19,8 +19,8 @@ mkdir -p $RELEASEDIR
 #ZIPFILES=$(ls $OUTDIR/bin/* || true)
 
 echo "make zip file"
-
-zip -r $RELEASEDIR/bitcoin-$COMMIT.zip $OUTDIR
+cp -r $OUTDIR/bin/* $RELEASEDIR/
+#zip -r $RELEASEDIR/bitcoin-$COMMIT.zip $OUTDIR
 
 # Linux artifacts
 #[ -z "$ZIPFILES" ] || \
