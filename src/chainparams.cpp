@@ -279,7 +279,7 @@ public:
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        const char* pszTimestamp = "Worm - Testnet 1"; // Input Activation code to activate blockchain
+        const char* pszTimestamp = "Lux - Testnet 1"; // Input Activation code to activate blockchain
         CMutableTransaction txNew;
         txNew.nVersion = 1;
         txNew.nTime = 1528954643;
@@ -514,7 +514,7 @@ public:
         nModifierUpdateBlock = 615800;
         bech32_hrp = "bcst";
 
-        const char* pszTimestamp = "Worm - Implemented New PHI Algo PoW/PoS Hybrid - Parallel Masternode - ThankYou - 216k155"; // Input Activation code to activate blockchain
+        const char* pszTimestamp = "Lux - Implemented New PHI Algo PoW/PoS Hybrid - Parallel Masternode - ThankYou - 216k155"; // Input Activation code to activate blockchain
         CMutableTransaction txNew;
         txNew.nVersion = 1;
         txNew.nTime = 1524645689;
