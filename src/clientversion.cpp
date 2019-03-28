@@ -46,8 +46,8 @@ const std::string CLIENT_NAME("Wormcore");
 
 //! git will put "#define GIT_ARCHIVE 1" on the next line inside archives.
 #ifdef GIT_ARCHIVE
-#define GIT_COMMIT_ID "$Format:%h$"
-#define GIT_COMMIT_DATE "$Format:%cD$"
+#define GIT_COMMIT_ID "bf6e9c12"
+#define GIT_COMMIT_DATE "Thu, 28 Mar 2019 00:44:37 +0100"
 #endif
 
 #define BUILD_DESC_WITH_SUFFIX(maj, min, rev, build, suffix) \
