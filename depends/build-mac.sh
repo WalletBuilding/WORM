@@ -8,7 +8,8 @@ export HOST="x86_64-apple-darwin11"
 export OSX_SDK="10.11"
 
 # curl OSX-SDK
-mkdir -p depends/SDKs depends/sdk-sources
+mkdir -p depends/SDKs
+mkdir -p depends/sdk-sources
 cd depends/SDKs
 curl -sL https://github.com/phracker/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.11.sdk.tar.xz | tar xJ
 cd ../..
