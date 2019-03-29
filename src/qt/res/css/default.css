@@ -45,11 +45,11 @@ QMenuBar::item {
 }
 
 QMenuBar::item:selected {
-    background-color:#f8f6f6;
+    background-color:#cce7cc;
 }
 
 QMenu {
-    background-color:#f8f6f6;
+    background-color:#cce7cc;
 }
 
 QMenu::item {
@@ -462,11 +462,11 @@ QScrollBar::handle:horizontal { /* Scroll Bar Slider - horizontal */
 }
 
 QScrollBar::add-page, QScrollBar::sub-page { /* Scroll Bar Background */
-    background:#F8F6F6;
+    background:#cce7cc;
 }
 
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { /* Define Arrow Button Dimensions */
-    background-color:#F8F6F6;
+    background-color:#cce7cc;
     border: 1px solid #f2f0f0;
     width:16px;
     height:16px;
@@ -538,7 +538,7 @@ QSlider::add-page:horizontal {
 /**************************** DIALOG BOXES **********************************************/
 
 QDialog {
-    background-color: #f8f6f6;
+    background-color: #cce7cc;
 }
 
 QDialog .QTabWidget {
@@ -683,7 +683,7 @@ QDialog#SignVerifyMessageDialog QPushButton#clearButton_VM:pressed {
 /**************************** SEND AND RECEIVE DIALOG ***********************************/
 
 QWidget#AddressBookPage {
-    background-color:#F8F6F6;
+    background-color:#cce7cc;
 }
 
 QWidget#AddressBookPage QPushButton#newAddress { /* New Address Button */
