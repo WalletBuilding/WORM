@@ -45,11 +45,11 @@ QMenuBar::item {
 }
 
 QMenuBar::item:selected {
-    background-color:#cce7cc;
+    background-color:#e7f4e7;
 }
 
 QMenu {
-    background-color:#cce7cc;
+    background-color:#e7f4e7;
 }
 
 QMenu::item {
@@ -137,7 +137,7 @@ QToolTip {
 
 QTextEdit {
     background-color:#82b675;
-    color:#3a682f;
+    color:#c3eeb9;
 }
 
 
@@ -462,11 +462,11 @@ QScrollBar::handle:horizontal { /* Scroll Bar Slider - horizontal */
 }
 
 QScrollBar::add-page, QScrollBar::sub-page { /* Scroll Bar Background */
-    background:#cce7cc;
+    background:#e7f4e7;
 }
 
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { /* Define Arrow Button Dimensions */
-    background-color:#cce7cc;
+    background-color:#e7f4e7;
     border: 1px solid #f2f0f0;
     width:16px;
     height:16px;
@@ -538,7 +538,7 @@ QSlider::add-page:horizontal {
 /**************************** DIALOG BOXES **********************************************/
 
 QDialog {
-    background-color: #cce7cc;
+    background-color: #e7f4e7;
 }
 
 QDialog .QTabWidget {
@@ -683,7 +683,7 @@ QDialog#SignVerifyMessageDialog QPushButton#clearButton_VM:pressed {
 /**************************** SEND AND RECEIVE DIALOG ***********************************/
 
 QWidget#AddressBookPage {
-    background-color:#cce7cc;
+    background-color:#e7f4e7;
 }
 
 QWidget#AddressBookPage QPushButton#newAddress { /* New Address Button */
@@ -1566,11 +1566,11 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin
 /**************************** RECEIVE COINS *********************************************/
 
 QWidget#ReceiveCoinsDialog {
-    background-color:#82b675;
+    background-color:#e7f4e7;
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
-    background-color:#82b675;
+    background-color:#e7f4e7;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
@@ -1579,7 +1579,7 @@ QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label { /* Amount Label */
-    background-color:#82b675;
+    background-color:#e7f4e7;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
@@ -1588,7 +1588,7 @@ QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label { /* Amount Label */
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_3 { /* Message Label */
-    background-color:#82b675;
+    background-color:#e7f4e7;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
