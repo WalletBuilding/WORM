@@ -554,12 +554,12 @@ Cliquer sur &quot;Crypter la clé&quot; pour signer et encrypter la clé privée
         <translation>Afficher l&apos;historique de transactions</translation>
     </message>
     <message>
-        <source>&amp;LSR Token</source>
-        <translation>&amp;Jetons LSR</translation>
+        <source>&amp;WRM Token</source>
+        <translation>&amp;Jetons WRM</translation>
     </message>
     <message>
-        <source>LSR Token (send, receive or add Token in list)</source>
-        <translation>Envoi et réception de jetons (LSR Tokens)</translation>
+        <source>WRM Token (send, receive or add Token in list)</source>
+        <translation>Envoi et réception de jetons (WRM Tokens)</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -2484,7 +2484,7 @@ MultiSend: %1</translation>
     </message>
 </context>
 <context>
-    <name>LSRToken</name>
+    <name>WRMToken</name>
     <message>
         <source>Form</source>
         <translation>Form</translation>
@@ -3325,8 +3325,8 @@ https://www.transifex.com/wormcore/wormcore</source>
         <translation>Transactions récentes</translation>
     </message>
     <message>
-        <source>LSR Tokens</source>
-        <translation>Jetons LSR</translation>
+        <source>WRM Tokens</source>
+        <translation>Jetons WRM</translation>
     </message>
     <message>
         <source>Go to token page</source>
@@ -5166,8 +5166,8 @@ https://www.transifex.com/wormcore/wormcore</source>
         <translation>L&apos;adresse qui va recevoir les tokens.</translation>
     </message>
     <message>
-        <source>The amount in LSR Token to send.</source>
-        <translation>Le montant de jetons LSR à envoyer.</translation>
+        <source>The amount in WRM Token to send.</source>
+        <translation>Le montant de jetons WRM à envoyer.</translation>
     </message>
     <message>
         <source>Optional description for transaction.</source>

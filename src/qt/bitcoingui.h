@@ -150,7 +150,7 @@ private:
     QAction* showHelpMessageAction;
     QAction* multiSendAction;
     QAction* smartContractAction;
-    QAction* LSRTokenAction;
+    QAction* WRMTokenAction;
     QAction* openHexAddressAction;
 
     QSystemTrayIcon* trayIcon;
@@ -256,8 +256,8 @@ private Q_SLOTS:
     void gotoMasternodePage();
     /** Switch to smart contract page */
     void gotoSmartContractPage();
-    /** Switch to LSRToken page page */
-    void gotoLSRTokenPage(bool toAddTokenPage = false);
+    /** Switch to WRMToken page page */
+    void gotoWRMTokenPage(bool toAddTokenPage = false);
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */

@@ -49,7 +49,7 @@ QT_FORMS_UI = \
   qt/forms/eula.ui \
   qt/forms/masternodemanager.ui \
   qt/forms/addeditwormnode.ui \
-  qt/forms/lsrtoken.ui \
+  qt/forms/wrmtoken.ui \
   qt/forms/wormnodeconfigdialog.ui \
   qt/forms/multisenddialog.ui \
   qt/forms/openuridialog.ui \
@@ -126,7 +126,7 @@ QT_MOC_CPP = \
   qt/moc_qcustomplot.cpp \
   qt/moc_peertablemodel.cpp \
   qt/moc_paymentserver.cpp \
-  qt/moc_lsrtoken.cpp \
+  qt/moc_wrmtoken.cpp \
   qt/moc_qvalidatedlineedit.cpp \
   qt/moc_qvalidatedtextedit.cpp \
   qt/moc_qvaluecombobox.cpp \
@@ -254,7 +254,7 @@ BITCOIN_QT_H = \
   qt/paymentserver.h \
   qt/peertablemodel.h \
   qt/platformstyle.h \
-  qt/lsrtoken.h \
+  qt/wrmtoken.h \
   qt/qvalidatedlineedit.h \
   qt/qvalidatedtextedit.h \
   qt/qvaluecombobox.h \
@@ -357,7 +357,7 @@ RES_ICONS = \
   qt/res/icons/lock_closed.png \
   qt/res/icons/lock_closed_black.png \
   qt/res/icons/wormcoin_black.png \
-  qt/res/icons/lsrtoken.png \
+  qt/res/icons/wrmtoken.png \
   qt/res/icons/lock_open.png \
   qt/res/icons/wormupdate-loader.gif \
   qt/res/icons/masternodes.png \
@@ -477,7 +477,7 @@ BITCOIN_QT_CPP += \
   qt/qcustomplot.cpp \
   qt/paymentrequestplus.cpp \
   qt/paymentserver.cpp \
-  qt/lsrtoken.cpp \
+  qt/wrmtoken.cpp \
   qt/receivecoinsdialog.cpp \
   qt/receiverequestdialog.cpp \
   qt/receivetokenpage.cpp \

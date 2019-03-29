@@ -130,7 +130,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle* n
                                                                             showHelpMessageAction(0),
                                                                             multiSendAction(0),
                                                                             smartContractAction(0),
-                                                                            LSRTokenAction(0),
+                                                                            WRMTokenAction(0),
                                                                             trayIcon(0),
                                                                             trayIconMenu(0),
                                                                             notificator(0),
@@ -483,16 +483,16 @@ void BitcoinGUI::createActions() {
 #endif
     tabGroup->addAction(historyAction);
 
-    LSRTokenAction = new QAction(QIcon(":/icons/lsrtoken"), tr("&LSR Token"), this);
-    LSRTokenAction->setStatusTip(tr("LSR Token (send, receive or add Token in list)"));
-    LSRTokenAction->setToolTip(LSRTokenAction->statusTip());
-    LSRTokenAction->setCheckable(true);
+    WRMTokenAction = new QAction(QIcon(":/icons/wrmtoken"), tr("&WRM Token"), this);
+    WRMTokenAction->setStatusTip(tr("WRM Token (send, receive or add Token in list)"));
+    WRMTokenAction->setToolTip(WRMTokenAction->statusTip());
+    WRMTokenAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    LSRTokenAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+    WRMTokenAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
 #else
-    LSRTokenAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    WRMTokenAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
-    tabGroup->addAction(LSRTokenAction);
+    tabGroup->addAction(WRMTokenAction);
 
 
 #ifdef ENABLE_WALLET
@@ -534,7 +534,7 @@ void BitcoinGUI::createActions() {
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
-    connect(LSRTokenAction, SIGNAL(triggered()), this, SLOT(gotoLSRTokenPage()));
+    connect(WRMTokenAction, SIGNAL(triggered()), this, SLOT(gotoWRMTokenPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
 #endif // ENABLE_WALLET
@@ -741,7 +741,7 @@ void BitcoinGUI::createToolBars() {
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
-        toolbar->addAction(LSRTokenAction);
+        toolbar->addAction(WRMTokenAction);
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -1034,10 +1034,10 @@ void BitcoinGUI::gotoMasternodePage()
     }
 }
 
-void BitcoinGUI::gotoLSRTokenPage(bool toAddTokenPage)
+void BitcoinGUI::gotoWRMTokenPage(bool toAddTokenPage)
 {
-    LSRTokenAction->setChecked(true);
-    if (walletFrame) walletFrame->gotoLSRTokenPage(toAddTokenPage);
+    WRMTokenAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoWRMTokenPage(toAddTokenPage);
 }
 
 void BitcoinGUI::gotoReceiveCoinsPage()

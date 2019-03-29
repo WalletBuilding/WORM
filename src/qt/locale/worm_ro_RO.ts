@@ -579,11 +579,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;LSR Token</source>
+        <source>&amp;WRM Token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>LSR Token (send, receive or add Token in list)</source>
+        <source>WRM Token (send, receive or add Token in list)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2479,7 +2479,7 @@
     </message>
 </context>
 <context>
-    <name>LSRToken</name>
+    <name>WRMToken</name>
     <message>
         <source>Form</source>
         <translation type="unfinished"></translation>
@@ -3324,7 +3324,7 @@ https://www.transifex.com/wormcore/wormcore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>LSR Tokens</source>
+        <source>WRM Tokens</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5139,7 +5139,7 @@ https://www.transifex.com/wormcore/wormcore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The amount in LSR Token to send.</source>
+        <source>The amount in WRM Token to send.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

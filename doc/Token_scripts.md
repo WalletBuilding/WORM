@@ -65,14 +65,14 @@ contract StandardToken is Token {
     mapping (address => mapping (address => uint256)) allowed;
 }
 
-contract LSRStandardToken is StandardToken {
+contract WRMStandardToken is StandardToken {
 
     //if ether is sent to this address, send it back.
     function () {
         return;
     }
 
-    //LSRToken 0.1 standard.
+    //WRMToken 0.1 standard.
     string public version = 'I0.1';
 
     //fancy name: eg Wormcore
@@ -84,7 +84,7 @@ contract LSRStandardToken is StandardToken {
     //An identifier: eg WORM
     string public symbol;
 
-    function LSRStandardToken(uint256 initialSupply, string tokenName, uint8 decimalUnits, string tokenSymbol) {
+    function WRMStandardToken(uint256 initialSupply, string tokenName, uint8 decimalUnits, string tokenSymbol) {
 
         // Give the creator all initial tokens
         balances[msg.sender] = initialSupply;

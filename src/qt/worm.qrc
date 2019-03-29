@@ -47,7 +47,7 @@
         <file alias="stake">res/icons/stake.png</file>
         <file alias="overview">res/icons/overview.png</file>
         <file alias="smartcontract">res/icons/smartcontract.png</file>
-        <file alias="lsrtoken">res/icons/lsrtoken.png</file>
+        <file alias="wrmtoken">res/icons/wrmtoken.png</file>
         <file alias="masternodes">res/icons/masternodes.png</file>
         <file alias="export">res/icons/export.png</file>
         <file alias="synced">res/icons/synced.png</file>
