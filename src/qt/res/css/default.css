@@ -930,7 +930,7 @@ QWidget .QFrame#frame .QLabel#labelBalanceText { /* Available Balance Label */
     margin-right:5px;
     padding-right:5px;
     font-weight:bold;
-    font-size:24px;
+    font-size:36px;
     min-height:35px;
 }
 
