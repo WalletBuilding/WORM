@@ -126,7 +126,7 @@ QWidget {
 }
 
 QGroupBox {
-    background-color:#3a682f;
+    background-color:#e7f4e7;
     color:#3a682f;
 }
 
@@ -1566,11 +1566,11 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin
 /**************************** RECEIVE COINS *********************************************/
 
 QWidget#ReceiveCoinsDialog {
-    background-color:#e7f4e7;
+    background-color:#82b675;
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
-    background-color:#e7f4e7;
+    background-color:#82b675;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
@@ -1579,7 +1579,7 @@ QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label { /* Amount Label */
-    background-color:#e7f4e7;
+    background-color:#82b675;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
@@ -1588,7 +1588,7 @@ QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label { /* Amount Label */
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_3 { /* Message Label */
-    background-color:#e7f4e7;
+    background-color:#82b675;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
