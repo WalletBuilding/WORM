@@ -122,11 +122,11 @@ QTabBar::tab:hover:!selected {
 QWidget {
     selection-background-color:#82b675; /* Object highlight color */
     selection-color:#daf0d5;
-    outline:0; /* Remove Annoying Focus Rectangle */
+    outline:2px; /* Remove Annoying Focus Rectangle */
 }
 
 QGroupBox {
-    background-color:#82b675;
+    background-color:#3a682f;
     color:#3a682f;
 }
 
@@ -194,7 +194,7 @@ QLabel { /* Base Text Size & Color */
 
 /****************************************************************************************/
 
-/*
+
 QPushButton {
     background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #64ACD2, stop: .1 #3a682f, stop: .95 #3a682f, stop: 1 #1D80B5);
     border:0;
@@ -211,7 +211,7 @@ QPushButton {
 QPushButton:hover {
     background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #00aeaa, stop: .1 #00aeca, stop: .95 #00aeba, stop: 1 #82b675);
 }
-*/
+
 
 
 QPushButton {
@@ -847,7 +847,7 @@ QDialog#RPCConsole QPushButton#promptIcon { /* Console Clear Button */
 }
 
 QDialog#RPCConsole .QGroupBox #line { /* Network In Line */
-    background-color:#82b675;
+    background-color:#e7f4e7;
 }
 
 QDialog#RPCConsole .QGroupBox #line_2 { /* Network Out Line */
@@ -930,13 +930,13 @@ QWidget .QFrame#frame .QLabel#labelBalanceText { /* Available Balance Label */
     margin-right:5px;
     padding-right:5px;
     font-weight:bold;
-    font-size:14px;
+    font-size:24px;
     min-height:35px;
 }
 
 QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
-    font-size:12px;
+    font-size:24px;
     font-weight:bold;
     color:#82b675;
     margin-left:0px;
@@ -1570,7 +1570,7 @@ QWidget#ReceiveCoinsDialog {
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
-    background-color:#82b675;
+    background-color:#e7f4e7;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
@@ -1579,7 +1579,7 @@ QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label { /* Amount Label */
-    background-color:#82b675;
+    background-color:#e7f4e7;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
@@ -1588,7 +1588,7 @@ QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label { /* Amount Label */
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_3 { /* Message Label */
-    background-color:#82b675;
+    background-color:#e7f4e7;
     min-width:102px;
     color:#daf0d5;
     font-weight:bold;
