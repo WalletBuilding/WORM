@@ -105,10 +105,10 @@ CreateContract::~CreateContract()
 void CreateContract::setLinkLabels()
 {
     ui->labelSolidity->setOpenExternalLinks(true);
-    ui->labelSolidity->setText("<a href=\"http://remix.ethereum.org/\" style=\"color: #3a682f;\">Solidity compiler</a>");
+    ui->labelSolidity->setText("<a href=\"http://remix.ethereum.org/\" style=\"font-weight: bold; color: #3a682f;\">Solidity compiler</a>");
 
     ui->labelToken->setOpenExternalLinks(true);
-    ui->labelToken->setText("<a href=\"https://ethereum.org/token#the-code\" style=\"color: #3a682f;\">Token template</a>");
+    ui->labelToken->setText("<a href=\"https://ethereum.org/token#the-code\" style=\"font-weight: bold; color: #3a682f;\">Token template</a>");
 }
 
 void CreateContract::setModel(WalletModel *_model)
