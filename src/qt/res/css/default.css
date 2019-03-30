@@ -412,7 +412,7 @@ QTableView::item { /* Table Item */
 }
 
 QTableView::item:selected { /* Table Item Selected */
-    background-color:#ffffff;
+    background-color:#82b675;
     color:#daf0d5;
 }
 
@@ -550,7 +550,7 @@ QDialog .QTabWidget::pane {
 }
 
 QDialog .QTabWidget QTabBar::tab {
-    background-color:#000000;
+    background-color:#82b675;
     color:#3a682f;
     padding-left:10px;
     padding-right:10px;
@@ -930,7 +930,7 @@ QWidget .QFrame#frame .QLabel#labelBalanceText { /* Available Balance Label */
     margin-right:5px;
     padding-right:5px;
     font-weight:bold;
-    font-size:36px;
+    font-size:24px;
     min-height:35px;
 }
 
@@ -1695,12 +1695,12 @@ QCalendarView {
 }
 
 QCalendarWidget QWidget#qt_calendar_navigationbar { /* Calendar widget navigation bar */
-    background-color:#82b675;
+    background-color:#ffffff;
     font-weight:bold;
 }
 
 QCalendarWidget QAbstractItemView { /* Calendar widget days */
-    alternate-background-color:#82b675;
+    alternate-background-color:#000000;
     background-color:#e7f4e7;
 }
 
