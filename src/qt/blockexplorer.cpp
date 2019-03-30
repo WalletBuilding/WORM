@@ -758,19 +758,19 @@ void BlockExplorer::setBlock(CBlockIndex* pBlock)
 void BlockExplorer::setContent(const std::string& Content)
 {
     QString CSS = "body { font-size:12px; background-color: white; color: #444444; margin: 0; }\n"
-    "span.hl  { color: #061532; }\n"
+    "span.hl  { color: #3a682f; }\n"
     "span.hli { color: red; }\n"
     "span.hlo { color: green; }\n"
-    "table tr td { padding: 3px; border: none; background-color: #ffffff; color: #061532; }\n"
+    "table tr td { padding: 3px; border: none; background-color: #ffffff; color: #3a682f; }\n"
     //"tbody.tx a { font-family: monospace; white-space: pre; }\n"
     "tbody.tx tr td.d3 { text-align: right; }\n"
     "tbody.h td.d3, tbody.h td.d5, tbody.h td.d6, tbody.h td.d7 { text-align: right; }\n"
     "tbody.b td.d2, tbody.b td.d4 { text-align: right; }\n"
-    "thead tr td { padding: 3px; border: none; background-color: #061532; color: #e0e0e0; font-weight: bold; text-align: center; }\n"
+    "thead tr td { padding: 3px; border: none; background-color: #3a682f; color: #e0e0e0; font-weight: bold; text-align: center; }\n"
     "thead tr td.d0 { text-align: left; }\n"
-    "h2, h3 { white-space: nowrap; color: #061532; }\n"
-    "a { text-decoration: none; color: #34A9FF; }\n"
-    "a.nav { color: #061532; }\n";
+    "h2, h3 { white-space: nowrap; color: #3a682f; }\n"
+    "a { text-decoration: none; color: #3a682f; }\n"
+    "a.nav { color: #3a682f; }\n";
 
     QString FullContent = "<html><head><style type=\"text/css\">" + CSS + "</style></head>" + "<body>" + Content.c_str() + "</body></html>";
     // printf(FullContent.toUtf8());
