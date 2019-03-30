@@ -412,8 +412,8 @@ QTableView::item { /* Table Item */
 }
 
 QTableView::item:selected { /* Table Item Selected */
-    background-color:#d6ead6;
-    color:#3a682f;
+    background-color:#ffffff;
+    color:#daf0d5;
 }
 
 QTableWidget { /* Table Background */
@@ -550,7 +550,7 @@ QDialog .QTabWidget::pane {
 }
 
 QDialog .QTabWidget QTabBar::tab {
-    background-color:#82b675;
+    background-color:#000000;
     color:#3a682f;
     padding-left:10px;
     padding-right:10px;
