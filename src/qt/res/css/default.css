@@ -803,7 +803,7 @@ QDialog#RPCConsole QWidget#tab_info QLabel#label_11, QDialog#RPCConsole QWidget#
 }
 
 QDialog#RPCConsole QWidget#tab_peers QLabel#peerHeading { /* Peers Info Header */
-    color:#235b15;
+    color:#97ce97;
 }
 
 QDialog#RPCConsole QTableView#peerWidget::item { /* Peers Table Items */
