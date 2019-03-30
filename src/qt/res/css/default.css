@@ -136,8 +136,8 @@ QToolTip {
 }
 
 QTextEdit {
-    background-color:#82b675;
-    color:#c3eeb9;
+    background-color:#c3eeb9;
+    color:#82b675;
 }
 
 
@@ -157,7 +157,7 @@ QHBoxLayout {
 
 QLabel { /* Base Text Size & Color */
     font-size:12px;
-    color:#d6ead6;
+    color:#82b675;
 }
 
 
