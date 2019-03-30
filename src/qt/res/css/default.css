@@ -157,7 +157,7 @@ QHBoxLayout {
 
 QLabel { /* Base Text Size & Color */
     font-size:12px;
-    color:#82b675;
+    color:#d6ead6;
 }
 
 
@@ -1695,12 +1695,12 @@ QCalendarView {
 }
 
 QCalendarWidget QWidget#qt_calendar_navigationbar { /* Calendar widget navigation bar */
-    background-color:#ffffff;
+    background-color:#82b675;
     font-weight:bold;
 }
 
 QCalendarWidget QAbstractItemView { /* Calendar widget days */
-    alternate-background-color:#000000;
+    alternate-background-color:#82b675;
     background-color:#e7f4e7;
 }
 
