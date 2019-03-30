@@ -132,11 +132,11 @@ QGroupBox {
 
 QToolTip {
     background-color:#235b15;
-    color:#235b15;
+    color:#d3e7d3;
 }
 
 QTextEdit {
-    background-color:#c3eeb9;
+    background-color:#d3e7d3;
     color:#235b15;
 }
 
