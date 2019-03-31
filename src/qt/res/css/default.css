@@ -116,7 +116,7 @@ QTabBar {
 }
 
 QTabBar::tab:hover:!selected {
-    background-color:#276119;
+    background-color:#e7f4e7;
 }
 
 QWidget {
