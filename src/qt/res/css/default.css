@@ -35,21 +35,21 @@ QStatusBar {
 }
 
 QMenuBar {
-    background-color:#e7f4e7;
+    background-color:#c4e3c4;
 	min-height:2em;
 }
 
 QMenuBar::item {
-    background-color:#e7f4e7;
+    background-color:#c4e3c4;
     color:#276119;
 }
 
 QMenuBar::item:selected {
-    background-color:#e7f4e7;
+    background-color:#c4e3c4;
 }
 
 QMenu {
-    background-color:#e7f4e7;
+    background-color:#c4e3c4;
 }
 
 QMenu::item {
