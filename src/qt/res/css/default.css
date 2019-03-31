@@ -96,7 +96,7 @@ QProgressBar {
 }
 
 QProgressBar::chunk {
-    background-color:#FFFFFF; /* TEST COLOR */
+    background-color:#c4e3c4; /* TEST COLOR */
     width: 20px;
 }
 
@@ -132,7 +132,7 @@ QGroupBox {
 
 QToolTip {
     background-color:#276119;
-    color:#d3e7d3;
+    color:#276119; /* TEST COLOR */
 }
 
 QTextEdit {
