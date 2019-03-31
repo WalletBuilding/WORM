@@ -91,12 +91,12 @@ QMessageBox {
 QProgressBar {
     color:#276119;
     border: none;
-    background-color: #e7f4e7;
+    background-color: #e7f4e7; /* TEST COLOR */
 	min-height:2em;
 }
 
 QProgressBar::chunk {
-    background-color:#276119;
+    background-color:#FFFFFF; /* TEST COLOR */
     width: 20px;
 }
 
@@ -144,7 +144,7 @@ QTextEdit {
 QWidget .QFrame#frame > .QLabel#progressBarLabel {
     color: #daf0d5;
 	border: none !important;
-	border: 2px solid #276119;
+	border: 2px solid #e7f4e7;
 }
 
 
