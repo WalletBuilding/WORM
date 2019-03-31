@@ -24,7 +24,7 @@
 #include "transactionview.h"
 #include "walletmodel.h"
 #include "smartcontract.h"
-#include "wrmtoken.h"
+#include "mwbtoken.h"
 #include "restoredialog.h"
 
 #include "ui_interface.h"
@@ -50,7 +50,7 @@ WalletView::WalletView(const PlatformStyle* platformStyle, QWidget* parent) : QS
     explorerWindow = new BlockExplorer(platformStyle, this);
     transactionsPage = new QWidget(this);
     smartContractPage = new SmartContract(this);
-    WRMTokenPage = new WRMToken(this);
+    MWBTokenPage = new MWBToken(this);
     QVBoxLayout* vbox = new QVBoxLayout();
     QHBoxLayout* hbox_buttons = new QHBoxLayout();
     transactionView = new TransactionView(platformStyle, this);
@@ -88,7 +88,7 @@ WalletView::WalletView(const PlatformStyle* platformStyle, QWidget* parent) : QS
     addWidget(sendCoinsPage);
     addWidget(explorerWindow);
     addWidget(smartContractPage);   // Testing
-    addWidget(WRMTokenPage);
+    addWidget(MWBTokenPage);
 
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
@@ -99,8 +99,8 @@ WalletView::WalletView(const PlatformStyle* platformStyle, QWidget* parent) : QS
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
 
-    // Clicking on a token on the overview pre-selects the token on the WRM Token page
-    connect(overviewPage, &OverviewPage::tokenClicked, WRMTokenPage, &WRMToken::focusToken);
+    // Clicking on a token on the overview pre-selects the token on the MWB Token page
+    connect(overviewPage, &OverviewPage::tokenClicked, MWBTokenPage, &MWBToken::focusToken);
 
     connect(overviewPage, SIGNAL(outOfSyncWarningClicked()), this, SLOT(requestedSyncWarningInfo()));
 
@@ -131,9 +131,9 @@ void WalletView::setBitcoinGUI(BitcoinGUI* gui)
         connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)),
                 gui, SLOT(gotoHistoryPage()));
 
-        // Clicking on a token on the overview page simply sends you to WRM Token page
+        // Clicking on a token on the overview page simply sends you to MWB Token page
         connect(overviewPage,SIGNAL(tokenClicked(QModelIndex)),
-                gui, SLOT(gotoWRMTokenPage()));
+                gui, SLOT(gotoMWBTokenPage()));
 
         // Receive and report messages
         connect(this, SIGNAL(message(QString, QString, unsigned int)), gui, SLOT(message(QString, QString, unsigned int)));
@@ -151,7 +151,7 @@ void WalletView::setBitcoinGUI(BitcoinGUI* gui)
         connect(this, SIGNAL(incomingTokenTransaction(QString,QString,QString,QString,QString,QString)), gui, SLOT(incomingTokenTransaction(QString,QString,QString,QString,QString,QString)));
 
         // Clicking on add token button sends you to add token page
-        connect(overviewPage, SIGNAL(addTokenClicked(bool)), gui, SLOT(gotoWRMTokenPage(bool)));
+        connect(overviewPage, SIGNAL(addTokenClicked(bool)), gui, SLOT(gotoMWBTokenPage(bool)));
 
     }
 }
@@ -163,7 +163,7 @@ void WalletView::setClientModel(ClientModel* clientModel)
     overviewPage->setClientModel(clientModel);
     sendCoinsPage->setClientModel(clientModel);
     smartContractPage->setClientModel(clientModel);
-    WRMTokenPage->setClientModel(clientModel);
+    MWBTokenPage->setClientModel(clientModel);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeManagerPage->setClientModel(clientModel);
@@ -178,7 +178,7 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     transactionView->setModel(walletModel);
     overviewPage->setWalletModel(walletModel);
     smartContractPage->setModel(walletModel);
-    WRMTokenPage->setModel(walletModel);
+    MWBTokenPage->setModel(walletModel);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeManagerPage->setWalletModel(walletModel);
@@ -281,11 +281,11 @@ void WalletView::gotoSmartContractPage()
     setCurrentWidget(smartContractPage);       //Testing
 }
 
-void WalletView::gotoWRMTokenPage(bool toAddTokenPage)
+void WalletView::gotoMWBTokenPage(bool toAddTokenPage)
 {
-    setCurrentWidget(WRMTokenPage);
+    setCurrentWidget(MWBTokenPage);
     if(toAddTokenPage)
-        WRMTokenPage->on_goToAddTokenPage();
+        MWBTokenPage->on_goToAddTokenPage();
 }
 
 void WalletView::gotoReceiveCoinsPage()

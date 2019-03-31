@@ -1,5 +1,5 @@
-#ifndef WRMTOKEN_H
-#define WRMTOKEN_H
+#ifndef MWBTOKEN_H
+#define MWBTOKEN_H
 
 #include "sendtokenpage.h"
 #include "receivetokenpage.h"
@@ -17,16 +17,16 @@ class QMenu;
 class QSortFilterProxyModel;
 
 namespace Ui {
-class WRMToken;
+class MWBToken;
 }
 
-class WRMToken : public QWidget
+class MWBToken : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit WRMToken(QWidget *parent = 0);
-    ~WRMToken();
+    explicit MWBToken(QWidget *parent = 0);
+    ~MWBToken();
 
     void setModel(WalletModel *_model);
     void setClientModel(ClientModel *clientModel);
@@ -49,7 +49,7 @@ public Q_SLOTS:
     void removeToken();
     void focusToken(const QModelIndex& index);
 private:
-    Ui::WRMToken *ui;
+    Ui::MWBToken *ui;
     SendTokenPage* m_sendTokenPage;
     ReceiveTokenPage* m_receiveTokenPage;
     AddTokenPage* m_addTokenPage;
@@ -65,4 +65,4 @@ private:
     QMenu *contextMenu;
 };
 
-#endif // WRMTOKEN_H
+#endif // MWBTOKEN_H

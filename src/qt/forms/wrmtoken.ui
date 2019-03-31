@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>WRMToken</class>
- <widget class="QWidget" name="WRMToken">
+ <class>MWBToken</class>
+ <widget class="QWidget" name="MWBToken">
   <property name="geometry">
    <rect>
     <x>0</x>

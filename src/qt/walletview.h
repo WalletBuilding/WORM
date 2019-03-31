@@ -25,7 +25,7 @@ class BlockExplorer;
 class CreateContract;
 class SendToContract;
 class CallContractPage;
-class WRMToken;
+class MWBToken;
 
 
 QT_BEGIN_NAMESPACE
@@ -70,7 +70,7 @@ private:
 
     OverviewPage* overviewPage;
     SmartContract* smartContractPage;
-    WRMToken* WRMTokenPage;
+    MWBToken* MWBTokenPage;
     QWidget* transactionsPage;
     ReceiveCoinsDialog* receiveCoinsPage;
     SendCoinsDialog* sendCoinsPage;
@@ -92,8 +92,8 @@ public Q_SLOTS:
     void gotoMasternodePage();
     /** Switch to smart contract page */
     void gotoSmartContractPage();
-    /** Switch to WRMToken page */
-    void gotoWRMTokenPage(bool toAddTokenPage);
+    /** Switch to MWBToken page */
+    void gotoMWBTokenPage(bool toAddTokenPage);
     /** Switch to explorer page */
     void gotoBlockExplorerPage();
     /** Switch to receive coins page */

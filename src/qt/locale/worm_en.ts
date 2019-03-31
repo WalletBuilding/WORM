@@ -774,12 +774,12 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>&amp;WRM Token</source>
+        <source>&amp;MWB Token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>WRM Token (send, receive or add Token in list)</source>
+        <source>MWB Token (send, receive or add Token in list)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3337,36 +3337,36 @@
     </message>
 </context>
 <context>
-    <name>WRMToken</name>
+    <name>MWBToken</name>
     <message>
-        <location filename="../forms/wrmtoken.ui" line="+14"/>
-        <location filename="../forms/ui_wrmtoken.h" line="+115"/>
+        <location filename="../forms/mwbtoken.ui" line="+14"/>
+        <location filename="../forms/ui_mwbtoken.h" line="+115"/>
         <source>Form</source>
         <translation type="unfinished">Form</translation>
     </message>
     <message>
         <location line="+31"/>
-        <location filename="../forms/ui_wrmtoken.h" line="+1"/>
-        <location filename="../wrmtoken.cpp" line="+127"/>
+        <location filename="../forms/ui_mwbtoken.h" line="+1"/>
+        <location filename="../mwbtoken.cpp" line="+127"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+19"/>
-        <location filename="../forms/ui_wrmtoken.h" line="+1"/>
-        <location filename="../wrmtoken.cpp" line="+1"/>
+        <location filename="../forms/ui_mwbtoken.h" line="+1"/>
+        <location filename="../mwbtoken.cpp" line="+1"/>
         <source>Receive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+19"/>
-        <location filename="../forms/ui_wrmtoken.h" line="+1"/>
-        <location filename="../wrmtoken.cpp" line="+1"/>
+        <location filename="../forms/ui_mwbtoken.h" line="+1"/>
+        <location filename="../mwbtoken.cpp" line="+1"/>
         <source>AddToken</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wrmtoken.cpp" line="+11"/>
+        <location filename="../mwbtoken.cpp" line="+11"/>
         <source>Copy token address</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4488,7 +4488,7 @@ https://www.transifex.com/wormcore/wormcore</source>
     <message>
         <location line="+886"/>
         <location filename="../forms/ui_overviewpage.h" line="+31"/>
-        <source>WRM Tokens</source>
+        <source>MWB Tokens</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7144,7 +7144,7 @@ https://www.transifex.com/wormcore/wormcore</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>The amount in WRM Token to send.</source>
+        <source>The amount in MWB Token to send.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

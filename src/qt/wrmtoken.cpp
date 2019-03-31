@@ -1,5 +1,5 @@
-#include "wrmtoken.h"
-#include "ui_wrmtoken.h"
+#include "mwbtoken.h"
+#include "ui_mwbtoken.h"
 #include "tokenitemmodel.h"
 #include "walletmodel.h"
 #include "tokentransactionview.h"
@@ -93,9 +93,9 @@ public:
     }
 };
 
-WRMToken::WRMToken(QWidget *parent) :
+MWBToken::MWBToken(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::WRMToken),
+    ui(new Ui::MWBToken),
     m_model(0),
     m_clientModel(0),
     m_tokenModel(0),
@@ -165,12 +165,12 @@ WRMToken::WRMToken(QWidget *parent) :
     on_goToSendTokenPage();
 }
 
-WRMToken::~WRMToken()
+MWBToken::~MWBToken()
 {
     delete ui;
 }
 
-void WRMToken::setModel(WalletModel *_model)
+void MWBToken::setModel(WalletModel *_model)
 {
     m_model = _model;
     m_addTokenPage->setModel(m_model);
@@ -201,32 +201,32 @@ void WRMToken::setModel(WalletModel *_model)
     }
 }
 
-void WRMToken::setClientModel(ClientModel *_clientModel)
+void MWBToken::setClientModel(ClientModel *_clientModel)
 {
     m_clientModel = _clientModel;
     m_sendTokenPage->setClientModel(_clientModel);
     m_addTokenPage->setClientModel(_clientModel);
 }
 
-void WRMToken::on_goToSendTokenPage()
+void MWBToken::on_goToSendTokenPage()
 {
     m_sendAction->setChecked(true);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void WRMToken::on_goToReceiveTokenPage()
+void MWBToken::on_goToReceiveTokenPage()
 {
     m_receiveAction->setChecked(true);
     ui->stackedWidget->setCurrentIndex(1);
 }
 
-void WRMToken::on_goToAddTokenPage()
+void MWBToken::on_goToAddTokenPage()
 {
     m_addTokenAction->setChecked(true);
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-void WRMToken::on_currentTokenChanged(QModelIndex index)
+void MWBToken::on_currentTokenChanged(QModelIndex index)
 {
     if(m_tokenModel)
     {
@@ -255,7 +255,7 @@ void WRMToken::on_currentTokenChanged(QModelIndex index)
     }
 }
 
-void WRMToken::on_dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
+void MWBToken::on_dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
 {
     Q_UNUSED(bottomRight);
     Q_UNUSED(roles);
@@ -271,14 +271,14 @@ void WRMToken::on_dataChanged(const QModelIndex &topLeft, const QModelIndex &bot
     }
 }
 
-void WRMToken::on_currentChanged(QModelIndex current, QModelIndex previous)
+void MWBToken::on_currentChanged(QModelIndex current, QModelIndex previous)
 {
     Q_UNUSED(previous);
 
     on_currentTokenChanged(current);
 }
 
-void WRMToken::on_rowsInserted(QModelIndex index, int first, int last)
+void MWBToken::on_rowsInserted(QModelIndex index, int first, int last)
 {
     Q_UNUSED(index);
     Q_UNUSED(first);
@@ -292,7 +292,7 @@ void WRMToken::on_rowsInserted(QModelIndex index, int first, int last)
     }
 }
 
-void WRMToken::contextualMenu(const QPoint &point)
+void MWBToken::contextualMenu(const QPoint &point)
 {
     QModelIndex index = ui->tokensList->indexAt(point);
     QModelIndexList selection = ui->tokensList->selectionModel()->selectedIndexes();
@@ -305,27 +305,27 @@ void WRMToken::contextualMenu(const QPoint &point)
     }
 }
 
-void WRMToken::copyTokenAddress()
+void MWBToken::copyTokenAddress()
 {
     GUIUtil::copyEntryDataFromList(ui->tokensList, TokenItemModel::AddressRole);
 }
 
-void WRMToken::copyTokenBalance()
+void MWBToken::copyTokenBalance()
 {
     GUIUtil::copyEntryDataFromList(ui->tokensList, TokenItemModel::BalanceRole);
 }
 
-void WRMToken::copyTokenName()
+void MWBToken::copyTokenName()
 {
     GUIUtil::copyEntryDataFromList(ui->tokensList, TokenItemModel::NameRole);
 }
 
-void WRMToken::copySenderAddress()
+void MWBToken::copySenderAddress()
 {
     GUIUtil::copyEntryDataFromList(ui->tokensList, TokenItemModel::SenderRole);
 }
 
-void WRMToken::removeToken()
+void MWBToken::removeToken()
 {
     QMessageBox::StandardButton btnRetVal = QMessageBox::question(this, tr("Confirm token remove"), tr("The selected token will be removed from the list. Are you sure?"),
                                                                   QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
@@ -343,7 +343,7 @@ void WRMToken::removeToken()
 }
 
 
-void WRMToken::focusToken(const QModelIndex& idx)
+void MWBToken::focusToken(const QModelIndex& idx)
 {
     if (!m_tokenModel)
         return;

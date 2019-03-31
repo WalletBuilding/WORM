@@ -309,7 +309,7 @@
             <item row="1" column="0">
              <widget class="QLabel" name="labelBalanceText">
               <property name="text">
-               <string>SPENDABLE </string>
+               <string>SPENDABLE</string>
               </property>
              </widget>
             </item>
@@ -1310,7 +1310,7 @@
             </font>
            </property>
            <property name="text">
-            <string>WRM Tokens</string>
+            <string>MWB Tokens</string>
            </property>
            <property name="leftMargin" stdset="0">
             <number>0</number>

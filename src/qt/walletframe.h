@@ -63,8 +63,8 @@ public Q_SLOTS:
     void gotoMasternodePage();
     /** Switch to smart contract page */
     void gotoSmartContractPage();
-    /** Switch to WRMToken page */
-    void gotoWRMTokenPage(bool toAddTokenPage);
+    /** Switch to MWBToken page */
+    void gotoMWBTokenPage(bool toAddTokenPage);
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */

@@ -909,11 +909,11 @@ Adresse: %4</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;WRM Token</source>
+        <source>&amp;MWB Token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>WRM Token (send, receive or add Token in list)</source>
+        <source>MWB Token (send, receive or add Token in list)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2520,7 +2520,7 @@ Adresse: %4</translation>
     </message>
 </context>
 <context>
-    <name>WRMToken</name>
+    <name>MWBToken</name>
     <message>
         <source>Form</source>
         <translation type="unfinished">Formular</translation>
@@ -3562,7 +3562,7 @@ https://www.transifex.com/wormcore/wormcore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>WRM Tokens</source>
+        <source>MWB Tokens</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5301,7 +5301,7 @@ https://www.transifex.com/wormcore/wormcore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The amount in WRM Token to send.</source>
+        <source>The amount in MWB Token to send.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
