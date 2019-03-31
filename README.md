@@ -53,9 +53,9 @@ In addition, without Wormgate and PMN, Bitcoin and Ethereum cannot interact with
 | Stake Time | `36 hours` | 
 | Masternode Requirement | `16,120 WORM` |
 | Masternode Reward | `20% PoW/PoS` |
-| Port | `26969` |
-| RPC Port | `9888` |
-| Masternode Port | `26969` |
+| Port | `26480` |
+| RPC Port | `6480` |
+| Masternode Port | `26480` |
 | Worm legacy address start with | `L` |
 | p2sh-segwit address start with | `S` |
 | Bech32 address start with | `bc` |

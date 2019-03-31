@@ -12,8 +12,8 @@ RUN cp wormd /usr/local/bin
 
 VOLUME ["/opt/worm"]
 
-EXPOSE 9888
-EXPOSE 9888
+EXPOSE 6480
+EXPOSE 6480
 EXPOSE 9777
 EXPOSE 9777
 

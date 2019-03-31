@@ -30,8 +30,8 @@ A Docker configuration with wormd node by default.
      --env 'WORM_RPCPASSWORD=rpcpassword' \
      --env 'WORM_TXINDEX=1' \
      --volume ~/worm-mounted-data:~/.worm \
-     -p 9888:9888 \
-     --publish 9888:9888 \
+     -p 6480:6480 \
+     --publish 6480:6480 \
      wormcore/worm
 ----------------------------------------------------
 Logs
@@ -50,7 +50,7 @@ on environment variables passed to the container:
 | ---- | ------- |
 | BTC_RPCUSER | rpcuser |
 | BTC_RPCPASSWORD | rpcpassword |
-| BTC_RPCPORT | 9888 |
+| BTC_RPCPORT | 6480 |
 | BTC_RPCALLOWIP | ::/0 |
 | BTC_RPCCLIENTTIMEOUT | 30 |
 | BTC_DISABLEWALLET | 1 |
@@ -84,8 +84,8 @@ ExecStartPre=-/usr/bin/docker rm worm
 ExecStartPre=/usr/bin/docker pull wormcore/worm
 ExecStart=/usr/bin/docker run \
     --name worm \
-    -p 9888:9888 \
-    -p 9888:9888 \
+    -p 6480:6480 \
+    -p 6480:6480 \
     -v /data/wormd:/root/.worm \
     wormcore/worm
 ExecStop=/usr/bin/docker stop worm
