@@ -142,9 +142,10 @@ QTextEdit {
 
 
 QWidget .QFrame#frame > .QLabel#progressBarLabel {
-    color: #daf0d5;
+    color: #276119;
 	border: none !important;
-	border: 2px solid #e7f4e7;
+	/* TEST COLOR BELOW */
+	/* border: 2px solid #e7f4e7; */
 }
 
 
