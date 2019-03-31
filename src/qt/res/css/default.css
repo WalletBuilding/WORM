@@ -270,7 +270,7 @@ QPushButtonGrey:pressed {
 QComboBox { /* Dropdown Menus */
     border:1px solid #276119;
     padding: 3px 5px 3px 5px;
-    background:#e7f4e7;
+    background:#c4e3c4;
     min-height:25px;
     color:#276119;
 }
