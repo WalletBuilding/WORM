@@ -159,9 +159,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle* n
     enableWallet = WalletModel::isWalletEnabled();
 #endif // ENABLE_WALLET
     if (enableWallet) {
-        windowTitle += tr("Wallet");
+        windowTitle += tr("Wallet via Mealworms.biz");
     } else {
-        windowTitle += tr("Node");
+        windowTitle += tr("Node via Mealworms.biz");
     }
     QString userWindowTitle = QString::fromStdString(GetArg("-windowtitle", ""));
     if (!userWindowTitle.isEmpty()) windowTitle += " - " + userWindowTitle;

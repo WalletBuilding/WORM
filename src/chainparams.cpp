@@ -142,10 +142,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x6a;
-        pchMessageStart[1] = 0xb3;
-        pchMessageStart[2] = 0xc8;
-        pchMessageStart[3] = 0xa9;
+        pchMessageStart[0] = 0x61;
+        pchMessageStart[1] = 0xb1;
+        pchMessageStart[2] = 0xc1;
+        pchMessageStart[3] = 0xa1;
         vAlertPubKey = ParseHex("042d13c016ed91528241bcff222989769417eb10cdb679228c91e26e26900eb9fd053cd9f16a9a2894ad5ebbd551be1a4bd23bd55023679be17f0bd3a16e6fbeba");
         nDefaultPort = 26480;
         nMaxReorganizationDepth = 100;
@@ -257,9 +257,9 @@ public:
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
         pchMessageStart[0] = 0x54;
-        pchMessageStart[1] = 0x67;
-        pchMessageStart[2] = 0x51;
-        pchMessageStart[3] = 0xab;
+        pchMessageStart[1] = 0x64;
+        pchMessageStart[2] = 0x55;
+        pchMessageStart[3] = 0xa4;
         vAlertPubKey = ParseHex("000010e83b2703ccf322f7dbd62dd5855ac7c10bd055814ce121ba32607d573b8810c02c0582aed05b4deb9c4b77b26d92428c61256cd42774babea0a073b2ed0c9");
         nDefaultPort = 28333;
         nMinerThreads = 0;
@@ -387,10 +387,10 @@ public:
         nFirstSCBlock = 350000;
         nSplitRewardBlock = 50;
 
-        pchMessageStart[0] = 0xa1;
-        pchMessageStart[1] = 0xcf;
-        pchMessageStart[2] = 0x7e;
-        pchMessageStart[3] = 0xac;
+        pchMessageStart[0] = 0xaa;
+        pchMessageStart[1] = 0xca;
+        pchMessageStart[2] = 0x7a;
+        pchMessageStart[3] = 0xab;
         nMinerThreads = 1;
         nMaturity = 2;
         genesis.nTime = 1454124731;
@@ -489,10 +489,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0xf9;
-        pchMessageStart[1] = 0x73;
-        pchMessageStart[2] = 0xc9;
-        pchMessageStart[3] = 0xa7;
+        pchMessageStart[0] = 0xfb;
+        pchMessageStart[1] = 0x7b;
+        pchMessageStart[2] = 0xcb;
+        pchMessageStart[3] = 0xab;
         vAlertPubKey = ParseHex("042d13c016ed91528241bcff222989769417eb10cdb679228c91e26e26900eb9fd053cd9f16a9a2894ad5ebbd551be1a4bd23bd55023679be17f0bd3a16e6fbeba");
         nDefaultPort = 25666;
         nMaxReorganizationDepth = 100;

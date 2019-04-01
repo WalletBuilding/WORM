@@ -38,9 +38,9 @@ import sys, os
 import re
 
 # ipv4 in ipv6 prefix
-pchIPv4 = bytearray([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff])
+pchIPv4 = bytearray([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xfd, 0xfd])
 # tor-specific ipv6 prefix
-pchOnionCat = bytearray([0xFD,0x87,0xD8,0x7E,0xEB,0x43])
+pchOnionCat = bytearray([0xF2,0x82,0xD2,0x72,0xE2,0x42])
 
 def name_to_ipv6(addr):
     if len(addr)>6 and addr.endswith('.onion'):
