@@ -72,7 +72,7 @@ using namespace std;
 
 const int LAST_HEIGHT_FEE_BLOCK = 180000;
 
-static const int POS_REWARD_CHANGED_BLOCK = 300000;
+static const int POS_REWARD_CHANGED_BLOCK = 1000;
 
 /**
  * Global WormState

@@ -57,13 +57,13 @@ bool CheckProof(uint256 hash, unsigned int nBits)
 //    timestamp before)
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints = boost::assign::map_list_of
-                ( 0,   uint256("0x00000759bb3da130d7c9aedae170da8335f5a0d01a9007e4c8d3ccd08ace6a42") )
+                ( 0,   uint256("0x000008bf40a76a79ff657c95ff5c47fd768bf3a6c647821c8202754a3b538fd7") )
 
 ;
 
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-        1507656633, // * UNIX timestamp of last checkpoint block
+        1554334523, // * UNIX timestamp of last checkpoint block
         0,    // * total number of transactions between genesis and last checkpoint
         //               (the tx=... number in UpdateTip debug.log lines)
         0 // * estimated number of transactions per day after checkpoint
@@ -119,11 +119,11 @@ public:
         // Deployment of SegWit (BIP141 and BIP143)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1530428034; // 01/07/2018
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1561964034; // 01/07/2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1554334523; // 01/07/2019
 
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1530428034; // 01/07/2018
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1561964034; // 01/07/2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1554334523; // 01/07/2019
 
         //SMART_CONTRACTS_HARDFORK deployment does not require start time and timeout, because it uses block number
         //This is not used now, because we need to check this bit in block.h using versionbits, which results in cyclic
@@ -131,22 +131,22 @@ public:
         //TODO: fix cyclic dependency
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
-        nSwitchPhi2Block = 299501;
-        nFirstSCBlock = 350000;
-        nPruneAfterHeight = 300000;
-        nSplitRewardBlock = 300000;
-        nPreminePaymentandHardForkBlock = 621950;
+        nSwitchPhi2Block = 200;
+        nFirstSCBlock = 129600;
+        nPruneAfterHeight = 750;
+        nSplitRewardBlock = 500;
+        nPreminePaymentandHardForkBlock = 500;
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x61;
-        pchMessageStart[1] = 0xb1;
-        pchMessageStart[2] = 0xc1;
+        pchMessageStart[0] = 0x62;
+        pchMessageStart[1] = 0xba;
+        pchMessageStart[2] = 0xcc;
         pchMessageStart[3] = 0xa1;
-        vAlertPubKey = ParseHex("042d13c016ed91528241bcff222989769417eb10cdb679228c91e26e26900eb9fd053cd9f16a9a2894ad5ebbd551be1a4bd23bd55023679be17f0bd3a16e6fbeba");
+        vAlertPubKey = ParseHex("04e1334d6d540627ff95d58be77fd3f7d7b2fb86f8e5088d970c03849522848b3557e2afe359027294fe3895b964daeaba54d23541282f7d10124d81cbf29f2119");
         nDefaultPort = 26480;
         nMaxReorganizationDepth = 100;
         nMinerThreads = 0;
@@ -154,10 +154,10 @@ public:
         nMasternodeCountDrift = 20;
         nModifierUpdateBlock = 615800;
 
-        const char* pszTimestamp = "Lux - Implemented New PHI Algo PoW/PoS Hybird - Parallel Masternode - ThankYou - 216k155"; // Input Activation code to activate blockchain
+        const char* pszTimestamp = "If worms carried pistols, birds wouldn't eat 'em."; // Input Activation code to activate blockchain
         CMutableTransaction txNew;
         txNew.nVersion = 1;
-        txNew.nTime = 1507656633;
+        txNew.nTime = 1554334523;
         txNew.nLockTime = 0;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -168,21 +168,21 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
         genesis.nVersion = 1;
-        genesis.nTime = 1507656633; //10/10/2017
+        genesis.nTime = 1554334523; //10/10/2017
         genesis.nBits = 0x1e0fffff;
-        genesis.nNonce = 986946;
+        genesis.nNonce = 471871;
         genesis.hashStateRoot = uint256(h256Touint(dev::h256("e965ffd002cd6ad0e2dc402b8044de833e06b23127ea8c3d80aec91410771495"))); // worm
         genesis.hashUTXORoot = uint256(h256Touint(dev::sha3(dev::rlp("")))); // worm
-
+                
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256("0x00000759bb3da130d7c9aedae170da8335f5a0d01a9007e4c8d3ccd08ace6a42"));
-        assert(genesis.hashMerkleRoot == uint256("0xe08ae0cfc35a1d70e6764f347fdc54355206adeb382446dd54c32cd0201000d3"));
+        assert(consensus.hashGenesisBlock == uint256("0x000008bf40a76a79ff657c95ff5c47fd768bf3a6c647821c8202754a3b538fd7"));
+        assert(genesis.hashMerkleRoot == uint256("0xe9f1cde73194c816312e7e4c75131d5a776ece5344c61b2c354221a1bf421d4c"));
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
-        vSeeds.push_back(CDNSSeedData("Seed1", "wormv2.mealworms.biz"));       // WORM seeder
-		vSeeds.push_back(CDNSSeedData("65.30.166.214", "65.30.166.214"));
-        vSeeds.push_back(CDNSSeedData("172.68.174.87", "172.68.174.87"));
+        //vSeeds.push_back(CDNSSeedData("Seed1", "wormv2.mealworms.biz"));       // WORM seeder
+		//vSeeds.push_back(CDNSSeedData("65.30.166.214", "65.30.166.214"));
+        //vSeeds.push_back(CDNSSeedData("172.68.174.87", "172.68.174.87"));
         //vSeeds.push_back(CDNSSeedData("Seed2", "seed.wormseeds.nl"));        // WORM seeder
         //vSeeds.push_back(CDNSSeedData("Seed3", "worm.yiimp.eu"));            // WORM seeder with IPv6
 
@@ -199,10 +199,10 @@ public:
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
-        fMineBlocksOnDemand = false;
+        fMineBlocksOnDemand = true;
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
@@ -211,7 +211,7 @@ public:
         strSporkKey = "04a983220ea7a38a7106385003fef77896538a382a0dcc389cc45f3c98751d9af423a097789757556259351198a8aaa628a1fd644c3232678c5845384c744ff8d7";
 
         strDarksendPoolDummyAddress = "LgcjpYxWa5EB9KCYaRtpPgG8kgiWRvJY38";
-        nStartMasternodePayments = 1507656633; // 10/10/2017
+        nStartMasternodePayments = 1554334523; 
 
         nStakingRoundPeriod = 120; // 2 minutes a round
         nStakingInterval = 22;
@@ -287,14 +287,13 @@ public:
         genesis.nNonce = 7170961;
         genesis.hashStateRoot = uint256(h256Touint(dev::h256("e965ffd002cd6ad0e2dc402b8044de833e06b23127ea8c3d80aec91410771495"))); // worm
         genesis.hashUTXORoot = uint256(h256Touint(dev::sha3(dev::rlp("")))); // worm
+       //while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
+       //    genesis.nNonce ++;
+       // }
 
-//        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
-//            genesis.nNonce ++;
-//        }
-
-//        std::cout << genesis.nNonce << std::endl;
-//        std::cout << genesis.GetHash().GetHex() << std::endl;
-//        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
+       //std::cout << genesis.nNonce << std::endl;
+       // std::cout << genesis.GetHash().GetHex() << std::endl;
+       // std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
 
         nSwitchPhi2Block = 1000;
         nSplitRewardBlock = 1500;
@@ -309,8 +308,8 @@ public:
 
         //vFixedSeeds.clear();
         //vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("65.30.166.214", "65.30.166.214"));
-        vSeeds.push_back(CDNSSeedData("172.68.174.87", "172.68.174.87"));
+        //vSeeds.push_back(CDNSSeedData("65.30.166.214", "65.30.166.214"));
+        //vSeeds.push_back(CDNSSeedData("172.68.174.87", "172.68.174.87"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 48); // Testnet worm addresses start with 'l'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 63);  // Testnet worm script addresses start with 'S'
@@ -554,7 +553,7 @@ public:
         strSporkKey = "04a983220ea7a38a7106385003fef77896538a382a0dcc389cc45f3c98751d9af423a097789757556259351198a8aaa628a1fd644c3232678c5845384c744ff8d7";
 
         strDarksendPoolDummyAddress = "LgcjpYxWa5EB9KCYaRtpPgG8kgiWRvJY38";
-        nStartMasternodePayments = 1507656633; // 10/10/2017
+        nStartMasternodePayments = 1554334523; // 10/10/2017
 
         nStakingRoundPeriod = 120; // 2 minutes a round
         nStakingInterval = 22;
