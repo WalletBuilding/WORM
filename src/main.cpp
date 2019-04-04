@@ -91,7 +91,7 @@ bool fRecordLogOpcodes = false;
 bool fIsVMlogFile = false;
 bool fGettingValuesDGP = false;
 
-std::string SCVersion ("/Wormcore:5.2.5/");
+std::string SCVersion ("/Wormcore:2.0.0/");
 
 
 /** The maximum allowed size for a serialized block, in bytes (only for buffer size limits) */
@@ -4943,12 +4943,6 @@ bool ProcessNewBlock(CValidationState& state, const CChainParams& chainparams, C
         }
     }
 
-    // Reject all blocks from old chain forks
-    if (nHeight > SNAPSHOT_BLOCK && pblock->nTime < SNAPSHOT_VALID_TIME) {
-        return error("%s: Invalid block %d, time too old (%x) for %s",
-                __func__, nHeight, pblock->nTime, pblock->GetHash().GetHex());
-    }
-
     CBlockIndex* pindex = NULL;
     while (true) {
         TRY_LOCK(cs_main, lockMain);
@@ -6282,6 +6276,7 @@ int GetMajorVersionFromVersion(const string& cleanVersion) {
 
 static bool ProcessMessage(CNode* pfrom, const string &strCommand, CDataStream& vRecv, int64_t nTimeReceived, const CChainParams& chainparams)
 {
+
     if (fDebug) {
         LogPrintf("received: %s (%u bytes) peer=%d\n", SanitizeString(strCommand), vRecv.size(), pfrom->id);
     }
@@ -6321,6 +6316,7 @@ static bool ProcessMessage(CNode* pfrom, const string &strCommand, CDataStream& 
             pfrom->fDisconnect = true;
             return false;
         }
+
         if (pfrom->nVersion < ActiveProtocol()) {
             // disconnect from peers older than this proto version
             LogPrintf("peer=%d using obsolete version %i; disconnecting\n", pfrom->id, pfrom->nVersion);
@@ -6339,12 +6335,6 @@ static bool ProcessMessage(CNode* pfrom, const string &strCommand, CDataStream& 
             pfrom->cleanSubVer = SanitizeString(pfrom->strSubVer);
         }
 
-        //disconnect nodes, which are not upgraded, but the current best block is after hardfork
-        if (pfrom->strSubVer.compare(SCVersion) < 0 || (GetMajorVersionFromVersion(pfrom->cleanSubVer) < CLIENT_VERSION_MAJOR && chainActive.Height() >= chainparams.SwitchPhi2Block())) {
-            pfrom->PushMessage("reject", strCommand, REJECT_OBSOLETE);
-            pfrom->fDisconnect = true;
-            return false;
-        }
         if (!vRecv.empty())
             vRecv >> pfrom->nStartingHeight;
         if (!vRecv.empty())
