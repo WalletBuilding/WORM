@@ -838,7 +838,7 @@ void SocketSendData(CNode* pnode)
                 int nErr = WSAGetLastError();
                 if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS) {
                     LogPrintf("socket send error %s\n", NetworkErrorString(nErr));
-                //    pnode->CloseSocketDisconnect();
+                    pnode->CloseSocketDisconnect();
                 }
             }
             // couldn't send anything at all
