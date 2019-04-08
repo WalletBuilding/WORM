@@ -120,7 +120,7 @@ QTabBar::tab:hover:!selected {
 }
 
 QWidget {
-    selection-background-color:#c9f0c9; /* Object highlight color */
+    selection-background-color:#679e5a; /* Object highlight color */
     selection-color:#679e5a;
     outline:0px; /* Remove Annoying Focus Rectangle */
 }
