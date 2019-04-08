@@ -121,7 +121,7 @@ QTabBar::tab:hover:!selected {
 
 QWidget {
     selection-background-color:#679e5a; /* Object highlight color */
-    selection-color:#679e5a;
+    selection-color:#c4e3c4;
     outline:0px; /* Remove Annoying Focus Rectangle */
 }
 
