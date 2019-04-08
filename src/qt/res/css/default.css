@@ -413,7 +413,7 @@ QTableView::item { /* Table Item */
 }
 
 QTableView::item:selected { /* Table Item Selected */
-    background-color:#2c6a1d;
+    background-color:#679e5a;
     color:#daf0d5;
 }
 
