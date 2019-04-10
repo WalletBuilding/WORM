@@ -1937,25 +1937,7 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
     }
 
     CAmount nSubsidy = 1 * COIN;
-    if (nHeight < 1) {
-        nSubsidy = 1 * COIN;
-    } else if (nHeight == 1) {
-        nSubsidy = 3000000 * COIN;
-    } else if (nHeight < 500) {
-        nSubsidy = 1 * COIN;
-    } else if (nHeight == 501) {
-        nSubsidy = 1000 * COIN;
-    } else if (nHeight < 1000000) {
-        nSubsidy = 10 * COIN;
-    } else if (nHeight < 1001000) {
-        nSubsidy = 30 * COIN;
-    } else if (nHeight < 5000000) {
-        nSubsidy = 10 * COIN;
-    } else if (nHeight < 6000000) {
-        nSubsidy = 10 * COIN;
-    } else {
-        nSubsidy = 1 * COIN;
-    }
+    if (nHeight == 1) { nSubsidy = 1000000 * COIN; }  //Merge NEON and WORM
 
     if (nHeight < LAST_HEIGHT_FEE_BLOCK) {
         if (IsTestNet() && nHeight >= 17500)
@@ -1967,30 +1949,14 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 
 CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 {
-    CAmount nSubsidy = STATIC_POS_REWARD;
-
-    // First 100,000 blocks double stake for masternode ready
-    if (nHeight < 100000) {
-        nSubsidy = 2 * COIN;
-    } else {
-        nSubsidy = 1 * COIN;
-    }
-
+    CAmount nSubsidy = STATIC_POS_REWARD;// Static Stake for swap, doesn't rely on MN Count, yet
     return nSubsidy + nFees;
 }
 
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
     const CChainParams& chainParams = Params();
-    CAmount ret;
-    if (nHeight >= POS_REWARD_CHANGED_BLOCK || IsTestNet()) {
-        ret = blockValue * 0.2; //20% for masternode
-        if (nHeight == chainParams.PreminePayment() && !IsTestNet()) {
-            ret = blockValue * 250000; //premine mint
-        }
-    } else {
-        ret = blockValue * 0.4; //40% for masternode
-    }
+    CAmount ret = blockValue * 0.33; //3% for masternode
     return ret;
 }
 
