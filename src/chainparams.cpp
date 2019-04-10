@@ -110,7 +110,7 @@ public:
         //consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.powLimit = ~uint256(0) >> 20; // WORM starting difficulty is 1 / 2^12
         consensus.nPowTargetTimespan = 30 * 60; //36 * 60 * 60; // WORM: 1 36hrs
-        consensus.nPowTargetSpacing = 30;
+        consensus.nPowTargetSpacing = 4 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1026; // 95% of 1080 is 1026
