@@ -160,7 +160,7 @@ static const bool DEFAULT_ADDRESSINDEX = false;
 static const bool DEFAULT_SPENTINDEX = false;
 static const bool DEFAULT_TXINDEX = true;
 
-static const int64_t STATIC_POS_REWARD = 1 * COIN; //Constant reward 8%
+static const int64_t STATIC_POS_REWARD = 2 * COIN; //Constant reward 8%
 
 static const bool DEFAULT_LOGEVENTS = false;
 
@@ -200,7 +200,7 @@ void updateBlockSizeParams(unsigned int newBlockSize);
 inline bool IsProtocolV2(int nHeight) { return IsTestNet() || nHeight > 0; }
 inline int64_t GetMNCollateral(int nHeight) {
     if (IsTestNet() || Params().NetworkID() == CBaseChainParams::SEGWITTEST || Params().NetworkID() == CBaseChainParams::REGTEST) return 50;
-    return 1000;
+    return 10000;
 }
 
 struct BlockHasher {
