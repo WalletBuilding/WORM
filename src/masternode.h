@@ -231,8 +231,8 @@ public:
     };
 
     CMasternodePayments() {
-        strMainPubKey = "04760f1bfc2b50a9eb1c6f8ecd3adfd5aa7f674eee729719808a48dc1f44f8c3efe81e90293b79ca9905373a9e63194a4054307d463864ca9336a16204c605e4a7";
-        strTestPubKey = "04cc24ab003c828cdd9cf4db2ebbde8e1cecb3bbfa8b3127fcb9dd9b84d44112080827ed7c49a648af9fe788ff42e316aee665879c553f099e55299d6b54edd7e0";
+        strMainPubKey = "04f89d9aba82ec0087bebed21b5f23eccbfa4c97e9e64575eed880fbcb22c715a7674efbf4b8668dd67197d1b2e505fc20575914c6d8c36b2023676361c63b0336";
+        strTestPubKey = "04f89d9aba82ec0087bebed21b5f23eccbfa4c97e9e64575eed880fbcb22c715a7674efbf4b8668dd67197d1b2e505fc20575914c6d8c36b2023676361c63b0336";
         enabled = false;
  }
 
