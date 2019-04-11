@@ -1991,8 +1991,6 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
     } else {
         ret = blockValue * 0.4; //40% for masternode
     }
-    CAmount ret = blockValue * 0.33; //3% for masternode
-
     return ret;
 }
 
