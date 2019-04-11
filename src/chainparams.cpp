@@ -135,6 +135,7 @@ public:
         nFirstSCBlock = 129600;
         nPruneAfterHeight = 750;
         nSplitRewardBlock = 500;
+        nPreminePaymentandHardForkBlock = 500;
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -152,8 +153,6 @@ public:
         nMaturity = 79;
         nMasternodeCountDrift = 20;
         nModifierUpdateBlock = 615800;
-        
-        strDevFundAddress = "SSDx9L7MAmg8yUfqMPTiRPjKJVnMyYz6mG";
 
         const char* pszTimestamp = "If worms carried pistols, birds wouldn't eat 'em."; // Input Activation code to activate blockchain
         CMutableTransaction txNew;
@@ -300,6 +299,7 @@ public:
         nSplitRewardBlock = 1500;
         nPruneAfterHeight = 5000;
         nFirstSCBlock = 10000;
+        nPreminePaymentandHardForkBlock = 50000;
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
@@ -382,6 +382,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
         consensus.powLimit = ~uint256(0) >> 1;
+        nPreminePaymentandHardForkBlock = 60;
         nSwitchPhi2Block = 299501;
         nFirstSCBlock = 350000;
         nSplitRewardBlock = 50;

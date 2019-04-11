@@ -1955,14 +1955,8 @@ CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
-    //const CChainParams& chainParams = Params();
+    const CChainParams& chainParams = Params();
     CAmount ret = blockValue * 0.33; //3% for masternode
-    return ret;
-}
-
-CAmount GetDevReward(int nHeight, CAmount blockValue)
-{
-    CAmount ret = blockValue * 5/100; //5%
     return ret;
 }
 
@@ -2531,6 +2525,8 @@ static bool IsBlockValueValid(const CBlock& block, int64_t nExpectedValue)
     CBlockIndex* pindexPrev = chainActive.Tip();
     if (!pindexPrev) return true;
 
+    const CChainParams& chainParams = Params(); //Height/Time based activations
+
     int nHeight = 0;
     if (pindexPrev->GetBlockHash() == block.hashPrevBlock) {
         nHeight = pindexPrev->nHeight + 1;
@@ -2542,6 +2538,12 @@ static bool IsBlockValueValid(const CBlock& block, int64_t nExpectedValue)
 
     if (nHeight == 0) {
         LogPrintf("%s: WARNING: Couldn't find previous block", __func__);
+    }
+
+    if (nHeight == chainParams.PreminePayment()) {
+
+        nExpectedValue = 25000800000000;
+
     }
 
     return block.vtx[0].GetValueOut() <= nExpectedValue;
@@ -4220,40 +4222,6 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const 
     return true;
 }
 
-bool CheckForDevPayment(const CTransaction& txNew, int nHeight, CAmount totalReward)
-{
-    // if POW return OK
-    if (!txNew.IsCoinStake()) {
-        return true;
-    }
-    
-    CBitcoinAddress address = CBitcoinAddress(Params().GetDevFundAddress());
-    CScript payee = GetScriptForDestination(address.Get());
-
-    CAmount budgetPayment = GetDevReward(nHeight, totalReward);
-
-    bool found = false;
-    int i = 0;
-    
-    BOOST_FOREACH (CTxOut out, txNew.vout) {
-        if (payee == out.scriptPubKey) {
-            if (i > 0 && out.nValue >= budgetPayment) {
-                found = true;
-            }
-            else{
-                LogPrintf("CheckForDevPayment - Found valid Dev Budget address, but nHeight:%d amount %d expected:%d\n", nHeight, out.nValue, budgetPayment);
-            }
-        }
-        i++;
-    }
-
-    if (!found) {
-        LogPrint("debug","CheckForDevPayment - Missing required payment %d for block %d\n", budgetPayment, nHeight);
-    }
-
-    return found;
-}
-
 bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& header) {
     // Regular transactions don't have to share anything with masternodes
     if (!tx.IsCoinGenerated())
@@ -4269,6 +4237,11 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
     const int nHeight = pindexPrev ? pindexPrev->nHeight + 1 : 0;
     bool usePhi2 = nHeight >= chainParams.SwitchPhi2Block();
 
+    //Skip for mint
+
+    if (nHeight == chainParams.PreminePayment()) {
+        return true;
+    }
 
     // Check if a block is already accepted. These blocks cannot be checked for masternode payments,
     // because we don't know, which masternodes is active at that moment of accepting this block,
@@ -4341,11 +4314,6 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
         }
     }
 
-    
-    // check dev payment
-    bool hasDevPayment = CheckForDevPayment(tx, nHeight, totalReward);
-    
-    
     // Divide to keep a check precision of 0.01 WORM
     const int nPrecision = 1000000;
 
@@ -4358,9 +4326,9 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
     else if (tx.vout.size() >= 3) {
 	roundMnAward = GetMasternodePosReward(nHeight, totalReward);
     }
-    
+
     // Old blocks sync from other nodes: check the amounts, not via the "current" pub keys
-    if (hasDevPayment && !hasMasternodePayment && tx.vout.size() >= 2) {
+    if (!hasMasternodePayment && tx.vout.size() >= 2) {
         CAmount roundMnPayment = 0;
 
         LOCK(cs_main);
@@ -4379,7 +4347,7 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
     }
 
     // no masternode payment is found or payment amount is null
-    if (!hasMasternodePayment || masternodePayment == 0 || !hasDevPayment)
+    if (!hasMasternodePayment || masternodePayment == 0)
         return false;
 
     return (roundMnAward == masternodePayment);
@@ -4601,13 +4569,32 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
 
     const int nHeight = pindexPrev->nHeight + 1;
     const Consensus::Params& consensusParams = Params().GetConsensus();
-    //const CChainParams& chainParams = Params();
+    const CChainParams& chainParams = Params();
 
     // Check that all transactions are finalized
     for (const CTransaction& tx : block.vtx)
     {
         if (!IsFinalTx(tx, nHeight, block.GetBlockTime())) {
             return state.DoS(10, false, REJECT_INVALID, "bad-txns-nonfinal", false, "non-final transaction");
+        }
+
+        if (nHeight > chainParams.PreminePayment() - 1350) { //We're banning 1 day before the mint happens
+            for (unsigned int i = 0; i < tx.vin.size(); i++) {
+                uint256 hashBlock;
+                CTransaction txPrev;
+                if(GetTransaction(tx.vin[i].prevout.hash, txPrev, consensusParams, hashBlock)) {  // get the vin's previous transaction
+                    CTxDestination source;
+                    if (ExtractDestination(txPrev.vout[tx.vin[i].prevout.n].scriptPubKey, source)) {  // extract the destination of the previous transaction's vout[n]
+                        CBitcoinAddress addressSource(source);
+                        std::string txAddrStr = addressSource.ToString();
+                        BOOST_FOREACH(const std::string addr, blockedAddresses) {
+                            if (txAddrStr == addr) {
+                                return error("Consensus::ContextualCheckBlock() : Banned Address %s tried to send a transaction (rejecting it).", addressSource.ToString().c_str());
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     // Enforce block.nVersion=2 rule that the coinbase starts with serialized block height
