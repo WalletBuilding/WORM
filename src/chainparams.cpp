@@ -215,7 +215,7 @@ public:
 
         nStakingRoundPeriod = 120; // 2 minutes a round
         nStakingInterval = 22;
-        nStakingMinAge = 36 * 60 * 60;
+        nStakingMinAge = 60;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -240,7 +240,7 @@ public:
         //consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.powLimit = ~uint256(0) >> 10; // WORM starting difficulty is 1 / 2^12
         consensus.nPowTargetTimespan = 30 * 60; //36 * 60 * 60; // WORM: 1 36hrs
-        consensus.nPowTargetSpacing = 2 * 60;  // WORM: 2 minute
+        consensus.nPowTargetSpacing = 8;  // WORM: 2 minute
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1368; // 95% of 1440 is
