@@ -110,7 +110,7 @@ public:
         //consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.powLimit = ~uint256(0) >> 20; // WORM starting difficulty is 1 / 2^12
         consensus.nPowTargetTimespan = 30 * 60; //36 * 60 * 60; // WORM: 1 36hrs
-        consensus.nPowTargetSpacing = 8;  // WORM: 8 Seconds for testing
+        consensus.nPowTargetSpacing = 2 * 60;  // WORM: 2 minute
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1026; // 95% of 1080 is 1026
@@ -131,7 +131,7 @@ public:
         //TODO: fix cyclic dependency
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
-        nSwitchPhi2Block = 1;
+        nSwitchPhi2Block = 200;
         nFirstSCBlock = 129600;
         nPruneAfterHeight = 750;
         nSplitRewardBlock = 500;
