@@ -1231,37 +1231,41 @@ bool Stake::CreateCoinStake(CWallet* wallet, const CKeyStore& keystore, unsigned
     bool hasMasternodePayment = SelectMasternodePayee(payeeScript);
     CAmount blockValue = nCredit;
     CAmount masternodePayment = GetMasternodePosReward(chainActive.Height() + 1, nReward);
+    CAmount devPayment = GetDevReward(chainActive.Height() + 1, nReward);
 
     if (hasMasternodePayment) {
         numout = txNew.vout.size();
         txNew.vout.resize(numout + 1);
         txNew.vout[numout].scriptPubKey = payeeScript;
         txNew.vout[numout].nValue = masternodePayment;
-
-        if (chainActive.Height() + 1 == chainParams.PreminePayment()) {
-
-            blockValue = 0.8 * COIN;
         
-        } else {
+        // dev payment
+        CBitcoinAddress devbaddress = CBitcoinAddress(Params().GetDevFundAddress());
+        txNew.vout.push_back(CTxOut(devPayment, GetScriptForDestination(devbaddress.Get())));
 
-            blockValue -= masternodePayment;
-        }
+        blockValue -= (masternodePayment + devPayment);
 
         CTxDestination txDest;
         ExtractDestination(payeeScript, txDest);
         if (fDebug) LogPrintf("%s: Masternode payment to %s (pos)\n", __func__, EncodeDestination(txDest));
         // Set output amount
-        if (txNew.vout.size() == 4) { // 2 stake outputs, stake was split, plus a masternode payment
+        if (txNew.vout.size() == 5) { // 2 stake outputs, stake was split, plus a masternode payment adn dev payment
             txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
             txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-        } else if (txNew.vout.size() == 3) { // only 1 stake output, was not split, plus a masternode payment
+        } else if (txNew.vout.size() == 4) { // only 1 stake output, was not split, plus a masternode payment and dev payment
             txNew.vout[1].nValue = blockValue;
         }
     } else {
-        if (txNew.vout.size() == 3) { // 2 stake outputs, stake was split, no masternode payment
+        // dev payment
+        CBitcoinAddress devbaddress = CBitcoinAddress(Params().GetDevFundAddress());
+        txNew.vout.push_back(CTxOut(devPayment, GetScriptForDestination(devbaddress.Get())));
+        
+        blockValue -= devPayment;
+        
+        if (txNew.vout.size() == 4) { // 2 stake outputs, stake was split, dev reward and no masternode payment
             txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
             txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-        } else if (txNew.vout.size() == 2) { // only 1 stake output, was not split, no masternode payment
+        } else if (txNew.vout.size() == 3) { // only 1 stake output, was not split, dev reward and no masternode payment
             txNew.vout[1].nValue = blockValue;
         }
     }
