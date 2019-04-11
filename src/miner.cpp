@@ -197,11 +197,8 @@ void BlockAssembler::RebuildRefundTransaction()
         if (nHeight >= chainparams.FirstSplitRewardBlock() && SelectMasternodePayee(mnPayee)) {
             contrTx.vout.resize(2);
             // set masternode payee and 20% reward, or mint
-            if (nHeight == chainparams.PreminePayment()) {
-                mnReward = powReward * 25000;
-            } else {
-                mnReward = powReward * 0.2;
-            }
+            mnReward = powReward * 0.2;
+
 
             contrTx.vout[1].scriptPubKey = mnPayee;
             contrTx.vout[1].nValue = mnReward;
@@ -211,11 +208,7 @@ void BlockAssembler::RebuildRefundTransaction()
             //LogPrintf("%s: Masternode payment to %s (pow)\n", __func__, EncodeDestination(txDest));
 
             // miner's reward is everything that left
-            if (nHeight == chainparams.PreminePayment()) {
-                minerReward = powReward * 0.8;
-            } else {
-                minerReward = totalReward - mnReward;
-            }
+            minerReward = totalReward - mnReward;
         } else {
             minerReward = totalReward;
         }
@@ -328,11 +321,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         if (nHeight >= chainparams.FirstSplitRewardBlock() && SelectMasternodePayee(mnPayee)) {
             coinbaseTx.vout.resize(2);
             // set masternode 20% reward, or mint the 250k for the team MN
-            if (nHeight == chainparams.PreminePayment()) {
-                mnReward = powReward * 25000;
-            } else {
-                mnReward = powReward * 0.2;
-            }
+            mnReward = powReward * 0.2;
 
             coinbaseTx.vout[1].scriptPubKey = mnPayee;
             coinbaseTx.vout[1].nValue = mnReward;
@@ -341,11 +330,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
             ExtractDestination(mnPayee, txDest);
             LogPrintf("%s: Masternode payment to %s (pow)\n", __func__, EncodeDestination(txDest));
             // miner's reward is everything that is left
-            if (nHeight == chainparams.PreminePayment()) {
-                minerReward = powReward * 0.8;
-            } else {
-                minerReward = totalReward - mnReward;
-            }
+            minerReward = totalReward - mnReward;
         } else {
             minerReward = totalReward;
         }
