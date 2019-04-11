@@ -110,12 +110,12 @@ public:
         //consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.powLimit = ~uint256(0) >> 20; // WORM starting difficulty is 1 / 2^12
         consensus.nPowTargetTimespan = 30 * 60; //36 * 60 * 60; // WORM: 1 36hrs
-        consensus.nPowTargetSpacing = 2 * 60;  // WORM: 2 minute
+        consensus.nPowTargetSpacing = 4 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1026; // 95% of 1080 is 1026
         consensus.nMinerConfirmationWindow = 1080; // nPowTargetTimespan / nPowTargetSpacing
-        consensus.nLastPOWBlock = 6000000;
+        consensus.nLastPOWBlock = 10000;
         // Deployment of SegWit (BIP141 and BIP143)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1530428034; // 01/07/2018
@@ -131,7 +131,7 @@ public:
         //TODO: fix cyclic dependency
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
-        nSwitchPhi2Block = 200;
+        nSwitchPhi2Block = 1;
         nFirstSCBlock = 129600;
         nPruneAfterHeight = 750;
         nSplitRewardBlock = 500;
@@ -186,7 +186,7 @@ public:
         //vSeeds.push_back(CDNSSeedData("Seed2", "seed.wormseeds.nl"));        // WORM seeder
         //vSeeds.push_back(CDNSSeedData("Seed3", "worm.yiimp.eu"));            // WORM seeder with IPv6
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48); // WORM address start with 'L'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73); // WORM address start with 'L'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,63); // WORM script addresses start with 'S'
         base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,155);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x07)(0x28)(0xA2)(0x4E).convert_to_container<std::vector<unsigned char> >();
@@ -215,7 +215,7 @@ public:
 
         nStakingRoundPeriod = 120; // 2 minutes a round
         nStakingInterval = 22;
-        nStakingMinAge = 36 * 60 * 60;
+        nStakingMinAge = 60;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -240,7 +240,7 @@ public:
         //consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.powLimit = ~uint256(0) >> 10; // WORM starting difficulty is 1 / 2^12
         consensus.nPowTargetTimespan = 30 * 60; //36 * 60 * 60; // WORM: 1 36hrs
-        consensus.nPowTargetSpacing = 2 * 60;  // WORM: 2 minute
+        consensus.nPowTargetSpacing = 4 * 60;  // WORM: 2 minute
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1368; // 95% of 1440 is
@@ -252,7 +252,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 577836800;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 2577836900; // Never / undefined
-        consensus.nLastPOWBlock = 6000000;
+        consensus.nLastPOWBlock = 10000;
 
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
@@ -478,7 +478,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 999999999999ULL;
-        consensus.nLastPOWBlock = 6000000;
+        consensus.nLastPOWBlock = 10000;
 
         nSwitchPhi2Block = 1200;
         //nFirstSCBlock = 300000;
