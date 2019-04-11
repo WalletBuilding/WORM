@@ -1937,7 +1937,7 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
     }
 
     CAmount nSubsidy = 1 * COIN;
-    if (nHeight == 1) { nSubsidy = 1000000 * COIN; }  //Merge NEON and WORM
+    if (nHeight == 1) { nSubsidy = 1500000 * COIN; }  //Merge NEON and WORM
 
     if (nHeight < LAST_HEIGHT_FEE_BLOCK) {
         if (IsTestNet() && nHeight >= 17500)
