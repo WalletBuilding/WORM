@@ -131,7 +131,7 @@ public:
         //TODO: fix cyclic dependency
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
-        nSwitchPhi2Block = 1;
+        nSwitchPhi2Block = 200;
         nFirstSCBlock = 129600;
         nPruneAfterHeight = 750;
         nSplitRewardBlock = 500;
