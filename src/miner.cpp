@@ -197,8 +197,7 @@ void BlockAssembler::RebuildRefundTransaction()
         if (nHeight >= chainparams.FirstSplitRewardBlock() && SelectMasternodePayee(mnPayee)) {
             contrTx.vout.resize(2);
             // set masternode payee and 20% reward, or mint
-            mnReward = powReward * 0.2;
-
+            mnReward = GetMasternodePowReward(nHeight, powReward);
 
             contrTx.vout[1].scriptPubKey = mnPayee;
             contrTx.vout[1].nValue = mnReward;
@@ -321,7 +320,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         if (nHeight >= chainparams.FirstSplitRewardBlock() && SelectMasternodePayee(mnPayee)) {
             coinbaseTx.vout.resize(2);
             // set masternode 20% reward, or mint the 250k for the team MN
-            mnReward = powReward * 0.2;
+            mnReward = GetMasternodePowReward(nHeight, powReward);
 
             coinbaseTx.vout[1].scriptPubKey = mnPayee;
             coinbaseTx.vout[1].nValue = mnReward;
