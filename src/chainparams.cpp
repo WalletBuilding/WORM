@@ -110,7 +110,7 @@ public:
         //consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.powLimit = ~uint256(0) >> 20; // WORM starting difficulty is 1 / 2^12
         consensus.nPowTargetTimespan = 30 * 60; //36 * 60 * 60; // WORM: 1 36hrs
-        consensus.nPowTargetSpacing = 4 * 60;
+        consensus.nPowTargetSpacing = 8;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1026; // 95% of 1080 is 1026
@@ -131,11 +131,10 @@ public:
         //TODO: fix cyclic dependency
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
-        nSwitchPhi2Block = 200;
+        nSwitchPhi2Block = 1;
         nFirstSCBlock = 129600;
         nPruneAfterHeight = 750;
         nSplitRewardBlock = 500;
-        nPreminePaymentandHardForkBlock = 500;
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -153,6 +152,8 @@ public:
         nMaturity = 79;
         nMasternodeCountDrift = 20;
         nModifierUpdateBlock = 615800;
+        
+        strDevFundAddress = "SSDx9L7MAmg8yUfqMPTiRPjKJVnMyYz6mG";
 
         const char* pszTimestamp = "If worms carried pistols, birds wouldn't eat 'em."; // Input Activation code to activate blockchain
         CMutableTransaction txNew;
@@ -186,7 +187,7 @@ public:
         //vSeeds.push_back(CDNSSeedData("Seed2", "seed.wormseeds.nl"));        // WORM seeder
         //vSeeds.push_back(CDNSSeedData("Seed3", "worm.yiimp.eu"));            // WORM seeder with IPv6
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73); // WORM address start with 'L'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73); // WORM address start with 'W'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,63); // WORM script addresses start with 'S'
         base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,155);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x07)(0x28)(0xA2)(0x4E).convert_to_container<std::vector<unsigned char> >();
@@ -215,7 +216,7 @@ public:
 
         nStakingRoundPeriod = 120; // 2 minutes a round
         nStakingInterval = 22;
-        nStakingMinAge = 36 * 60 * 60;
+        nStakingMinAge = 60 * 60;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -299,7 +300,6 @@ public:
         nSplitRewardBlock = 1500;
         nPruneAfterHeight = 5000;
         nFirstSCBlock = 10000;
-        nPreminePaymentandHardForkBlock = 50000;
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
@@ -382,7 +382,6 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
         consensus.powLimit = ~uint256(0) >> 1;
-        nPreminePaymentandHardForkBlock = 60;
         nSwitchPhi2Block = 299501;
         nFirstSCBlock = 350000;
         nSplitRewardBlock = 50;
