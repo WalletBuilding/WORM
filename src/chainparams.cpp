@@ -153,7 +153,7 @@ public:
         nMasternodeCountDrift = 20;
         nModifierUpdateBlock = 615800;
         
-        strDevFundAddress = "WYFeM1PiMLjmKD4MACXcS1b5wRLvH5ywwk";
+        strDevFundAddress = "WRHuwwUpr1b4vjRQxP2cva9MC4EVyXscyq";
 
         const char* pszTimestamp = "If worms carried pistols, birds wouldn't eat 'em."; // Input Activation code to activate blockchain
         CMutableTransaction txNew;
