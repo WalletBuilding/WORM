@@ -61,7 +61,7 @@ class BlockStore(object):
 
         response = msg_headers()
         headersList = [ current_block_header ]
-        maxheaders = 2000
+        maxheaders = 0
         while (headersList[0].sha256 not in locator.vHave):
             prevBlockHash = headersList[0].hashPrevBlock
             prevBlockHeader = self.get_header(prevBlockHash)
