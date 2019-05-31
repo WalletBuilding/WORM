@@ -206,7 +206,7 @@ public:
         fMineBlocksOnDemand = true;
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
-        fHeadersFirstSyncingActive = false;
+        fHeadersFirstSyncingActive = true;
 
         nPoolMaxTransactions = 3;
         strSporkKey = "04a983220ea7a38a7106385003fef77896538a382a0dcc389cc45f3c98751d9af423a097789757556259351198a8aaa628a1fd644c3232678c5845384c744ff8d7";
@@ -331,7 +331,7 @@ public:
         fMineBlocksOnDemand = false;
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = true;
-        fHeadersFirstSyncingActive = false;
+        fHeadersFirstSyncingActive = true;
 
         nPoolMaxTransactions = 3;
         strSporkKey = "04348C2F50F90267E64FACC65BFDC9D0EB147D090872FB97ABAE92E9A36E6CA60983E28E741F8E7277B11A7479B626AC115BA31463AC48178A5075C5A9319D4A38";
@@ -547,7 +547,7 @@ public:
         fMineBlocksOnDemand = false;
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
-        fHeadersFirstSyncingActive = false;
+        fHeadersFirstSyncingActive = true;
 
         nPoolMaxTransactions = 3;
         strSporkKey = "04a983220ea7a38a7106385003fef77896538a382a0dcc389cc45f3c98751d9af423a097789757556259351198a8aaa628a1fd644c3232678c5845384c744ff8d7";
