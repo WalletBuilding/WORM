@@ -1062,8 +1062,8 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet)
     // Found a solution (stake)
     {
         LOCK(cs_main);
-        if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-            return error("WORMMiner : generated block is stale");
+//        if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
+//            return error("WORMMiner : generated block is stale");
 
         for(const CTxIn& vin : pblock->vtx[1].vin) {
             if (wallet.IsSpent(vin.prevout.hash, vin.prevout.n)) {
