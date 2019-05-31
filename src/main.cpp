@@ -3868,7 +3868,7 @@ bool ActivateBestChain(CValidationState& state, const CChainParams& chainparams,
         if (ShutdownRequested())
             break;
         bool fInitialDownload;
-        bool usePhi2 = false;
+        bool usePhi2 = true;
         while (true) {
             TRY_LOCK(cs_main, lockMain);
             if (!lockMain) {
@@ -4205,7 +4205,7 @@ bool FindUndoPos(CValidationState& state, int nFile, CDiskBlockPos& pos, unsigne
 
 bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW) {
     // Get prev block index
-    bool usePhi2 = false;
+    bool usePhi2 = true;
     int nBlockHeight = 0;
     const CChainParams& chainparams = Params();
     CBlockIndex* pindexPrev = LookupBlockIndex(block.hashPrevBlock);
@@ -4680,7 +4680,7 @@ bool AcceptBlockHeader(const CBlock& block, CValidationState& state, const CChai
 
     // Get prev block index
     CBlockIndex* pindexPrev = LookupBlockIndex(block.hashPrevBlock);
-    bool usePhi2 = false;
+    bool usePhi2 = true;
     if (pindexPrev) {
         usePhi2 = pindexPrev->nHeight + 1 >= Params().SwitchPhi2Block();
     } else {
@@ -4890,7 +4890,7 @@ void CBlockIndex::BuildSkip()
 bool ProcessNewBlock(CValidationState& state, const CChainParams& chainparams, CNode* pfrom, const CBlock* pblock, CDiskBlockPos* dbp)
 {
     int nHeight = chainActive.Height() + 1;
-    bool usePhi2 = false;
+    bool usePhi2 = true;
     bool alreadyAccepted = false;
 
     // Do not accept the peers having older versions when the fork happens
