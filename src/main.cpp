@@ -1956,20 +1956,20 @@ CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
     //const CChainParams& chainParams = Params();
-    CAmount ret = blockValue * 0.33; //3% for masternode
+    CAmount ret = blockValue * 0.33;
     return ret;
 }
 
 CAmount GetMasternodePowReward(int nHeight, CAmount blockValue)
 {
     //const CChainParams& chainParams = Params();
-    CAmount ret = blockValue * 0.33; //3% for masternode
+    CAmount ret = blockValue * 0.33;
     return ret;
 }
 
 CAmount GetDevReward(int nHeight, CAmount blockValue)
 {
-    CAmount ret = blockValue * 5/100; //5%
+    CAmount ret = blockValue * 34/100;
     return ret;
 }
 

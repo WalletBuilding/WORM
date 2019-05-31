@@ -38,7 +38,7 @@ using namespace dev::eth;
 using namespace p2p;
 
 unsigned const c_maxPeerUknownNewBlocks = 1024; /// Max number of unknown new blocks peer can give us
-unsigned const c_maxRequestHeaders = 1024;
+unsigned const c_maxRequestHeaders = 0;
 unsigned const c_maxRequestBodies = 1024;
 
 
