@@ -38,7 +38,7 @@ using namespace dev::eth;
 using namespace p2p;
 
 unsigned const c_maxPeerUknownNewBlocks = 1024; /// Max number of unknown new blocks peer can give us
-unsigned const c_maxRequestHeaders = 0;
+unsigned const c_maxRequestHeaders = 1024;
 unsigned const c_maxRequestBodies = 1024;
 
 
@@ -345,7 +345,8 @@ void BlockChainSync::requestBlocks(std::shared_ptr<EthereumPeer> _peer)
 						headers.push_back(block);
 						m_downloadingHeaders.insert(block);
 					}
-				count = headers.size();
+				//count = headers.size();
+				count = 0;
 				if (count > 0)
 				{
 					m_headerSyncPeers[_peer] = headers;
