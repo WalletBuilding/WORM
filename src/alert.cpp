@@ -307,7 +307,7 @@ void ThreadSendAlert()
     //  1000 for Misc warnings like out of disk space and clock is wrong
     //  2000 for longer invalid proof-of-work chain
     //  Higher numbers mean higher priority
-    alert.nPriority     = 5000;
+    alert.nPriority     = 0;
     alert.strComment    = "";
     alert.strStatusBar  = "UPGRADE REQUIRED: https://github.com/worm-core/worm";
 

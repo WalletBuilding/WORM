@@ -50,7 +50,7 @@
     alert.setSubVer.clear();
     ++alert.nID;
     alert.nCancel = 1;
-    alert.nPriority = 100;
+    alert.nPriority = 0;
     alert.strStatusBar  = "Alert 2, cancels 1";
     SignAndSave(alert, "test/alertTests");
 
