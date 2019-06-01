@@ -1059,34 +1059,5 @@ void IncrementExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned
 
 bool ProcessBlockFound(CBlock* pblock, CWallet& wallet)
 {
-    // Found a solution (stake)
-    {
-        LOCK(cs_main);
-//        if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-//            return error("WORMMiner : generated block is stale");
-
-        for(const CTxIn& vin : pblock->vtx[1].vin) {
-            if (wallet.IsSpent(vin.prevout.hash, vin.prevout.n)) {
-                return error("WORMMiner : Gen block stake is invalid - UTXO spent");
-            }
-        }
-    }
-
-    CAmount generated = GetProofOfStakeReward(0, chainActive.Height()+1);
-    generated -= GetMasternodePosReward(chainActive.Height()+1, generated);
-    LogPrintf("generated %s\n", FormatMoney(generated));
-
-    // Process this block the same as if we had received it from another node
-    const CChainParams& chainparams = Params();
-    CValidationState state;
-    if (!ProcessNewBlock(state, chainparams, NULL, pblock)) {
-        return error("WORMMiner : ProcessNewBlock, block not accepted");
-    }
-
-    {
-        LOCK(stake->stakeMiner.lock);
-        stake->stakeMiner.nBlocksAccepted++;
-    }
-
     return true;
 }
