@@ -421,6 +421,100 @@ void BlockChainSync::onPeerBlockHeaders(std::shared_ptr<EthereumPeer> _peer, RLP
 	RecursiveGuard l(x_sync);
 	DEV_INVARIANT_CHECK;
 	size_t itemCount = _r.itemCount();
+	clog(NetMessageSummary) << "BlocksHeaders (" << dec << itemCount << "entries)" << (itemCount ? "" : ": NoMoreHeaders");
+	clearPeerDownload(_peer);
+	if (m_state != SyncState::Blocks && m_state != SyncState::NewBlocks && m_state != SyncState::Waiting)
+	{
+		clog(NetMessageSummary) << "Ignoring unexpected blocks";
+		return;
+	}
+	if (m_state == SyncState::Waiting)
+	{
+		clog(NetAllDetail) << "Ignored blocks while waiting";
+		return;
+	}
+	if (itemCount == 0)
+	{
+		clog(NetAllDetail) << "Peer does not have the blocks requested";
+		_peer->addRating(-1);
+	}
+	for (unsigned i = 0; i < itemCount; i++)
+	{
+		BlockHeader info(_r[i].data(), HeaderData);
+		unsigned blockNumber = static_cast<unsigned>(info.number());
+		if (haveItem(m_headers, blockNumber))
+		{
+			clog(NetMessageSummary) << "Skipping header " << blockNumber;
+			continue;
+		}
+		if (blockNumber <= m_lastImportedBlock && m_haveCommonHeader)
+		{
+			clog(NetMessageSummary) << "Skipping header " << blockNumber;
+			continue;
+		}
+		if (blockNumber > m_highestBlock)
+			m_highestBlock = blockNumber;
+
+		auto status = host().bq().blockStatus(info.hash());
+		if (status == QueueStatus::Importing || status == QueueStatus::Ready || host().chain().isKnown(info.hash()))
+		{
+			m_haveCommonHeader = true;
+			m_lastImportedBlock = (unsigned)info.number();
+			m_lastImportedBlockHash = info.hash();
+		}
+		else
+		{
+			Header hdr { _r[i].data().toBytes(), info.hash(), info.parentHash() };
+
+			// validate chain
+			HeaderId headerId { info.transactionsRoot(), info.sha3Uncles() };
+			if (m_haveCommonHeader)
+			{
+				Header const* prevBlock = findItem(m_headers, blockNumber - 1);
+				if ((prevBlock && prevBlock->hash != info.parentHash()) || (blockNumber == m_lastImportedBlock + 1 && info.parentHash() != m_lastImportedBlockHash))
+				{
+					// mismatching parent id, delete the previous block and don't add this one
+					clog(NetImpolite) << "Unknown block header " << blockNumber << " " << info.hash() << " (Restart syncing)";
+					_peer->addRating(-1);
+					restartSync();
+					return ;
+				}
+
+				Header const* nextBlock = findItem(m_headers, blockNumber + 1);
+				if (nextBlock && nextBlock->parent != info.hash())
+				{
+					clog(NetImpolite) << "Unknown block header " << blockNumber + 1 << " " << nextBlock->hash;
+					// clear following headers
+					unsigned n = blockNumber + 1;
+					auto headers = m_headers.at(n);
+					for (auto const& h : headers)
+					{
+						BlockHeader deletingInfo(h.data, HeaderData);
+						m_headerIdToNumber.erase(headerId);
+						m_downloadingBodies.erase(n);
+						m_downloadingHeaders.erase(n);
+						++n;
+					}
+					removeAllStartingWith(m_headers, blockNumber + 1);
+					removeAllStartingWith(m_bodies, blockNumber + 1);
+				}
+			}
+
+			mergeInto(m_headers, blockNumber, std::move(hdr));
+			if (headerId.transactionsRoot == EmptyTrie && headerId.uncles == EmptyListSHA3)
+			{
+				//empty body, just mark as downloaded
+				RLPStream r(2);
+				r.appendRaw(RLPEmptyList);
+				r.appendRaw(RLPEmptyList);
+				bytes body;
+				r.swapOut(body);
+				mergeInto(m_bodies, blockNumber, std::move(body));
+			}
+			else
+				m_headerIdToNumber[headerId] = blockNumber;
+		}
+	}
 	collectBlocks();
 	continueSync();
 }
