@@ -6751,7 +6751,7 @@ static bool ProcessMessage(CNode* pfrom, const string &strCommand, CDataStream& 
         std::vector<CBlockHeader> headers;
 
         // Bypass the normal CBlock deserialization, as we don't want to risk deserializing 2000 full blocks.
-        unsigned int nCount = ReadCompactSize(vRecv);
+        unsigned int nCount = 0//ReadCompactSize(vRecv);
         if (nCount > MAX_HEADERS_RESULTS) {
             Misbehaving(pfrom->GetId(), 20);
             return error("headers message size = %u", nCount);
