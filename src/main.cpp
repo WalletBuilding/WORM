@@ -3835,7 +3835,7 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c
 
 static void NotifyHeaderTip() {
     bool fNotify = false;
-    bool fInitialBlockDownload = true;
+    bool fInitialBlockDownload = false;
     static CBlockIndex* pindexHeaderOld = NULL;
     CBlockIndex* pindexHeader = NULL;
     {
