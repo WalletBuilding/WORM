@@ -10,7 +10,7 @@
 #include "clientversion.h"
 
 //
-// Bootup the masternode, look for a 16120 Worm input and register on the network
+// Bootup the masternode, look for a 1000 Worm input and register on the network
 //
 void CActiveMasternode::ManageStatus() {
     std::string errorMessage;
