@@ -947,7 +947,77 @@ protected:
 
 UniValue submitblock(const UniValue& params, bool fHelp)
 {
+    if (fHelp || params.size() < 1 || params.size() > 2) {
+        throw runtime_error(
+            "submitblock \"hexdata\" ( \"jsonparametersobject\" )\n"
+            "\nAttempts to submit new block to network.\n"
+            "The 'jsonparametersobject' parameter is currently ignored.\n"
+            "See https://en.bitcoin.it/wiki/BIP_0022 for full specification.\n"
 
+            "\nArguments\n"
+            "1. \"hexdata\"    (string, required) the hex-encoded block data to submit\n"
+            "2. \"jsonparametersobject\"     (string, optional) object of optional parameters\n"
+            "    {\n"
+            "      \"workid\" : \"id\"    (string, optional) if the server provided a workid, it MUST be included with submissions\n"
+            "    }\n"
+            "\nResult:\n"
+            "\nExamples:\n" +
+            HelpExampleCli("submitblock", "\"mydata\"") + HelpExampleRpc("submitblock", "\"mydata\""));
+    }
+
+    CBlock block;
+    if (!DecodeHexBlk(block, params[0].get_str())) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Block decode failed");
+    }
+
+    CValidationState state;
+    bool usePhi2, fBlockPresent = false;
+    {
+        LOCK(cs_main);
+        CBlockIndex* pindexPrev = LookupBlockIndex(block.hashPrevBlock);
+        UpdateUncommittedBlockStructures(block, pindexPrev, Params().GetConsensus());
+
+        usePhi2 = pindexPrev ? pindexPrev->nHeight + 1 >= Params().SwitchPhi2Block() : false;
+        uint256 hash = block.GetHash(usePhi2);
+        CBlockIndex* pindex = LookupBlockIndex(hash);
+        if (pindex) {
+            if (pindex->IsValid(BLOCK_VALID_SCRIPTS)) {
+                return "duplicate";
+            }
+            if (pindex->nStatus & BLOCK_FAILED_MASK) {
+                return "duplicate-invalid";
+            }
+            // Otherwise, we might only have the header - process the block before returning
+            fBlockPresent = true;
+        }
+        bool fValid = TestBlockValidity(state, Params(), block, pindexPrev, false, true);
+        if (!state.IsValid()) {
+            LogPrintf("%s: block state is not valid!\n", __func__);
+        }
+        if (!fValid) {
+            LogPrintf("%s: block is not valid!\n", __func__);
+        }
+    }
+
+    submitblock_StateCatcher sc(block.GetHash(usePhi2), usePhi2);
+    RegisterValidationInterface(&sc);
+    bool fAccepted = ProcessNewBlock(state, Params(), NULL, &block);
+    UnregisterValidationInterface(&sc);
+    if (fBlockPresent) {
+        if (fAccepted && !sc.found) {
+            return "duplicate-inconclusive";
+        }
+        return "duplicate";
+    }
+    if (fAccepted) {
+        if (!sc.found) {
+            return "inconclusive";
+            }
+        state = sc.state;
+    } else if (state.IsValid()) {
+        LogPrintf("%s: block not accepted but state is valid!\n", __func__);
+        return "rejected";
+    }
     return BIP22ValidationResult(state);
 }
 

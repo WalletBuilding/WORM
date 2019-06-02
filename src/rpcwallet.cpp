@@ -3352,8 +3352,8 @@ UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGen
             continue;
         }
         CValidationState state;
-        if (!ProcessNewBlock(state, Params(), NULL, pblock))
-            throw JSONRPCError(RPC_INTERNAL_ERROR, "ProcessNewBlock, block not accepted");
+//        if (!ProcessNewBlock(state, Params(), NULL, pblock))
+//            throw JSONRPCError(RPC_INTERNAL_ERROR, "ProcessNewBlock, block not accepted");
         ++nHeight;
         blockHashes.push_back(pblock->GetHash().GetHex());
 
