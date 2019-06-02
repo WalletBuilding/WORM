@@ -1925,25 +1925,8 @@ uint256 GetProofOfStakeLimit(int nHeight)
 
 CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 {
-    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight < 200) return 250000 * COIN;
-    }
-
-    if (Params().NetworkID() == CBaseChainParams::REGTEST) {
-        if (nHeight < 5) {
-            return 50000 * COIN;
-        }
-        else return COIN + nFees;
-    }
-
     CAmount nSubsidy = 1 * COIN;
     if (nHeight == 1) { nSubsidy = 1500000 * COIN; }  //Merge NEON and WORM
-
-    if (nHeight < LAST_HEIGHT_FEE_BLOCK) {
-        if (IsTestNet() && nHeight >= 17500)
-            return nSubsidy + nFees;
-        nFees = nHeight;
-    }
     return nSubsidy + nFees;
 }
 
@@ -1969,7 +1952,7 @@ CAmount GetMasternodePowReward(int nHeight, CAmount blockValue)
 
 CAmount GetDevReward(int nHeight, CAmount blockValue)
 {
-    CAmount ret = blockValue * 34/100;
+    CAmount ret = blockValue * 0.34;
     return ret;
 }
 
