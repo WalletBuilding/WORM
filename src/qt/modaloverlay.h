@@ -8,7 +8,7 @@
 #include <QDateTime>
 #include <QWidget>
 
-static constexpr int HEADER_HEIGHT_SYNC = 24;
+static constexpr int HEADER_HEIGHT_SYNC = 0;
 
 namespace Ui {
     class ModalOverlay;
