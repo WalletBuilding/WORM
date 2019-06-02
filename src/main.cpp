@@ -3868,7 +3868,7 @@ bool ActivateBestChain(CValidationState& state, const CChainParams& chainparams,
         if (ShutdownRequested())
             break;
         bool fInitialDownload;
-        bool usePhi2 = true;
+        bool usePhi2 = false;
         while (true) {
             TRY_LOCK(cs_main, lockMain);
             if (!lockMain) {
