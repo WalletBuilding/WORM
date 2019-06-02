@@ -3843,7 +3843,7 @@ static void NotifyHeaderTip() {
         pindexHeader = pindexBestHeader;
 
         if (pindexHeader != pindexHeaderOld) {
-            fNotify = true;
+            fNotify = false;
             fInitialBlockDownload = IsInitialBlockDownload();
             pindexHeaderOld = pindexHeader;
         }
