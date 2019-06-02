@@ -947,8 +947,7 @@ protected:
 
 UniValue submitblock(const UniValue& params, bool fHelp)
 {
-    CValidationState state;
-        state = sc.state;
+
     return BIP22ValidationResult(state);
 }
 
