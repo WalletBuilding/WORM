@@ -296,7 +296,7 @@ public:
        // std::cout << genesis.GetHash().GetHex() << std::endl;
        // std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
 
-        nSwitchPhi2Block = 1000;
+        nSwitchPhi2Block = 1;
         nSplitRewardBlock = 1500;
         nPruneAfterHeight = 5000;
         nFirstSCBlock = 10000;
@@ -382,7 +382,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
         consensus.powLimit = ~uint256(0) >> 1;
-        nSwitchPhi2Block = 299501;
+        nSwitchPhi2Block = 1;
         nFirstSCBlock = 350000;
         nSplitRewardBlock = 50;
 
@@ -479,7 +479,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 999999999999ULL;
         consensus.nLastPOWBlock = 10000;
 
-        nSwitchPhi2Block = 1200;
+        nSwitchPhi2Block = 1;
         //nFirstSCBlock = 300000;
         //nPruneAfterHeight = 100000;
 
