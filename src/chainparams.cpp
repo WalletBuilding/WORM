@@ -131,7 +131,7 @@ public:
         //TODO: fix cyclic dependency
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
-        nSwitchPhi2Block = 100;
+        nSwitchPhi2Block = 10000;
         nFirstSCBlock = 129600;
         nPruneAfterHeight = 750;
         nSplitRewardBlock = 500;
@@ -296,7 +296,7 @@ public:
        // std::cout << genesis.GetHash().GetHex() << std::endl;
        // std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
 
-        nSwitchPhi2Block = 100;
+        nSwitchPhi2Block = 10000;
         nSplitRewardBlock = 1500;
         nPruneAfterHeight = 5000;
         nFirstSCBlock = 10000;
@@ -382,7 +382,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
         consensus.powLimit = ~uint256(0) >> 1;
-        nSwitchPhi2Block = 100;
+        nSwitchPhi2Block = 10000;
         nFirstSCBlock = 350000;
         nSplitRewardBlock = 50;
 
@@ -479,7 +479,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 999999999999ULL;
         consensus.nLastPOWBlock = 10000;
 
-        nSwitchPhi2Block = 100;
+        nSwitchPhi2Block = 10000;
         //nFirstSCBlock = 300000;
         //nPruneAfterHeight = 100000;
 
