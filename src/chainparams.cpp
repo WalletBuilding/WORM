@@ -132,9 +132,9 @@ public:
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
         nSwitchPhi2Block = 10000;
-        nFirstSCBlock = 129600;
+        nFirstSCBlock = 1000;
         nPruneAfterHeight = 750;
-        nSplitRewardBlock = 500;
+        nSplitRewardBlock = 5000;
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
