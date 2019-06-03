@@ -51,7 +51,7 @@ In addition, without Wormgate and PMN, Bitcoin and Ethereum cannot interact with
 | PoW Reward | `10 WORM` |
 | PoS Reward | `1 WORM` |
 | Stake Time | `36 hours` | 
-| Masternode Requirement | `16,120 WORM` |
+| Masternode Requirement | `1000 WORM` |
 | Masternode Reward | `20% PoW/PoS` |
 | Port | `26480` |
 | RPC Port | `6480` |
