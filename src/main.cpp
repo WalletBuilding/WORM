@@ -4199,9 +4199,9 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const 
         if (nBlockHeight >= chainparams.FirstSCBlock() && !isScVersioned) {
             return error("invalid block version after smart-contract hardfork");
         }
-//        if (nBlockHeight >= chainparams.FirstSCBlock() && (block.hashStateRoot == uint256(0) || block.hashUTXORoot == uint256(0))) {
-//            return error("utxo root or state root uninitialized after smart-contract hardfork");
-//        }
+        if (nBlockHeight >= chainparams.FirstSCBlock() && (block.hashStateRoot == uint256(0) || block.hashUTXORoot == uint256(0))) {
+            return error("utxo root or state root uninitialized after smart-contract hardfork");
+        }
     }
 
     // Check proof of work matches claimed amount
