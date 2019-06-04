@@ -2457,7 +2457,7 @@ static DisconnectResult DisconnectBlock(CBlock& block, CValidationState& state, 
     // move best block pointer to prevout block
     view.SetBestBlock(pindex->pprev->GetBlockHash());
 
-    if (fClean && pindex->nHeight >= Params().FirstSCBlock()) {
+    if (fClean && pindex->nHeight > Params().FirstSCBlock()) {
         setGlobalStateRoot(uintToh256(pindex->pprev->hashStateRoot));
         setGlobalStateUTXO(uintToh256(pindex->pprev->hashUTXORoot));
     }
@@ -3153,7 +3153,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     }
 
     if (fJustCheck) {
-        if (pindex->nHeight >= Params().FirstSCBlock()) {
+        if (pindex->nHeight > Params().FirstSCBlock()) {
             dev::h256 prevHashStateRoot(dev::sha3(dev::rlp("")));
             dev::h256 prevHashUTXORoot(dev::sha3(dev::rlp("")));
             if (pindex->pprev->hashStateRoot != uint256() && pindex->pprev->hashUTXORoot != uint256()) {
@@ -4199,8 +4199,7 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const 
         if (nBlockHeight >= chainparams.FirstSCBlock() && !isScVersioned) {
             return error("invalid block version after smart-contract hardfork");
         }
-
-	if (nBlockHeight >= chainparams.FirstSCBlock() && (block.hashStateRoot == uint256(0) || block.hashUTXORoot == uint256(0))) {
+        if (nBlockHeight >= chainparams.FirstSCBlock() && (block.hashStateRoot == uint256(0) || block.hashUTXORoot == uint256(0))) {
             return error("utxo root or state root uninitialized after smart-contract hardfork");
         }
     }

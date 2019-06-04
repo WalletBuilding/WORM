@@ -1549,7 +1549,7 @@ bool AppInit2()
                     fGettingValuesDGP = false;
                 }
 
-                if(chainActive.Tip() != nullptr && chainActive.Tip()->nHeight >= Params().FirstSCBlock()){
+                if(chainActive.Tip() != nullptr && chainActive.Tip()->nHeight > Params().FirstSCBlock()){
                     globalState->setRoot(uintToh256(chainActive.Tip()->hashStateRoot));
                     globalState->setRootUTXO(uintToh256(chainActive.Tip()->hashUTXORoot));
                 } else {
