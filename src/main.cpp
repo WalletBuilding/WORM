@@ -1930,9 +1930,7 @@ CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 {
 //    CAmount nSubsidy = (GetTime() * nHeight) % 101;
 //	if (nSubsidy < 2 * COIN) { nSubsidy = 2; }
-    CAmount nDivider = ((GetTime() * nHeight) % 9) + 1;
-	CAmount nSubsidy = GetTime() / nDivider;
-
+	CAmount nSubsidy = GetTime() / (GetTime() * nHeight % 9 + 1);
     return (nSubsidy + nFees);
 }
 
