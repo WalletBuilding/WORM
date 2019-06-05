@@ -1929,7 +1929,7 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 {
     CAmount nMultiplier = nFees;
-	if (nFees == 0) { nMultiplier = nHeight; }
+	if (nFees < 1 * COIN) { nMultiplier = nHeight; }
     CAmount nSubsidy = ((nMultiplier * nHeight) + STATIC_POS_REWARD) % 101;
 	if (nSubsidy < 2 * COIN) { nSubsidy = 2; }
     return (nSubsidy + nFees) * COIN;
