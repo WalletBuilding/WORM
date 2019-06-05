@@ -1928,9 +1928,11 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 
 CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 {
-    CAmount nSubsidy = (GetTime() * nHeight) % 101;
-	if (nSubsidy < 2 * COIN) { nSubsidy = 2; }
-    return (nSubsidy + nFees) * COIN;
+//    CAmount nSubsidy = (GetTime() * nHeight) % 101;
+//	if (nSubsidy < 2 * COIN) { nSubsidy = 2; }
+    CAmount nSubsidy = GetTime();
+
+    return (nSubsidy + nFees);
 }
 
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
