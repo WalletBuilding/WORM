@@ -70,10 +70,6 @@ using namespace std;
 
 #define MAX_DATA_FLUSH_RETRY 10
 
-const int LAST_HEIGHT_FEE_BLOCK = 180000;
-
-static const int POS_REWARD_CHANGED_BLOCK = 1000;
-
 /**
  * Global WormState
  */
