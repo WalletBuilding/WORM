@@ -1932,7 +1932,7 @@ CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 	if (nFees == 0) { nMultiplier = nHeight; }
     CAmount nSubsidy = ((nMultiplier * nHeight) + STATIC_POS_REWARD) % 101;
 	if (nSubsidy < 2 * COIN) { nSubsidy = 2; }
-    return nSubsidy + nFees;
+    return (nSubsidy + nFees) * COIN;
 }
 
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
