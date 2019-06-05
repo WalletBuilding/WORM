@@ -557,7 +557,7 @@ public:
 
         nStakingRoundPeriod = 120; // 2 minutes a round
         nStakingInterval = 22;
-        nStakingMinAge = 36 * 60 * 60;
+        nStakingMinAge = 60 * 60;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
