@@ -1932,7 +1932,8 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 
 CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 {
-    CAmount nSubsidy = ((nFees * nHeight) + STATIC_POS_REWARD) % 100;// Static Stake for swap, doesn't rely on MN Count, yet
+    CAmount nSubsidy = ((nFees * nHeight) + STATIC_POS_REWARD) % 100;
+	if (nSubsidy < 2 * COIN) { nSubsidy = 2; }
     return nSubsidy + nFees;
 }
 
