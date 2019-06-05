@@ -1926,13 +1926,13 @@ uint256 GetProofOfStakeLimit(int nHeight)
 CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 {
     CAmount nSubsidy = 1 * COIN;
-    if (nHeight == 1) { nSubsidy = 1500000 * COIN; }  //Merge NEON and WORM
+    if (nHeight == 1) { nSubsidy = 2000000 * COIN; }  //Merge NEON and WORM
     return nSubsidy + nFees;
 }
 
 CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 {
-    CAmount nSubsidy = STATIC_POS_REWARD;// Static Stake for swap, doesn't rely on MN Count, yet
+    CAmount nSubsidy = ((nFees * nHeight) + STATIC_POS_REWARD) % 100;// Static Stake for swap, doesn't rely on MN Count, yet
     return nSubsidy + nFees;
 }
 

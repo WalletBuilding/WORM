@@ -131,10 +131,10 @@ public:
         //TODO: fix cyclic dependency
         consensus.vDeployments[Consensus::SMART_CONTRACTS_HARDFORK].bit = 30;
 
-        nSwitchPhi2Block = 1501;
-        nFirstSCBlock = 2000;
+        nSwitchPhi2Block = 99999999;
+        nFirstSCBlock = 99999999;
         nPruneAfterHeight = 750;
-        nSplitRewardBlock = 5000;
+        nSplitRewardBlock = 99999999;
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
