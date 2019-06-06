@@ -1928,8 +1928,6 @@ CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 
 CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 {
-//    CAmount nSubsidy = (GetTime() * nHeight) % 101;
-//	if (nSubsidy < 2 * COIN) { nSubsidy = 2; }
 	CAmount nSubsidy = GetTime() / (GetTime() * nHeight % 9 + 1);
     return (nSubsidy + nFees);
 }
