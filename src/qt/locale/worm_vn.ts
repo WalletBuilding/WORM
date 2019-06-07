@@ -7381,7 +7381,7 @@ https://www.transifex.com/wormcore/wormcore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>https://github.com/WORM-Core/worm/releases</source>
+        <source>https://github.com/MealwormsBiz/worm/releases</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -9,7 +9,7 @@ Wormcore is GNU AGPLv3 licensed.
                                                                                                                                                      
 [![Build history](https://buildstats.info/travisci/chart/WORM-Core/worm?branch=master)](https://travis-ci.org/WORM-Core/worm?branch=master)
 
-[Website](https://mealworms.biz) — [WORMtre + WORMGate](https://github.com/WORM-Core/wormtre) - [PoS Web Wallet](https://worm.poswallet.io) — [Block Explorer](https://explorer.mealworms.biz/) — [Blog](https://reddit.com/r/WORMCoin) — [Forum](https://bitcointalk.org/index.php?topic=2254046.0) — [Telegram](https://t.me/WORMcoinOfficialChat) — [Twitter](https://twitter.com/WORM_Coin)
+[Website](https://mealworms.biz) — [WORMtre + WORMGate](https://github.com/MealwormsBiz/wormtre) - [PoS Web Wallet](https://worm.poswallet.io) — [Block Explorer](https://explorer.mealworms.biz/) — [Blog](https://reddit.com/r/WORMCoin) — [Forum](https://bitcointalk.org/index.php?topic=2254046.0) — [Telegram](https://t.me/WORMcoinOfficialChat) — [Twitter](https://twitter.com/WORM_Coin)
 
 Features
 =============
@@ -81,7 +81,7 @@ The next three steps are an example of how to acquire the source and build in an
         
 Acquire the source and install dependencies.
 
-    git clone https://github.com/WORM-Core/worm
+    git clone https://github.com/MealwormsBiz/worm
     sudo chmod -R a+rw worm
     cd worm/depends
     ./install-dependencies.sh
@@ -100,7 +100,7 @@ The next three steps are an example of how to acquire the source and build in an
         
 Acquire the source and install dependencies.
 
-    git clone https://github.com/WORM-Core/worm
+    git clone https://github.com/MealwormsBiz/worm
     sudo chmod -R a+rw worm
     cd worm/depends
     ./install-dependencies.sh
@@ -117,7 +117,7 @@ Build in the usual way.
 
 Use
 
-    sudo add-apt-repository ppa:bitcoin/bitcoin; git clone https://github.com/WORM-Core/worm; cd worm; depends/install-dependencies.sh; ./autogen.sh; ./configure --disable-tests --with-boost-libdir=/usr/local/lib; make clean; make -j$(nproc)
+    sudo add-apt-repository ppa:bitcoin/bitcoin; git clone https://github.com/MealwormsBiz/worm; cd worm; depends/install-dependencies.sh; ./autogen.sh; ./configure --disable-tests --with-boost-libdir=/usr/local/lib; make clean; make -j$(nproc)
 
 
 Add bitcoin repository for Berkeley DB 4.8
@@ -126,7 +126,7 @@ Add bitcoin repository for Berkeley DB 4.8
 
 Clone worm repository
 
-    git clone https://github.com/WORM-Core/worm
+    git clone https://github.com/MealwormsBiz/worm
 
 Build worm 
 
@@ -169,7 +169,7 @@ Link boost 1.64
 
 Clone the Worm source code and cd into worm
 
-        git clone https://github.com/WORM-Core/worm
+        git clone https://github.com/MealwormsBiz/worm
         cd worm
         ./building/mac/requirements.sh
         ./building/mac/build.sh
@@ -179,7 +179,7 @@ Setup and Build: Arch Linux
 This example lists the steps necessary to setup and build a command line only, non-wallet distribution of the latest changes on Arch Linux:
 
     pacman -S git base-devel boost libevent python
-    git clone https://github.com/WORM-Core/worm
+    git clone https://github.com/MealwormsBiz/worm
     cd worm/
     ./autogen.sh
     ./configure --without-miniupnpc --disable-tests
@@ -242,7 +242,7 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/WORM-Core/worm/tags) are created
+completely stable. [Tags](https://github.com/MealwormsBiz/worm/tags) are created
 regularly to indicate new official, stable release versions of Worm.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).

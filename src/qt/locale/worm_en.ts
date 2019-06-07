@@ -8818,7 +8818,7 @@ https://www.transifex.com/wormcore/wormcore</source>
     <message>
         <location line="+15"/>
         <location filename="../../worm-installer/src/forms/ui_updateinfodialog.h" line="+3"/>
-        <source>https://github.com/WORM-Core/worm/releases</source>
+        <source>https://github.com/MealwormsBiz/worm/releases</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -160,8 +160,6 @@ static const bool DEFAULT_ADDRESSINDEX = false;
 static const bool DEFAULT_SPENTINDEX = false;
 static const bool DEFAULT_TXINDEX = true;
 
-static const int64_t STATIC_POS_REWARD = 2 * COIN; //Constant reward 8%
-
 static const bool DEFAULT_LOGEVENTS = false;
 
 ////////////////////////////////////////////////////// worm

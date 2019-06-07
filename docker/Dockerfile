@@ -6,7 +6,7 @@ LABEL description="Dockerised Wormcore, built from Travis"
 RUN apt-get update && apt-get install -y software-properties-common unzip
 RUN apt-get install -y wget
 
-RUN wget https://github.com/WORM-Core/worm/releases/download/v5.2.3/worm-qt-linux-18.zip
+RUN wget https://github.com/MealwormsBiz/worm/releases/download/v5.2.3/worm-qt-linux-18.zip
 RUN unzip worm-qt-linux-18.zip
 RUN cp wormd /usr/local/bin
 

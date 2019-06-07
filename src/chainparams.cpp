@@ -145,7 +145,7 @@ public:
         pchMessageStart[1] = 0xba;
         pchMessageStart[2] = 0xcc;
         pchMessageStart[3] = 0xa1;
-        vAlertPubKey = ParseHex("04f89d9aba82ec0087bebed21b5f23eccbfa4c97e9e64575eed880fbcb22c715a7674efbf4b8668dd67197d1b2e505fc20575914c6d8c36b2023676361c63b0336");
+        vAlertPubKey = ParseHex("0");
         nDefaultPort = 26480;
         nMaxReorganizationDepth = 100;
         nMinerThreads = 0;
@@ -209,7 +209,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "04a983220ea7a38a7106385003fef77896538a382a0dcc389cc45f3c98751d9af423a097789757556259351198a8aaa628a1fd644c3232678c5845384c744ff8d7";
+        strSporkKey = "0";
 
         strDarksendPoolDummyAddress = "LgcjpYxWa5EB9KCYaRtpPgG8kgiWRvJY38";
         nStartMasternodePayments = 1554334523; 
@@ -261,7 +261,7 @@ public:
         pchMessageStart[1] = 0x64;
         pchMessageStart[2] = 0x55;
         pchMessageStart[3] = 0xa4;
-        vAlertPubKey = ParseHex("04f89d9aba82ec0087bebed21b5f23eccbfa4c97e9e64575eed880fbcb22c715a7674efbf4b8668dd67197d1b2e505fc20575914c6d8c36b2023676361c63b0336");
+        vAlertPubKey = ParseHex("0");
         nDefaultPort = 28333;
         nMinerThreads = 0;
         nMaturity = 10;
@@ -492,7 +492,7 @@ public:
         pchMessageStart[1] = 0x7b;
         pchMessageStart[2] = 0xcb;
         pchMessageStart[3] = 0xab;
-        vAlertPubKey = ParseHex("04f89d9aba82ec0087bebed21b5f23eccbfa4c97e9e64575eed880fbcb22c715a7674efbf4b8668dd67197d1b2e505fc20575914c6d8c36b2023676361c63b0336");
+        vAlertPubKey = ParseHex("0");
         nDefaultPort = 25666;
         nMaxReorganizationDepth = 100;
         nMinerThreads = 0;

@@ -26,7 +26,7 @@ Drag WORM-Qt to your applications folder, and then run WORM-Qt.
 
 ### Need Help?
 
-* See the documentation at the [WORM Wiki](https://github.com/WORM-Core/worm/wiki) ***TODO***
+* See the documentation at the [WORM Wiki](https://github.com/MealwormsBiz/worm/wiki) ***TODO***
 for help and more information.
 * Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=2254046.0) or on the [WORM Telegram](https://t.me/WORMcoinOfficialChat).
 

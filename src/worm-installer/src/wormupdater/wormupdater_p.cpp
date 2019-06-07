@@ -7,7 +7,7 @@
 #include <QtCore/QXmlStreamReader>
 #include <QtCore/QTimer>
 
-#define REPOSITORY_URL "https://github.com/WORM-Core/worm/releases.atom"
+#define REPOSITORY_URL "https://github.com/MealwormsBiz/worm/releases.atom"
 
 std::atomic<bool> isUpdaterRunning(false);
 
@@ -112,7 +112,7 @@ QString WormUpdaterPrivate::getDownloadUrl(QString version)
 #else
 	QString fileName = 1 ? "worm-qt-linux-16.zip" : "worm-qt-linux-18.zip";
 #endif
-	return "https://github.com/WORM-Core/worm/releases/download/" + version + "/" + fileName;
+	return "https://github.com/MealwormsBiz/worm/releases/download/" + version + "/" + fileName;
 }
 
 void WormUpdaterPrivate::onDownloadProgress(DownloadManager::DownloadProgress progress)

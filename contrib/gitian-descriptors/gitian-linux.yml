@@ -33,7 +33,7 @@ packages:
 - "python"
 - "libudev-dev"
 remotes:
-- "url": "https://github.com/worm-core/worm.git"
+- "url": "https://github.com/MealwormsBiz/worm.git"
   "dir": "worm"
 files: []
 script: |

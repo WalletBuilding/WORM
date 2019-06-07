@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#define NEW_RELEASES "https://github.com/WORM-Core/worm/releases"
+#define NEW_RELEASES "https://github.com/MealwormsBiz/worm/releases"
 
 class Version {
 

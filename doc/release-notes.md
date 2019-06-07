@@ -2,14 +2,14 @@
 
 Wormcore version *version* is now available from:
 
-  <https://github.com/WORM-Core/worm/releases>
+  <https://github.com/MealwormsBiz/worm/releases>
 
 This is a new major version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/WORM-Core/worm/issues>
+  <https://github.com/MealwormsBiz/worm/issues>
 
 Mandatory Update
 ==============
