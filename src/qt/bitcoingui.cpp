@@ -300,13 +300,19 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle* n
         frameLayout->setContentsMargins(6, 0, 6, 0);
         frameLayout->setSpacing(10);
 
-        pushButtonTwitter = new QPushButton(frameSocMedia);
-        pushButtonTwitter->setToolTip(tr("Go to")+" YouTube");
-        connect(pushButtonTwitter, &QPushButton::clicked,
+        pushButtonTelegram = new QPushButton(frameSocMedia);
+        pushButtonTelegram->setToolTip(tr("Go to")+" YouTube");
+        connect(pushButtonTelegram, &QPushButton::clicked,
                 this, [](){QDesktopServices::openUrl(QUrl("https://youtube.com/MealwormsBiz"));});
-        pushButtonTwitter->setIcon(QIcon(":/icons/res/icons/youtube.png").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-		
-		        pushButtonTwitter = new QPushButton(frameSocMedia);
+        pushButtonTelegram->setIcon(QIcon(QPixmap(":/icons/res/icons/telegram.png").scaledToHeight(STATUSBAR_ICONSIZE,Qt::SmoothTransformation)));
+
+        pushButtonDiscord = new QPushButton(frameSocMedia);
+        pushButtonDiscord->setToolTip(tr("Go to")+" Discord");
+        connect(pushButtonDiscord, &QPushButton::clicked,
+                this, [](){QDesktopServices::openUrl(QUrl("https://discord.gg/365G7Yr"));});
+        pushButtonDiscord->setIcon(QIcon(":/icons/res/icons/discord.png").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+
+		pushButtonTwitter = new QPushButton(frameSocMedia);
         pushButtonTwitter->setToolTip(tr("Go to")+" Twitter");
         connect(pushButtonTwitter, &QPushButton::clicked,
                 this, [](){QDesktopServices::openUrl(QUrl("https://twitter.com/MealwormsBiz"));});
@@ -322,7 +328,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle* n
         pushButtonHelp->setToolTip(tr("Go to")+" Information Hub");
         connect(pushButtonHelp, &QPushButton::clicked,
                 this, [](){QDesktopServices::openUrl(QUrl("https://mealworms.biz/"));});
-        pushButtonHelp->setIcon(QIcon(":/icons/res/icons/hub.png").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));		
+        pushButtonHelp->setIcon(QIcon(":/icons/res/icons/hub.png").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 		
         auto buttons = frameSocMedia->findChildren<QPushButton* >();
         QString styleSheet = ".QPushButton { background-color: transparent;"
@@ -402,7 +408,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle* n
 
     if(fCheckUpdates && updateDialog->newUpdateAvailable())
     {
-        QString url = "https://github.com/MealwormsBiz/worm/releases";
+        QString url = "https://github.com/WORM-Core/worm/releases";
         QString link = QString("<a href=\\\"\"+ url +\"\\\">\"+ url +\"</a>").arg(NEW_RELEASES, NEW_RELEASES);
         QString message(tr("New worm-qt version available: <br /> %1. <br />").arg(link));
         QMessageBox::information(this, tr("Check for updates"), message);
