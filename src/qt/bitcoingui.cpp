@@ -300,13 +300,13 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle* n
         frameLayout->setContentsMargins(6, 0, 6, 0);
         frameLayout->setSpacing(10);
 
-        pushButtonDiscord = new QPushButton(frameSocMedia);
-        pushButtonDiscord->setToolTip(tr("Go to")+" YouTube");
-        connect(pushButtonDiscord, &QPushButton::clicked,
-                this, [](){QDesktopServices::openUrl(QUrl("https://youtube.com/MealwormsBiz"));});
-        pushButtonDiscord->setIcon(QIcon(":/icons/res/icons/youtube.png").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-
         pushButtonTwitter = new QPushButton(frameSocMedia);
+        pushButtonTwitter->setToolTip(tr("Go to")+" YouTube");
+        connect(pushButtonTwitter, &QPushButton::clicked,
+                this, [](){QDesktopServices::openUrl(QUrl("https://youtube.com/MealwormsBiz"));});
+        pushButtonTwitter->setIcon(QIcon(":/icons/res/icons/youtube.png").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+		
+		        pushButtonTwitter = new QPushButton(frameSocMedia);
         pushButtonTwitter->setToolTip(tr("Go to")+" Twitter");
         connect(pushButtonTwitter, &QPushButton::clicked,
                 this, [](){QDesktopServices::openUrl(QUrl("https://twitter.com/MealwormsBiz"));});
