@@ -1922,7 +1922,7 @@ uint256 GetProofOfStakeLimit(int nHeight)
 CAmount GetProofOfWorkReward(int64_t nFees, int nHeight)
 {
     CAmount nSubsidy = 1 * COIN;
-    if (nHeight == 1) { nSubsidy = 2000000 * COIN; }  //Merge NEON and WORM
+    if (nHeight == 1) { nSubsidy = 1000000 * COIN; }  //Merge NEON and WORM
     return nSubsidy + nFees;
 }
 
