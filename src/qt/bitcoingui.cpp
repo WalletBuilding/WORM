@@ -321,7 +321,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle* n
         pushButtonGithub = new QPushButton(frameSocMedia);
         pushButtonGithub->setToolTip(tr("Go to")+" GitHub");
         connect(pushButtonGithub, &QPushButton::clicked,
-                this, [](){QDesktopServices::openUrl(QUrl("https://github.com/MealwormsBiz"));});
+                this, [](){QDesktopServices::openUrl(QUrl("https://github.com/MealwormsBiz/WORM"));});
         pushButtonGithub->setIcon(QIcon(":/icons/res/icons/github.png").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 
         pushButtonHelp = new QPushButton(frameSocMedia);
