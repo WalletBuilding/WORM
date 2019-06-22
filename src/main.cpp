@@ -1932,7 +1932,7 @@ CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 	if (nHeight > 20000) { nPseudo = nFees + nHeight; }
 	CAmount nSubsidy = nPseudo / (nPseudo * nHeight % 9 + 1);
 	if (nHeight > 22000) {
-		nSubsidy *= 10000;
+		nSubsidy *= 16000;
 		nSubsidy += nHeight;
 		if (nSubsidy >= 8 * COIN) { nSubsidy = 8 * COIN; }
 	}
