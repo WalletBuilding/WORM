@@ -182,7 +182,30 @@ public:
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         vSeeds.push_back(CDNSSeedData("wormv2.mealworms.biz", "wormv2.mealworms.biz"));       // WORM seeder (IPv6)
-
+		vSeeds.push_back(CDNSSeedData("2.84.169.232", "2.84.169.232")); 
+		vSeeds.push_back(CDNSSeedData("36.71.240.5", "36.71.240.5")); 
+		vSeeds.push_back(CDNSSeedData("45.63.119.167", "45.63.119.167"));
+		vSeeds.push_back(CDNSSeedData("45.79.146.11", "45.79.146.11")); 
+		vSeeds.push_back(CDNSSeedData("46.101.126.142", "46.101.126.142")); 
+		vSeeds.push_back(CDNSSeedData("47.184.107.241", "47.184.107.241")); 
+		vSeeds.push_back(CDNSSeedData("54.36.110.21", "54.36.110.21")); 
+		vSeeds.push_back(CDNSSeedData("58.174.108.205", "58.174.108.205")); 
+		vSeeds.push_back(CDNSSeedData("65.30.166.214", "65.30.166.214")); 
+		vSeeds.push_back(CDNSSeedData("75.138.192.59", "75.138.192.59")); 
+		vSeeds.push_back(CDNSSeedData("81.237.232.122", "81.237.232.122")); 
+		vSeeds.push_back(CDNSSeedData("90.139.201.155", "90.139.201.155")); 
+		vSeeds.push_back(CDNSSeedData("92.60.44.72", "92.60.44.72")); 
+		vSeeds.push_back(CDNSSeedData("95.88.47.89", "95.88.47.89")); 
+		vSeeds.push_back(CDNSSeedData("95.216.247.54", "95.216.247.54")); 
+		vSeeds.push_back(CDNSSeedData("104.238.176.80", "104.238.176.80")); 
+		vSeeds.push_back(CDNSSeedData("108.31.235.3", "108.31.235.3")); 
+		vSeeds.push_back(CDNSSeedData("108.77.80.39", "108.77.80.39")); 
+		vSeeds.push_back(CDNSSeedData("110.138.68.221", "110.138.68.221")); 
+		vSeeds.push_back(CDNSSeedData("125.212.181.159", "125.212.181.159")); 
+		vSeeds.push_back(CDNSSeedData("182.0.137.195", "182.0.137.195")); 
+		vSeeds.push_back(CDNSSeedData("185.239.239.179", "185.239.239.179")); 
+		vSeeds.push_back(CDNSSeedData("210.195.255.223", "210.195.255.223")); 
+		vSeeds.push_back(CDNSSeedData("213.108.119.84", "213.108.119.84")); 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73); // WORM address start with 'W'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,63); // WORM script addresses start with 'S'
         base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,155);
