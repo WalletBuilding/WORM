@@ -181,7 +181,6 @@ public:
         assert(genesis.hashMerkleRoot == uint256("0xe9f1cde73194c816312e7e4c75131d5a776ece5344c61b2c354221a1bf421d4c"));
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
-		vSeeds.push_back(CDNSSeedData("65.30.166.214", "65.30.166.214"));
         vSeeds.push_back(CDNSSeedData("wormv2.mealworms.biz", "wormv2.mealworms.biz"));       // WORM seeder (IPv6)
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73); // WORM address start with 'W'
