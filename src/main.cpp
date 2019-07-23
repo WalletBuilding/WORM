@@ -1936,7 +1936,7 @@ CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 		nSubsidy += nHeight;
 		if (nSubsidy >= 8 * COIN) { nSubsidy = 8 * COIN; }
 	}
-	if (nHeight > 70000) { nSubsidy *= 10; }
+	if (nHeight > 68000) { nSubsidy *= 10; }
     return (nSubsidy + nFees);
 }
 
@@ -1944,7 +1944,7 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
     //const CChainParams& chainParams = Params();
     CAmount ret = blockValue * 0.33;
-	if (nHeight > 70000) { ret = blockValue * 0.033; }
+	if (nHeight > 68000) { ret = blockValue * 0.033; }
     return ret;
 }
 
@@ -1952,14 +1952,14 @@ CAmount GetMasternodePowReward(int nHeight, CAmount blockValue)
 {
     //const CChainParams& chainParams = Params();
     CAmount ret = blockValue * 0.33;
-	if (nHeight > 70000) { ret = blockValue * 0.033; }
+	if (nHeight > 68000) { ret = blockValue * 0.033; }
     return ret;
 }
 
 CAmount GetBonusPool(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue * 0.34;
-	if (nHeight > 70000) { ret = blockValue * 0.934; }
+	if (nHeight > 68000) { ret = blockValue * 0.934; }
     return ret;
 }
 
