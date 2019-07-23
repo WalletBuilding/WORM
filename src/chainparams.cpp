@@ -183,7 +183,7 @@ public:
         ////////////////////////////////////////////////////////////////////////////////////////////////
         vSeeds.push_back(CDNSSeedData("wormv2.mealworms.biz", "wormv2.mealworms.biz"));       // WORM seeder (IPv6)
 		vSeeds.push_back(CDNSSeedData("2.84.169.232", "2.84.169.232"));
-		vSeeds.push_back(CDNSSeedData("36.71.240.5", "36.71.240.5")); 
+		vSeeds.push_back(CDNSSeedData("36.71.240.5", "36.71.240.5"));
 		vSeeds.push_back(CDNSSeedData("45.63.119.167", "45.63.119.167"));
 		vSeeds.push_back(CDNSSeedData("45.79.146.11", "45.79.146.11")); 
 		vSeeds.push_back(CDNSSeedData("46.101.126.142", "46.101.126.142")); 
