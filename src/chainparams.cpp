@@ -203,7 +203,7 @@ public:
 		vSeeds.push_back(CDNSSeedData("110.138.68.221", "110.138.68.221"));
 		vSeeds.push_back(CDNSSeedData("125.212.181.159", "125.212.181.159"));
 		vSeeds.push_back(CDNSSeedData("182.0.137.195", "182.0.137.195"));
-		vSeeds.push_back(CDNSSeedData("185.239.239.179", "185.239.239.179")); 
+		vSeeds.push_back(CDNSSeedData("185.239.239.179", "185.239.239.179"));
 		vSeeds.push_back(CDNSSeedData("210.195.255.223", "210.195.255.223")); 
 		vSeeds.push_back(CDNSSeedData("213.108.119.84", "213.108.119.84")); 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73); // WORM address start with 'W'
