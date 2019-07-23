@@ -199,7 +199,7 @@ public:
 		vSeeds.push_back(CDNSSeedData("95.216.247.54", "95.216.247.54"));
 		vSeeds.push_back(CDNSSeedData("104.238.176.80", "104.238.176.80"));
 		vSeeds.push_back(CDNSSeedData("108.31.235.3", "108.31.235.3"));
-		vSeeds.push_back(CDNSSeedData("108.77.80.39", "108.77.80.39")); 
+		vSeeds.push_back(CDNSSeedData("108.77.80.39", "108.77.80.39"));
 		vSeeds.push_back(CDNSSeedData("110.138.68.221", "110.138.68.221")); 
 		vSeeds.push_back(CDNSSeedData("125.212.181.159", "125.212.181.159")); 
 		vSeeds.push_back(CDNSSeedData("182.0.137.195", "182.0.137.195")); 
