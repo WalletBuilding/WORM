@@ -185,7 +185,6 @@ public:
 		vSeeds.push_back(CDNSSeedData("45.79.146.11", "45.79.146.11"));
 		vSeeds.push_back(CDNSSeedData("81.237.232.122", "81.237.232.122"));
 		vSeeds.push_back(CDNSSeedData("92.60.44.72", "92.60.44.72"));
-		vSeeds.push_back(CDNSSeedData("54.36.110.21", "54.36.110.21"));
         vSeeds.push_back(CDNSSeedData("wormv2.mealworms.biz", "wormv2.mealworms.biz"));       // WORM seeder (IPv6)
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73); // WORM address start with 'W'
