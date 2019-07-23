@@ -109,7 +109,7 @@ public:
     int64_t PruneAfterHeight() const { return nPruneAfterHeight; }
     int FirstSplitRewardBlock() const { return nSplitRewardBlock; }
     /** Address of developers fund */
-    std::string GetDevFundAddress() const { return  strDevFundAddress; }
+    std::string GetBonusPoolAddress() const { return  strBonusPoolAddress; }
 
 protected:
     CChainParams() {}
@@ -151,7 +151,7 @@ protected:
     int nSwitchPhi2Block;
     int nSplitRewardBlock;
     uint64_t nPruneAfterHeight;
-    std::string strDevFundAddress;
+    std::string strBonusPoolAddress;
 };
 
 /**

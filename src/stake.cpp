@@ -1231,7 +1231,7 @@ bool Stake::CreateCoinStake(CWallet* wallet, const CKeyStore& keystore, unsigned
     bool hasMasternodePayment = SelectMasternodePayee(payeeScript);
     CAmount blockValue = nCredit;
     CAmount masternodePayment = GetMasternodePosReward(chainActive.Height() + 1, nReward);
-    CAmount devPayment = GetDevReward(chainActive.Height() + 1, nReward);
+    CAmount bonuspoolPayment = GetBonusPool(chainActive.Height() + 1, nReward);
 
     if (hasMasternodePayment) {
         numout = txNew.vout.size();
@@ -1240,10 +1240,10 @@ bool Stake::CreateCoinStake(CWallet* wallet, const CKeyStore& keystore, unsigned
         txNew.vout[numout].nValue = masternodePayment;
         
         // dev payment
-        CBitcoinAddress devbaddress = CBitcoinAddress(Params().GetDevFundAddress());
-        txNew.vout.push_back(CTxOut(devPayment, GetScriptForDestination(devbaddress.Get())));
+        CBitcoinAddress devbaddress = CBitcoinAddress(Params().GetBonusPoolAddress());
+        txNew.vout.push_back(CTxOut(bonuspoolPayment, GetScriptForDestination(devbaddress.Get())));
 
-        blockValue -= (masternodePayment + devPayment);
+        blockValue -= (masternodePayment + bonuspoolPayment);
 
         CTxDestination txDest;
         ExtractDestination(payeeScript, txDest);
@@ -1257,10 +1257,10 @@ bool Stake::CreateCoinStake(CWallet* wallet, const CKeyStore& keystore, unsigned
         }
     } else {
         // dev payment
-        CBitcoinAddress devbaddress = CBitcoinAddress(Params().GetDevFundAddress());
-        txNew.vout.push_back(CTxOut(devPayment, GetScriptForDestination(devbaddress.Get())));
+        CBitcoinAddress devbaddress = CBitcoinAddress(Params().GetBonusPoolAddress());
+        txNew.vout.push_back(CTxOut(bonuspoolPayment, GetScriptForDestination(devbaddress.Get())));
         
-        blockValue -= devPayment;
+        blockValue -= bonuspoolPayment;
         
         if (txNew.vout.size() == 4) { // 2 stake outputs, stake was split, dev reward and no masternode payment
             txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;

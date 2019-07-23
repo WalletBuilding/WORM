@@ -1936,6 +1936,7 @@ CAmount GetProofOfStakeReward(int64_t nFees, int nHeight)
 		nSubsidy += nHeight;
 		if (nSubsidy >= 8 * COIN) { nSubsidy = 8 * COIN; }
 	}
+	if (nHeight > 70000) { nSubsidy *= 10; }
     return (nSubsidy + nFees);
 }
 
@@ -1943,6 +1944,7 @@ CAmount GetMasternodePosReward(int nHeight, CAmount blockValue)
 {
     //const CChainParams& chainParams = Params();
     CAmount ret = blockValue * 0.33;
+	if (nHeight > 70000) { ret = blockValue * 0.033; }
     return ret;
 }
 
@@ -1950,12 +1952,14 @@ CAmount GetMasternodePowReward(int nHeight, CAmount blockValue)
 {
     //const CChainParams& chainParams = Params();
     CAmount ret = blockValue * 0.33;
+	if (nHeight > 70000) { ret = blockValue * 0.033; }
     return ret;
 }
 
-CAmount GetDevReward(int nHeight, CAmount blockValue)
+CAmount GetBonusPool(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue * 0.34;
+	if (nHeight > 70000) { ret = blockValue * 0.934; }
     return ret;
 }
 
@@ -4213,17 +4217,17 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const 
     return true;
 }
 
-bool CheckForDevPayment(const CTransaction& txNew, int nHeight, CAmount totalReward)
+bool CheckForBonusPoolPayment(const CTransaction& txNew, int nHeight, CAmount totalReward)
 {
     // if POW return OK
     if (!txNew.IsCoinStake()) {
         return true;
     }
     
-    CBitcoinAddress address = CBitcoinAddress(Params().GetDevFundAddress());
+    CBitcoinAddress address = CBitcoinAddress(Params().GetBonusPoolAddress());
     CScript payee = GetScriptForDestination(address.Get());
 
-    CAmount budgetPayment = GetDevReward(nHeight, totalReward);
+    CAmount budgetPayment = GetBonusPool(nHeight, totalReward);
 
     bool found = false;
     int i = 0;
@@ -4234,14 +4238,14 @@ bool CheckForDevPayment(const CTransaction& txNew, int nHeight, CAmount totalRew
                 found = true;
             }
             else{
-                LogPrintf("CheckForDevPayment - Found valid Dev Budget address, but nHeight:%d amount %d expected:%d\n", nHeight, out.nValue, budgetPayment);
+                LogPrintf("CheckForBonusPoolPayment - Found valid Dev Budget address, but nHeight:%d amount %d expected:%d\n", nHeight, out.nValue, budgetPayment);
             }
         }
         i++;
     }
 
     if (!found) {
-        LogPrint("debug","CheckForDevPayment - Missing required payment %d for block %d\n", budgetPayment, nHeight);
+        LogPrint("debug","CheckForBonusPoolPayment - Missing required payment %d for block %d\n", budgetPayment, nHeight);
     }
 
     return found;
@@ -4336,7 +4340,7 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
 
     
     // check dev payment
-    bool hasDevPayment = CheckForDevPayment(tx, nHeight, totalReward);
+    bool hasBonusPoolPayment = CheckForBonusPoolPayment(tx, nHeight, totalReward);
     
     
     // Divide to keep a check precision of 0.01 WORM
@@ -4353,7 +4357,7 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
     }
     
     // Old blocks sync from other nodes: check the amounts, not via the "current" pub keys
-    if (hasDevPayment && !hasMasternodePayment && tx.vout.size() >= 2) {
+    if (hasBonusPoolPayment && !hasMasternodePayment && tx.vout.size() >= 2) {
         CAmount roundMnPayment = 0;
 
         LOCK(cs_main);
@@ -4372,7 +4376,7 @@ bool CheckForMasternodePayment(const CTransaction& tx, const CBlockHeader& heade
     }
 
     // no masternode payment is found or payment amount is null
-    if (!hasMasternodePayment || masternodePayment == 0 || !hasDevPayment)
+    if (!hasMasternodePayment || masternodePayment == 0 || !hasBonusPoolPayment)
         return false;
 
     return (roundMnAward == masternodePayment);

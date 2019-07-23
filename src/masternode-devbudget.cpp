@@ -7,7 +7,7 @@
 CDevBudget devbudget;
 
 void CDevBudget::PrepareBudget() {
-    CBitcoinAddress address = CBitcoinAddress(Params().DevRewardAddress());
+    CBitcoinAddress address = CBitcoinAddress(Params().BonusPoolAddress());
     payee = GetScriptForDestination(address.Get());
 
     LogPrint("debug","CDevBudget::PrepareBudget(): %s\n", address.ToString());
@@ -85,7 +85,7 @@ void CDevBudget::FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool 
             //subtract budget payment from mn reward
             txNew.vout[i - 1].nValue -= budgetPayment;
 
-            LogPrint("debug","Dev budget payment of %s to %s\n", FormatMoney(budgetPayment).c_str(), Params().DevRewardAddress().c_str());
+            LogPrint("debug","Dev budget payment of %s to %s\n", FormatMoney(budgetPayment).c_str(), Params().BonusPoolAddress().c_str());
         }
         else{
             LogPrint("debug","Dev budget payment equals 0\n");

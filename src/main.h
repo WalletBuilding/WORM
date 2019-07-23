@@ -336,7 +336,7 @@ bool IsWitnessLocked(const CBlockIndex* pindexPrev);
 double ConvertBitsToDouble(unsigned int nBits);
 CAmount GetMasternodePosReward(int nHeight, CAmount blockValue);
 CAmount GetMasternodePowReward(int nHeight, CAmount blockValue);
-CAmount GetDevReward(int nHeight, CAmount blockValue);
+CAmount GetBonusPool(int nHeight, CAmount blockValue);
 uint256 GetProofOfStakeLimit(int nHeight);
 inline unsigned int GetTargetSpacing(int nHeight) { return IsProtocolV2(nHeight) ? 240 : 60; }
 
